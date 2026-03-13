@@ -375,7 +375,7 @@ body {
 .votes-chart-wrapper {
     display: flex;
     flex-direction: column;
-    min-height: 400px;
+    height: 600px;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: 1rem;
@@ -387,10 +387,12 @@ body {
     font-family: var(--font-display);
     font-weight: 500;
     font-size: 1.1rem;
+    flex-shrink: 0;
 }
 
 .votes-chart-wrapper canvas {
     flex: 1;
+    max-height: calc(100% - 2.5rem);
 }
 
 @media (max-width: 1024px) {
