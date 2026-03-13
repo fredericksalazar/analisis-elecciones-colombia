@@ -370,16 +370,20 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     margin-top: 2rem;
+    width: 100%;
 }
 
 .votes-chart-wrapper {
     display: flex;
     flex-direction: column;
     height: 600px;
+    width: 100%;
+    min-width: 0;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: 1rem;
     padding: 1.5rem;
+    overflow: hidden;
 }
 
 .votes-chart-wrapper h3 {
