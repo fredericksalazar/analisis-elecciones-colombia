@@ -51,8 +51,7 @@ function initializeVisualizations(data) {
     drawHemiciclo(data.partidos.Cámara, '#camara-hemiciclo', "Cámara");
     renderCongressTable(data.partidos.Cámara, '#camara-table-container');
 
-    // Draw Unified Legend
-    drawLegend(data.partidos.Senado, data.partidos.Cámara, '#congress-legend');
+
 
     // Draw Ideology Trend
     drawIdeologyCharts(data.ideologia.Senado);

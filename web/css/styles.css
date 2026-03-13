@@ -102,25 +102,31 @@ body {
     color: var(--accent);
 }
 .btn-icon {
-    background: transparent;
+    position: fixed;
+    top: 1.5rem;
+    right: 2rem;
+    z-index: 1000;
+    background: var(--bg-glass);
+    backdrop-filter: var(--glass-blur);
     border: 1px solid var(--border-color);
     color: var(--text-primary);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: var(--transition);
+    box-shadow: var(--shadow-soft);
 }
 .btn-icon:hover {
     background: var(--bg-secondary);
     color: var(--accent);
 }
 
-[data-theme="dark"] .icon-dark { display: none; }
 [data-theme="light"] .icon-light { display: none; }
+[data-theme="dark"] .icon-dark { display: none; }
 
 /* Hero Section */
 .hero {
@@ -296,30 +302,7 @@ body {
     display: inline-block;
 }
 
-/* Party Legend */
-.party-legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-    margin-bottom: 3rem;
-    padding: 1.5rem;
-    background: var(--bg-secondary);
-    border-radius: 1rem;
-    border: 1px solid var(--border-color);
-}
-.legend-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.85rem;
-    font-weight: 500;
-}
-.legend-color {
-    width: 12px;
-    height: 12px;
-    border-radius: 3px;
-}
+
 
 .ideology-shift-wrapper h3 { margin-bottom: 1.5rem; font-family: var(--font-display); text-align: center; }
 .ideology-charts {

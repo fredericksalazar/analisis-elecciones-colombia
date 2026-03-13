@@ -223,41 +223,7 @@ function getPartyColor(name, ideology) {
     return getIdeologyColorRaw(ideology);
 }
 
-export function drawLegend(dataPartidosSenado, dataPartidosCamara, containerSelector) {
-    const container = document.querySelector(containerSelector);
-    if (!container) return;
-    container.innerHTML = ''; // clear
 
-    const uniqueParties = new Map();
-
-    const processCorp = (data) => {
-        if(!data) return;
-        Object.entries(data).forEach(([pName, pData]) => {
-            if (pData['2026'] !== null && pData['2026'].curules > 0) {
-                if(!uniqueParties.has(pName)) {
-                    uniqueParties.set(pName, {
-                         color: getPartyColor(pName, pData.ideologia),
-                         ideology: pData.ideologia
-                    });
-                }
-            }
-        });
-    };
-    processCorp(dataPartidosSenado);
-    processCorp(dataPartidosCamara);
-
-    const sortedParties = Array.from(uniqueParties.entries()).sort((a,b) => a[0].localeCompare(b[0]));
-
-    sortedParties.forEach(([pName, pInfo]) => {
-        const item = document.createElement('div');
-        item.className = 'legend-item';
-        item.innerHTML = `
-            <div class="legend-color" style="background-color: ${pInfo.color}"></div>
-            <span>${pName}</span>
-        `;
-        container.appendChild(item);
-    });
-}
 
 
 // Draw ChartJS Donuts for Ideology representation
