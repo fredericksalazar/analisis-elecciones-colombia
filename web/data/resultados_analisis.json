@@ -1,0 +1,743 @@
+{
+    "comportamiento_electoral": {
+        "anuales": {
+            "2022": {
+                "Senado": {
+                    "censo": 38819901,
+                    "votantes": 18347811,
+                    "participacion_pct": 47.26,
+                    "abstencion_pct": 52.74,
+                    "votos_validos": 16950254,
+                    "validos_pct": 92.38,
+                    "votos_nulos_invalidos": 1397557,
+                    "nulos_invalidos_pct": 7.62
+                },
+                "Cámara": {
+                    "censo": 38819901,
+                    "votantes": 18347811,
+                    "participacion_pct": 47.26,
+                    "abstencion_pct": 52.74,
+                    "votos_validos": 16754290,
+                    "validos_pct": 91.31,
+                    "votos_nulos_invalidos": 1593521,
+                    "nulos_invalidos_pct": 8.69
+                }
+            },
+            "2026": {
+                "Senado": {
+                    "censo": 41287084,
+                    "votantes": 20900614,
+                    "participacion_pct": 50.62,
+                    "abstencion_pct": 49.38,
+                    "votos_validos": 19423187,
+                    "validos_pct": 92.93,
+                    "votos_nulos_invalidos": 1201969,
+                    "nulos_invalidos_pct": 5.75
+                },
+                "Cámara": {
+                    "censo": 41287084,
+                    "votantes": 20500000,
+                    "participacion_pct": 49.65,
+                    "abstencion_pct": 50.35,
+                    "votos_validos": 19000000,
+                    "validos_pct": 92.68,
+                    "votos_nulos_invalidos": 1100000,
+                    "nulos_invalidos_pct": 5.37
+                }
+            }
+        },
+        "comparativo_2026_vs_2022": {
+            "Senado": {
+                "variacion_votantes_abs": 2552803,
+                "variacion_participacion_pp": 3.36,
+                "variacion_nulos_invalidos_pp": -1.87
+            },
+            "Cámara": {
+                "variacion_votantes_abs": 2152189,
+                "variacion_participacion_pp": 2.39,
+                "variacion_nulos_invalidos_pp": -3.32
+            }
+        }
+    },
+    "partidos": {
+        "Senado": {
+            "Pacto Histórico": {
+                "ideologia": "Izquierda",
+                "2022": {
+                    "votos": 2880254,
+                    "curules": 20,
+                    "cuota_poder_votos_pct": 19.22,
+                    "poder_relativo_curules_pct": 18.69,
+                    "eficiencia_electoral": 0.9724,
+                    "costo_votos_por_curul": 144013.0
+                },
+                "2026": {
+                    "votos": 4413636,
+                    "curules": 25,
+                    "cuota_poder_votos_pct": 23.58,
+                    "poder_relativo_curules_pct": 24.27,
+                    "eficiencia_electoral": 1.0293,
+                    "costo_votos_por_curul": 176545.0
+                },
+                "comparativo": {
+                    "variacion_votos_abs": 1533382,
+                    "variacion_votos_pct": 53.24,
+                    "curules_adicionales": 5,
+                    "variacion_poder_relativo_pp": 5.58
+                }
+            },
+            "Partido Conservador": {
+                "ideologia": "Derecha",
+                "2022": {
+                    "votos": 2238678,
+                    "curules": 15,
+                    "cuota_poder_votos_pct": 14.94,
+                    "poder_relativo_curules_pct": 14.02,
+                    "eficiencia_electoral": 0.9384,
+                    "costo_votos_por_curul": 149245.0
+                },
+                "2026": {
+                    "votos": 1863663,
+                    "curules": 10,
+                    "cuota_poder_votos_pct": 9.96,
+                    "poder_relativo_curules_pct": 9.71,
+                    "eficiencia_electoral": 0.9749,
+                    "costo_votos_por_curul": 186366.0
+                },
+                "comparativo": {
+                    "variacion_votos_abs": -375015,
+                    "variacion_votos_pct": -16.75,
+                    "curules_adicionales": -5,
+                    "variacion_poder_relativo_pp": -4.31
+                }
+            },
+            "Partido Liberal": {
+                "ideologia": "Centro",
+                "2022": {
+                    "votos": 2112528,
+                    "curules": 14,
+                    "cuota_poder_votos_pct": 14.09,
+                    "poder_relativo_curules_pct": 13.08,
+                    "eficiencia_electoral": 0.9283,
+                    "costo_votos_por_curul": 150895.0
+                },
+                "2026": {
+                    "votos": 2275182,
+                    "curules": 12,
+                    "cuota_poder_votos_pct": 12.15,
+                    "poder_relativo_curules_pct": 11.65,
+                    "eficiencia_electoral": 0.9588,
+                    "costo_votos_por_curul": 189598.0
+                },
+                "comparativo": {
+                    "variacion_votos_abs": 162654,
+                    "variacion_votos_pct": 7.7,
+                    "curules_adicionales": -2,
+                    "variacion_poder_relativo_pp": -1.43
+                }
+            },
+            "Alianza Verde/CE": {
+                "ideologia": "Centro",
+                "2022": {
+                    "votos": 1958369,
+                    "curules": 13,
+                    "cuota_poder_votos_pct": 13.07,
+                    "poder_relativo_curules_pct": 12.15,
+                    "eficiencia_electoral": 0.9296,
+                    "costo_votos_por_curul": 150644.0
+                },
+                "2026": null,
+                "comparativo": "No comparable (No participó en ambas)"
+            },
+            "Centro Democrático": {
+                "ideologia": "Derecha",
+                "2022": {
+                    "votos": 1949905,
+                    "curules": 13,
+                    "cuota_poder_votos_pct": 13.01,
+                    "poder_relativo_curules_pct": 12.15,
+                    "eficiencia_electoral": 0.9339,
+                    "costo_votos_por_curul": 149993.0
+                },
+                "2026": {
+                    "votos": 3035715,
+                    "curules": 17,
+                    "cuota_poder_votos_pct": 16.22,
+                    "poder_relativo_curules_pct": 16.5,
+                    "eficiencia_electoral": 1.0173,
+                    "costo_votos_por_curul": 178571.0
+                },
+                "comparativo": {
+                    "variacion_votos_abs": 1085810,
+                    "variacion_votos_pct": 55.69,
+                    "curules_adicionales": 4,
+                    "variacion_poder_relativo_pp": 4.35
+                }
+            },
+            "Cambio Radical": {
+                "ideologia": "Derecha",
+                "2022": {
+                    "votos": 1609173,
+                    "curules": 11,
+                    "cuota_poder_votos_pct": 10.74,
+                    "poder_relativo_curules_pct": 10.28,
+                    "eficiencia_electoral": 0.9572,
+                    "costo_votos_por_curul": 146288.0
+                },
+                "2026": null,
+                "comparativo": "No comparable (No participó en ambas)"
+            },
+            "Partido de la U": {
+                "ideologia": "Centro",
+                "2022": {
+                    "votos": 1506567,
+                    "curules": 10,
+                    "cuota_poder_votos_pct": 10.05,
+                    "poder_relativo_curules_pct": 9.35,
+                    "eficiencia_electoral": 0.9303,
+                    "costo_votos_por_curul": 150657.0
+                },
+                "2026": {
+                    "votos": 1565786,
+                    "curules": 8,
+                    "cuota_poder_votos_pct": 8.36,
+                    "poder_relativo_curules_pct": 7.77,
+                    "eficiencia_electoral": 0.9294,
+                    "costo_votos_por_curul": 195723.0
+                },
+                "comparativo": {
+                    "variacion_votos_abs": 59219,
+                    "variacion_votos_pct": 3.93,
+                    "curules_adicionales": -2,
+                    "variacion_poder_relativo_pp": -1.58
+                }
+            },
+            "MIRA-LIGA": {
+                "ideologia": "Derecha",
+                "2022": {
+                    "votos": 578200,
+                    "curules": 4,
+                    "cuota_poder_votos_pct": 3.86,
+                    "poder_relativo_curules_pct": 3.74,
+                    "eficiencia_electoral": 0.9689,
+                    "costo_votos_por_curul": 144550.0
+                },
+                "2026": null,
+                "comparativo": "No comparable (No participó en ambas)"
+            },
+            "Comunes": {
+                "ideologia": "Izquierda",
+                "2022": {
+                    "votos": 31138,
+                    "curules": 5,
+                    "cuota_poder_votos_pct": 0.21,
+                    "poder_relativo_curules_pct": 4.67,
+                    "eficiencia_electoral": 22.2381,
+                    "costo_votos_por_curul": 6228.0
+                },
+                "2026": null,
+                "comparativo": "No comparable (No participó en ambas)"
+            },
+            "MAIS (Ind.)": {
+                "ideologia": "Izquierda",
+                "2022": {
+                    "votos": 71200,
+                    "curules": 1,
+                    "cuota_poder_votos_pct": 0.48,
+                    "poder_relativo_curules_pct": 0.93,
+                    "eficiencia_electoral": 1.9375,
+                    "costo_votos_por_curul": 71200.0
+                },
+                "2026": {
+                    "votos": 95000,
+                    "curules": 1,
+                    "cuota_poder_votos_pct": 0.51,
+                    "poder_relativo_curules_pct": 0.97,
+                    "eficiencia_electoral": 1.902,
+                    "costo_votos_por_curul": 95000.0
+                },
+                "comparativo": {
+                    "variacion_votos_abs": 23800,
+                    "variacion_votos_pct": 33.43,
+                    "curules_adicionales": 0,
+                    "variacion_poder_relativo_pp": 0.04
+                }
+            },
+            "AICO (Ind.)": {
+                "ideologia": "Izquierda",
+                "2022": {
+                    "votos": 52000,
+                    "curules": 1,
+                    "cuota_poder_votos_pct": 0.35,
+                    "poder_relativo_curules_pct": 0.93,
+                    "eficiencia_electoral": 2.6571,
+                    "costo_votos_por_curul": 52000.0
+                },
+                "2026": {
+                    "votos": 88000,
+                    "curules": 1,
+                    "cuota_poder_votos_pct": 0.47,
+                    "poder_relativo_curules_pct": 0.97,
+                    "eficiencia_electoral": 2.0638,
+                    "costo_votos_por_curul": 88000.0
+                },
+                "comparativo": {
+                    "variacion_votos_abs": 36000,
+                    "variacion_votos_pct": 69.23,
+                    "curules_adicionales": 0,
+                    "variacion_poder_relativo_pp": 0.04
+                }
+            },
+            "Alianza por Colombia": {
+                "ideologia": "Centro",
+                "2022": null,
+                "2026": {
+                    "votos": 1904154,
+                    "curules": 10,
+                    "cuota_poder_votos_pct": 10.17,
+                    "poder_relativo_curules_pct": 9.71,
+                    "eficiencia_electoral": 0.9548,
+                    "costo_votos_por_curul": 190415.0
+                },
+                "comparativo": "No comparable (No participó en ambas)"
+            },
+            "Cambio Radical-ALMA": {
+                "ideologia": "Derecha",
+                "2022": null,
+                "2026": {
+                    "votos": 1248021,
+                    "curules": 7,
+                    "cuota_poder_votos_pct": 6.67,
+                    "poder_relativo_curules_pct": 6.8,
+                    "eficiencia_electoral": 1.0195,
+                    "costo_votos_por_curul": 178289.0
+                },
+                "comparativo": "No comparable (No participó en ambas)"
+            },
+            "Ahora Colombia": {
+                "ideologia": "Derecha",
+                "2022": null,
+                "2026": {
+                    "votos": 900606,
+                    "curules": 5,
+                    "cuota_poder_votos_pct": 4.81,
+                    "poder_relativo_curules_pct": 4.85,
+                    "eficiencia_electoral": 1.0083,
+                    "costo_votos_por_curul": 180121.0
+                },
+                "comparativo": "No comparable (No participó en ambas)"
+            },
+            "Salvación Nacional": {
+                "ideologia": "Derecha",
+                "2022": null,
+                "2026": {
+                    "votos": 705924,
+                    "curules": 4,
+                    "cuota_poder_votos_pct": 3.77,
+                    "poder_relativo_curules_pct": 3.88,
+                    "eficiencia_electoral": 1.0292,
+                    "costo_votos_por_curul": 176481.0
+                },
+                "comparativo": "No comparable (No participó en ambas)"
+            },
+            "Frente Amplio": {
+                "ideologia": "Izquierda",
+                "2022": null,
+                "2026": {
+                    "votos": 396042,
+                    "curules": 2,
+                    "cuota_poder_votos_pct": 2.12,
+                    "poder_relativo_curules_pct": 1.94,
+                    "eficiencia_electoral": 0.9151,
+                    "costo_votos_por_curul": 198021.0
+                },
+                "comparativo": "No comparable (No participó en ambas)"
+            },
+            "Creemos": {
+                "ideologia": "Derecha",
+                "2022": null,
+                "2026": {
+                    "votos": 227957,
+                    "curules": 1,
+                    "cuota_poder_votos_pct": 1.22,
+                    "poder_relativo_curules_pct": 0.97,
+                    "eficiencia_electoral": 0.7951,
+                    "costo_votos_por_curul": 227957.0
+                },
+                "comparativo": "No comparable (No participó en ambas)"
+            }
+        },
+        "Cámara": {
+            "Partido Liberal": {
+                "ideologia": "Centro",
+                "2022": {
+                    "votos": 2329045,
+                    "curules": 32,
+                    "cuota_poder_votos_pct": 19.37,
+                    "poder_relativo_curules_pct": 21.77,
+                    "eficiencia_electoral": 1.1239,
+                    "costo_votos_por_curul": 72783.0
+                },
+                "2026": {
+                    "votos": 2094513,
+                    "curules": 18,
+                    "cuota_poder_votos_pct": 13.69,
+                    "poder_relativo_curules_pct": 12.77,
+                    "eficiencia_electoral": 0.9328,
+                    "costo_votos_por_curul": 116362.0
+                },
+                "comparativo": {
+                    "variacion_votos_abs": -234532,
+                    "variacion_votos_pct": -10.07,
+                    "curules_adicionales": -14,
+                    "variacion_poder_relativo_pp": -9.0
+                }
+            },
+            "Pacto Histórico": {
+                "ideologia": "Izquierda",
+                "2022": {
+                    "votos": 2552042,
+                    "curules": 28,
+                    "cuota_poder_votos_pct": 21.23,
+                    "poder_relativo_curules_pct": 19.05,
+                    "eficiencia_electoral": 0.8973,
+                    "costo_votos_por_curul": 91144.0
+                },
+                "2026": {
+                    "votos": 3950000,
+                    "curules": 39,
+                    "cuota_poder_votos_pct": 25.82,
+                    "poder_relativo_curules_pct": 27.66,
+                    "eficiencia_electoral": 1.0713,
+                    "costo_votos_por_curul": 101282.0
+                },
+                "comparativo": {
+                    "variacion_votos_abs": 1397958,
+                    "variacion_votos_pct": 54.78,
+                    "curules_adicionales": 11,
+                    "variacion_poder_relativo_pp": 8.61
+                }
+            },
+            "Partido Conservador": {
+                "ideologia": "Derecha",
+                "2022": {
+                    "votos": 2052060,
+                    "curules": 25,
+                    "cuota_poder_votos_pct": 17.07,
+                    "poder_relativo_curules_pct": 17.01,
+                    "eficiencia_electoral": 0.9965,
+                    "costo_votos_por_curul": 82082.0
+                },
+                "2026": {
+                    "votos": 1961402,
+                    "curules": 16,
+                    "cuota_poder_votos_pct": 12.82,
+                    "poder_relativo_curules_pct": 11.35,
+                    "eficiencia_electoral": 0.8853,
+                    "costo_votos_por_curul": 122588.0
+                },
+                "comparativo": {
+                    "variacion_votos_abs": -90658,
+                    "variacion_votos_pct": -4.42,
+                    "curules_adicionales": -9,
+                    "variacion_poder_relativo_pp": -5.66
+                }
+            },
+            "Cambio Radical": {
+                "ideologia": "Derecha",
+                "2022": {
+                    "votos": 1451000,
+                    "curules": 16,
+                    "cuota_poder_votos_pct": 12.07,
+                    "poder_relativo_curules_pct": 10.88,
+                    "eficiencia_electoral": 0.9014,
+                    "costo_votos_por_curul": 90688.0
+                },
+                "2026": {
+                    "votos": 1500000,
+                    "curules": 10,
+                    "cuota_poder_votos_pct": 9.8,
+                    "poder_relativo_curules_pct": 7.09,
+                    "eficiencia_electoral": 0.7235,
+                    "costo_votos_por_curul": 150000.0
+                },
+                "comparativo": {
+                    "variacion_votos_abs": 49000,
+                    "variacion_votos_pct": 3.38,
+                    "curules_adicionales": -6,
+                    "variacion_poder_relativo_pp": -3.79
+                }
+            },
+            "CITREP": {
+                "ideologia": "Centro",
+                "2022": {
+                    "votos": 600000,
+                    "curules": 16,
+                    "cuota_poder_votos_pct": 4.99,
+                    "poder_relativo_curules_pct": 10.88,
+                    "eficiencia_electoral": 2.1804,
+                    "costo_votos_por_curul": 37500.0
+                },
+                "2026": {
+                    "votos": 650000,
+                    "curules": 16,
+                    "cuota_poder_votos_pct": 4.25,
+                    "poder_relativo_curules_pct": 11.35,
+                    "eficiencia_electoral": 2.6706,
+                    "costo_votos_por_curul": 40625.0
+                },
+                "comparativo": {
+                    "variacion_votos_abs": 50000,
+                    "variacion_votos_pct": 8.33,
+                    "curules_adicionales": 0,
+                    "variacion_poder_relativo_pp": 0.47
+                }
+            },
+            "Centro Democrático": {
+                "ideologia": "Derecha",
+                "2022": {
+                    "votos": 1610651,
+                    "curules": 15,
+                    "cuota_poder_votos_pct": 13.4,
+                    "poder_relativo_curules_pct": 10.2,
+                    "eficiencia_electoral": 0.7612,
+                    "costo_votos_por_curul": 107377.0
+                },
+                "2026": {
+                    "votos": 2544802,
+                    "curules": 22,
+                    "cuota_poder_votos_pct": 16.63,
+                    "poder_relativo_curules_pct": 15.6,
+                    "eficiencia_electoral": 0.9381,
+                    "costo_votos_por_curul": 115673.0
+                },
+                "comparativo": {
+                    "variacion_votos_abs": 934151,
+                    "variacion_votos_pct": 58.0,
+                    "curules_adicionales": 7,
+                    "variacion_poder_relativo_pp": 5.4
+                }
+            },
+            "Partido de la U": {
+                "ideologia": "Centro",
+                "2022": {
+                    "votos": 1426713,
+                    "curules": 15,
+                    "cuota_poder_votos_pct": 11.87,
+                    "poder_relativo_curules_pct": 10.2,
+                    "eficiencia_electoral": 0.8593,
+                    "costo_votos_por_curul": 95114.0
+                },
+                "2026": {
+                    "votos": 1200000,
+                    "curules": 9,
+                    "cuota_poder_votos_pct": 7.84,
+                    "poder_relativo_curules_pct": 6.38,
+                    "eficiencia_electoral": 0.8138,
+                    "costo_votos_por_curul": 133333.0
+                },
+                "comparativo": {
+                    "variacion_votos_abs": -226713,
+                    "variacion_votos_pct": -15.89,
+                    "curules_adicionales": -6,
+                    "variacion_poder_relativo_pp": -3.82
+                }
+            },
+            "Alianza por Colombia": {
+                "ideologia": "Centro",
+                "2022": null,
+                "2026": {
+                    "votos": 1400000,
+                    "curules": 11,
+                    "cuota_poder_votos_pct": 9.15,
+                    "poder_relativo_curules_pct": 7.8,
+                    "eficiencia_electoral": 0.8525,
+                    "costo_votos_por_curul": 127273.0
+                },
+                "comparativo": "No comparable (No participó en ambas)"
+            }
+        }
+    },
+    "ideologia": {
+        "Senado": {
+            "Izquierda": {
+                "2022": {
+                    "votos": 3034592,
+                    "curules": 27,
+                    "poder_votos_pct": 20.25,
+                    "poder_curules_pct": 25.23
+                },
+                "2026": {
+                    "votos": 4992678,
+                    "curules": 29,
+                    "poder_votos_pct": 26.67,
+                    "poder_curules_pct": 28.16
+                },
+                "comparativo": {
+                    "curules_adicionales": 2,
+                    "variacion_poder_votos_pp": 6.42,
+                    "variacion_poder_curules_pp": 2.93
+                }
+            },
+            "Derecha": {
+                "2022": {
+                    "votos": 6375956,
+                    "curules": 43,
+                    "poder_votos_pct": 42.54,
+                    "poder_curules_pct": 40.19
+                },
+                "2026": {
+                    "votos": 7981886,
+                    "curules": 44,
+                    "poder_votos_pct": 42.64,
+                    "poder_curules_pct": 42.72
+                },
+                "comparativo": {
+                    "curules_adicionales": 1,
+                    "variacion_poder_votos_pp": 0.1,
+                    "variacion_poder_curules_pp": 2.53
+                }
+            },
+            "Centro": {
+                "2022": {
+                    "votos": 5577464,
+                    "curules": 37,
+                    "poder_votos_pct": 37.21,
+                    "poder_curules_pct": 34.58
+                },
+                "2026": {
+                    "votos": 5745122,
+                    "curules": 30,
+                    "poder_votos_pct": 30.69,
+                    "poder_curules_pct": 29.13
+                },
+                "comparativo": {
+                    "curules_adicionales": -7,
+                    "variacion_poder_votos_pp": -6.52,
+                    "variacion_poder_curules_pp": -5.45
+                }
+            }
+        },
+        "Cámara": {
+            "Centro": {
+                "2022": {
+                    "votos": 4355758,
+                    "curules": 63,
+                    "poder_votos_pct": 36.23,
+                    "poder_curules_pct": 42.86
+                },
+                "2026": {
+                    "votos": 5344513,
+                    "curules": 54,
+                    "poder_votos_pct": 34.93,
+                    "poder_curules_pct": 38.3
+                },
+                "comparativo": {
+                    "curules_adicionales": -9,
+                    "variacion_poder_votos_pp": -1.3,
+                    "variacion_poder_curules_pp": -4.56
+                }
+            },
+            "Izquierda": {
+                "2022": {
+                    "votos": 2552042,
+                    "curules": 28,
+                    "poder_votos_pct": 21.23,
+                    "poder_curules_pct": 19.05
+                },
+                "2026": {
+                    "votos": 3950000,
+                    "curules": 39,
+                    "poder_votos_pct": 25.82,
+                    "poder_curules_pct": 27.66
+                },
+                "comparativo": {
+                    "curules_adicionales": 11,
+                    "variacion_poder_votos_pp": 4.59,
+                    "variacion_poder_curules_pp": 8.61
+                }
+            },
+            "Derecha": {
+                "2022": {
+                    "votos": 5113711,
+                    "curules": 56,
+                    "poder_votos_pct": 42.54,
+                    "poder_curules_pct": 38.1
+                },
+                "2026": {
+                    "votos": 6006204,
+                    "curules": 48,
+                    "poder_votos_pct": 39.25,
+                    "poder_curules_pct": 34.04
+                },
+                "comparativo": {
+                    "curules_adicionales": -8,
+                    "variacion_poder_votos_pp": -3.29,
+                    "variacion_poder_curules_pp": -4.06
+                }
+            }
+        }
+    },
+    "indicadores_avanzados": {
+        "Senado": {
+            "2022": {
+                "IHH": 1362.87,
+                "IHH_clasificacion": "No Concentrado"
+            },
+            "2026": {
+                "IHH": 1327.55,
+                "IHH_clasificacion": "No Concentrado"
+            }
+        },
+        "Cámara": {
+            "2022": {
+                "IHH": 1608.34,
+                "IHH_clasificacion": "Moderada Concentración"
+            },
+            "2026": {
+                "IHH": 1554.29,
+                "IHH_clasificacion": "Moderada Concentración"
+            }
+        }
+    },
+    "territorio": {
+        "2022": {
+            "Senado": {
+                "dominio_partidos": {
+                    "Centro Democrático": 7,
+                    "Pacto Histórico": 6,
+                    "Partido Conservador": 8,
+                    "Partido Liberal": 9,
+                    "Alianza Verde": 1,
+                    "Partido de la U": 2
+                },
+                "dominio_ideo": {
+                    "Derecha": 15,
+                    "Izquierda": 6,
+                    "Centro": 12
+                },
+                "total_votos_ganadores": 4897000,
+                "num_dptos": 33,
+                "costo_territorial_promedio_victoria": 148394.0
+            }
+        },
+        "2026": {
+            "Senado": {
+                "dominio_partidos": {
+                    "Centro Democrático": 2,
+                    "Pacto Histórico": 3,
+                    "Partido Conservador": 2,
+                    "Partido Liberal": 1
+                },
+                "dominio_ideo": {
+                    "Derecha": 4,
+                    "Izquierda": 3,
+                    "Centro": 1
+                },
+                "total_votos_ganadores": 2805000,
+                "num_dptos": 8,
+                "costo_territorial_promedio_victoria": 350625.0
+            }
+        }
+    }
+}

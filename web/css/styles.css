@@ -1,0 +1,403 @@
+:root {
+    /* Color Palette - Dark Mode (Default) */
+    --bg-primary: #0f172a;
+    --bg-secondary: rgba(30, 41, 59, 0.7);
+    --bg-glass: rgba(15, 23, 42, 0.65);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent: #38bdf8;
+    --accent-hover: #0ea5e9;
+    --border-color: rgba(255, 255, 255, 0.1);
+    
+    /* Ideology Colors */
+    --color-izq: #ef4444; /* Rojo Nuevo */
+    --color-der: #3b82f6; /* Azul Oscuro */
+    --color-cen: #10b981; /* Verde/Naranja Medio */
+    
+    /* Party Colors - Make them unique to avoid repetition */
+    --party-ph: #E11D48;      /* Pacto Historico: Rose / Deep Red */
+    --party-pc: #1E3A8A;      /* Conservador: Dark Blue */
+    --party-pl: #EF4444;      /* Liberal: Bright Red */
+    --party-cd: #0ea5e9;      /* Centro Democrático: Light Blue */
+    --party-cr: #ede9fe;      /* Cambio Radical: Light Purple / White */
+    --party-u:  #F59E0B;      /* Partido de la U: Orange/Amber */
+    --party-av: #10b981;      /* Alianza Verde: Green */
+    --party-citrep: #8b5cf6;  /* CITREP: Violet */
+    --party-mira: #3b82f6;    /* MIRA: Blue */
+    --party-comunes: #be123c; /* Comunes: Dark Rose */
+    --party-mais: #f43f5e;    /* MAIS: Pink Rose */
+    --party-aico: #d946ef;    /* AICO: Fuchsia */
+    --party-colombia: #06b6d4;/* Alianza por Colombia: Cyan */
+    --party-creemos: #facc15; /* Creemos: Yellow */
+    --party-salvacion: #ea580c;/* Salvación: Orange Dark */
+    --party-frente: #ec4899;  /* Frente Amplio: Pink */
+
+    /* Typograhy */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-display: 'Outfit', sans-serif;
+
+    /* Effects */
+    --glass-blur: blur(12px);
+    --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="light"] {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --bg-glass: rgba(255, 255, 255, 0.85);
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color var(--transition);
+}
+
+/* Base structural glow */
+.ambient-glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.15;
+}
+.bg-left { top: -10%; left: -10%; background: var(--color-der); }
+.bg-right { bottom: -10%; right: -10%; background: var(--color-izq); }
+[data-theme="light"] .ambient-glow { opacity: 0.08; }
+
+.app-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+}
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--accent);
+}
+.btn-icon {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+.btn-icon:hover {
+    background: var(--bg-secondary);
+    color: var(--accent);
+}
+
+[data-theme="dark"] .icon-dark { display: none; }
+[data-theme="light"] .icon-light { display: none; }
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 4rem 0;
+    margin-bottom: 3rem;
+}
+.hero h1 {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
+    -webkit-background-clip: text;
+    color: transparent;
+}
+.hero .subtitle {
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    font-family: var(--font-display);
+}
+.story-lead {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* UI Components */
+.glass-panel {
+    background: var(--bg-glass);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-color);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow-soft);
+}
+
+.section-header { margin-bottom: 2rem; }
+.section-header h2 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+.section-desc { color: var(--text-secondary); font-size: 1.1rem; }
+
+/* KPI Grid */
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;}
+.kpi-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: var(--transition);
+}
+.kpi-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+.kpi-label { font-size: 0.875rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.kpi-value { font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+.kpi-trend { font-size: 0.875rem; display: flex; align-items: center; gap: 0.25rem; font-weight: 600;}
+.kpi-trend.up { color: var(--color-cen); }
+.kpi-trend.down { color: var(--color-izq); }
+.kpi-trend.neutral { color: var(--text-secondary); }
+
+/* Story/Narrative Box */
+.story-box {
+    background: rgba(56, 189, 248, 0.1);
+    border-left: 4px solid var(--accent);
+    padding: 1.5rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    font-style: italic;
+    line-height: 1.7;
+}
+
+/* Switcher / Tabs */
+.corp-switcher {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.tab-btn {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.75rem 2rem;
+    border-radius: 3rem;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: var(--transition);
+}
+.tab-btn.active, .tab-btn:hover {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    border-color: var(--text-primary);
+}
+.view-container { display: none; animation: fadeIn 0.4s ease; }
+.view-container.active { display: block; }
+
+/* Hemiciclo and Ideology */
+.congress-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+@media (max-width: 900px) {
+    .congress-layout { grid-template-columns: 1fr; }
+}
+.hemiciclo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    width: 100%;
+}
+.hemiciclo-wrapper h3 { margin-bottom: 1.5rem; font-family: var(--font-display); font-weight: 500;}
+
+/* Congress Comparative Table */
+.congress-table-container {
+    width: 100%;
+    margin-top: 2rem;
+    overflow-x: auto;
+}
+.congress-comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    text-align: right;
+}
+.congress-comp-table th {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+    font-weight: 600;
+    padding: 0.75rem 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    line-height: 1.2;
+    vertical-align: bottom;
+}
+.congress-comp-table th:first-child {
+    text-align: left;
+    background: transparent;
+    border-bottom: none;
+}
+.congress-comp-table td {
+    padding: 0.75rem 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    vertical-align: middle;
+}
+.congress-comp-table .party-col {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+}
+.congress-comp-table .party-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Party Legend */
+.party-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+}
+
+.ideology-shift-wrapper h3 { margin-bottom: 1.5rem; font-family: var(--font-display); text-align: center; }
+.ideology-charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+.chart-box {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Party Cards Detail */
+.party-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+.party-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+.pc-header { padding: 1rem 1.5rem; display: flex; align-items: center; gap: 1rem; border-bottom: 1px solid var(--border-color);}
+.pc-color { width: 16px; height: 16px; border-radius: 4px; }
+.pc-name { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; flex: 1; }
+.pc-tag { font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: 1rem; background: var(--border-color); text-transform: uppercase; font-weight: 600;}
+.pc-body { padding: 1.25rem 1.5rem; }
+.pc-stat-row { display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-size: 0.95rem;}
+.pc-stat-val { font-weight: 600; font-family: var(--font-display); }
+.pc-stat-val.gain { color: var(--color-cen); }
+.pc-stat-val.loss { color: var(--color-izq); }
+
+/* Map Grid */
+.map-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+@media (max-width: 1024px) { .map-grid { grid-template-columns: 1fr; } }
+.map-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 1rem; padding: 1.5rem; display: flex; flex-direction: column; align-items: center; }
+.map-card h3 { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 1rem;}
+.d3-map { width: 100%; height: 350px; }
+
+/* D3 Tooltip */
+.d3-tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    border-radius: 0.5rem;
+    pointer-events: none;
+    opacity: 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-soft);
+    z-index: 100;
+    transition: opacity 0.2s;
+}
+
+/* Footer */
+footer { text-align: center; padding: 2rem 0; color: var(--text-secondary); font-size: 0.9rem;}
+
+/* Animations */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.slide-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.slide-up.visible { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+
+/* D3 SVG Styling overrides */
+svg { overflow: visible; }
+.seat { cursor: pointer; }
+PATH { stroke: var(--bg-primary); stroke-width: 0.5px; transition: opacity 0.3s; }
+PATH:hover { opacity: 0.8; }
