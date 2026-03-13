@@ -1,6 +1,6 @@
 // Main Application Logic
 import { renderMacroKPIs, renderPartyCards } from './components.js';
-import { drawHemiciclo, drawIdeologyCharts, drawLegend, renderCongressTable } from './charts.js';
+import { drawHemiciclo, drawIdeologyCharts, renderCongressTable, renderIdeologyTable } from './charts.js';
 import { drawMaps } from './maps.js';
 
 let electionData = null;
@@ -53,7 +53,28 @@ function initializeVisualizations(data) {
 
 
 
-    // Draw Ideology Trend
+    // Draw Ideology Hemicircles (Pure ideology view)
+    const transformToIdeoHemiciclo = (ideoCorpData) => {
+        const result = {};
+        Object.entries(ideoCorpData).forEach(([ideo, data]) => {
+            result[ideo] = {
+                ideologia: ideo,
+                2026: { curules: data['2026'].curules }
+            };
+        });
+        return result;
+    };
+
+    const senadoIdeoHemicicloData = transformToIdeoHemiciclo(data.ideologia.Senado);
+    const camaraIdeoHemicicloData = transformToIdeoHemiciclo(data.ideologia.Cámara);
+
+    drawHemiciclo(senadoIdeoHemicicloData, '#ideology-senado-hemiciclo', "Senado");
+    drawHemiciclo(camaraIdeoHemicicloData, '#ideology-camara-hemiciclo', "Cámara");
+
+    renderIdeologyTable(data.ideologia.Senado, '#ideology-senado-table-container');
+    renderIdeologyTable(data.ideologia.Cámara, '#ideology-camara-table-container');
+
+    // Draw Ideology Trend Doughnuts (Keep existing)
     drawIdeologyCharts(data.ideologia.Senado);
 
     // Draw Party Cards

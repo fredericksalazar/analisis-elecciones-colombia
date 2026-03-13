@@ -151,7 +151,10 @@ export function drawHemiciclo(corpData, containerSelector, corpName) {
                 .attr("stroke", "var(--text-primary)")
                 .attr("stroke-width", 4);
             tooltip.transition().duration(200).style("opacity", .9);
-            tooltip.html(`${d.party}<br/><span style="font-weight:normal; font-size:0.8em">${d.ideology}</span>`)
+            const tooltipContent = d.party === d.ideology 
+                ? `<strong>${d.party}</strong>`
+                : `<strong>${d.party}</strong><br/><span style="font-weight:normal; font-size:0.8em">${d.ideology}</span>`;
+            tooltip.html(tooltipContent)
                 .style("left", (event.pageX + 10) + "px")
                 .style("top", (event.pageY - 45) + "px");
         })
@@ -346,6 +349,68 @@ export function renderCongressTable(corpData, containerSelector) {
                 </td>
                 <td class="col-2026">${c2026 > 0 ? c2026 : 0}</td>
                 <td class="col-old">${c2022 > 0 ? c2022 : 0}</td>
+                <td class="col-diff" style="color: ${diffColor}; font-weight: 600;">${diffStr}</td>
+            </tr>
+        `;
+    });
+
+    html += `
+        </tbody>
+    </table>
+    `;
+
+    container.innerHTML = html;
+}
+// Render the ideology comparison table (2026 vs 2022)
+export function renderIdeologyTable(ideoData, containerSelector) {
+    const container = document.querySelector(containerSelector);
+    if (!container) return;
+
+    const labels = ["Izquierda", "Centro", "Derecha"];
+    
+    // Formatting numbers for labels
+    const fmt = d3.format(",");
+
+    let html = `
+    <table class="congress-comp-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Curules<br>2026</th>
+                <th>Votos<br>2026</th>
+                <th>Curules<br>2022</th>
+                <th>Diferencia<br>Curules</th>
+            </tr>
+        </thead>
+        <tbody>
+    `;
+
+    labels.forEach(ideo => {
+        const d = ideoData[ideo];
+        if (!d) return;
+
+        const c2026 = d['2026'].curules;
+        const v2026 = d['2026'].votos;
+        const c2022 = d['2022'].curules;
+        
+        const diff = d.comparativo.curules_adicionales;
+        const diffStr = diff === 0 ? "=" : diff > 0 ? `+${diff}` : diff.toString();
+        
+        let diffColor = "var(--text-primary)";
+        if (diff > 0) diffColor = "#0d9488"; 
+        if (diff < 0) diffColor = "#dc2626";
+
+        const color = getIdeologyColorRaw(ideo);
+        
+        html += `
+            <tr>
+                <td class="party-col">
+                    <span class="party-dot" style="background-color: ${color};"></span>
+                    ${ideo}
+                </td>
+                <td class="col-2026">${c2026}</td>
+                <td class="col-2026" style="font-size: 0.8em; opacity: 0.8;">${fmt(v2026)}</td>
+                <td class="col-old">${c2022}</td>
                 <td class="col-diff" style="color: ${diffColor}; font-weight: 600;">${diffStr}</td>
             </tr>
         `;
