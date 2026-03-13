@@ -1,6 +1,6 @@
 // Main Application Logic
 import { renderMacroKPIs, renderPartyCards } from './components.js';
-import { drawHemiciclo, drawIdeologyCharts, renderCongressTable, renderIdeologyTable } from './charts.js';
+import { drawHemiciclo, drawIdeologyCharts, drawVotesBarCharts, renderCongressTable, renderIdeologyTable } from './charts.js';
 import { drawMaps } from './maps.js';
 
 let electionData = null;
@@ -76,6 +76,9 @@ function initializeVisualizations(data) {
 
     // Draw Ideology Trend Doughnuts (Keep existing)
     drawIdeologyCharts(data.ideologia.Senado);
+
+    // Draw Votes Distribution Bar Charts
+    drawVotesBarCharts(data);
 
     // Draw Party Cards
     renderPartyCards(data.partidos.Senado, '#party-senado-view');

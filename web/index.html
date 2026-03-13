@@ -50,6 +50,25 @@
         </header>
 
         <main class="dashboard">
+            <!-- Section 0: Distribución de Votos por Partidos -->
+            <section id="votes-distribution" class="glass-panel slide-up">
+                <div class="section-header">
+                    <h2><i data-lucide="bar-chart-3"></i> Distribución de Votos por Partidos</h2>
+                    <p class="section-desc">Cantidad total de votos recibidos por cada partido (2026)</p>
+                </div>
+
+                <div class="votes-charts-container">
+                    <div class="votes-chart-wrapper">
+                        <h3>Senado</h3>
+                        <canvas id="senado-votes-chart"></canvas>
+                    </div>
+                    <div class="votes-chart-wrapper">
+                        <h3>Cámara</h3>
+                        <canvas id="camara-votes-chart"></canvas>
+                    </div>
+                </div>
+            </section>
+
             <!-- Section 1: Macro Behavior -->
             <section id="macro-behavior" class="glass-panel slide-up">
                 <div class="section-header">

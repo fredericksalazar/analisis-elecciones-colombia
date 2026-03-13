@@ -233,6 +233,10 @@ function getPartyColor(name, ideology) {
 let chart22 = null;
 let chart26 = null;
 
+// Horizontal bar charts for votes by party
+let senadoVotesChart = null;
+let camaraVotesChart = null;
+
 export function drawIdeologyCharts(ideoData) {
     // ideoData contains { Izquierda: {2022, 2026}, Derecha: {..}, Centro: {..} }
     
@@ -280,12 +284,92 @@ export function drawIdeologyCharts(ideoData) {
     targetEl.innerHTML = `<strong>Insight Ideológico:</strong> El balance de poderes en el Senado muestra que la <strong>Derecha</strong> mantiene su posición como bloque mayoritario (42%), mientras que la <strong>Izquierda</strong> ganó terreno (${izqVar > 0 ? '+' : ''}${izqVar} pp) a expensas de las fuerzas de <strong>Centro</strong> (${cenVar > 0 ? '+' : ''}${cenVar} pp).`;
 }
 
+// Draw horizontal bar charts for votes by party
+export function drawVotesBarCharts(electionData) {
+    const formatNumber = (num) => new Intl.NumberFormat('es-CO').format(num);
+
+    // Helper function to create bar chart
+    const createBarChart = (corpName, corpData, canvasId) => {
+        // Get parties with 2026 data, sorted by votes descending
+        const parties = Object.entries(corpData)
+            .filter(([_, data]) => data['2026'] !== null)
+            .sort((a, b) => b[1]['2026'].votos - a[1]['2026'].votos);
+
+        if (parties.length === 0) return null;
+
+        // Prepare data
+        const labels = parties.map(([name]) => name);
+        const votes = parties.map(([_, data]) => data['2026'].votos);
+        const colors = parties.map(([name, data]) => getPartyColor(name, data.ideologia));
+
+        // Get computed text colors
+        const textColor = getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim();
+        const textSecondary = getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim();
+
+        // Create chart
+        const ctx = document.getElementById(canvasId).getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Votos 2026',
+                    data: votes,
+                    backgroundColor: colors,
+                    borderColor: colors,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: { color: textSecondary, font: { family: 'Inter' } }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: textSecondary,
+                            callback: function(value) {
+                                return formatNumber(value);
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(128, 128, 128, 0.1)'
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: textSecondary,
+                            font: { family: 'Inter', size: 12 }
+                        },
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        return chart;
+    };
+
+    // Create both charts
+    senadoVotesChart = createBarChart('Senado', electionData.partidos.Senado, 'senado-votes-chart');
+    camaraVotesChart = createBarChart('Cámara', electionData.partidos.Cámara, 'camara-votes-chart');
+}
+
 // Global listener for theme toggles to update Chart.js colors
 window.addEventListener('themeChanged', () => {
     // If we have live charts, we need to update their text colors
     const color = getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim();
     const legendColor = getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim();
-    
+
     if(chart22) {
         chart22.options.plugins.title.color = color;
         chart22.options.plugins.legend.labels.color = legendColor;
@@ -295,6 +379,18 @@ window.addEventListener('themeChanged', () => {
         chart26.options.plugins.title.color = color;
         chart26.options.plugins.legend.labels.color = legendColor;
         chart26.update();
+    }
+    if(senadoVotesChart) {
+        senadoVotesChart.options.plugins.legend.labels.color = legendColor;
+        senadoVotesChart.options.scales.x.ticks.color = legendColor;
+        senadoVotesChart.options.scales.y.ticks.color = legendColor;
+        senadoVotesChart.update();
+    }
+    if(camaraVotesChart) {
+        camaraVotesChart.options.plugins.legend.labels.color = legendColor;
+        camaraVotesChart.options.scales.x.ticks.color = legendColor;
+        camaraVotesChart.options.scales.y.ticks.color = legendColor;
+        camaraVotesChart.update();
     }
 });
 

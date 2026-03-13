@@ -364,6 +364,48 @@ body {
     transition: opacity 0.2s;
 }
 
+/* Votes Distribution Charts */
+.votes-charts-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.votes-chart-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 1.5rem;
+}
+
+.votes-chart-wrapper h3 {
+    margin-bottom: 1rem;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.votes-chart-wrapper canvas {
+    flex: 1;
+}
+
+@media (max-width: 1024px) {
+    .votes-charts-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .votes-chart-wrapper {
+        min-height: 350px;
+    }
+}
+
 /* Footer */
 footer { text-align: center; padding: 2rem 0; color: var(--text-secondary); font-size: 0.9rem;}
 
