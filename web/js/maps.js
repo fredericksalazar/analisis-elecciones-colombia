@@ -23,9 +23,8 @@ function renderMap(containerId, geoData, colorFn, tooltipFn, deptoData) {
     const container = d3.select(containerId);
     container.selectAll("*").remove(); 
 
-    const bbox = container.node().getBoundingClientRect();
-    const width = bbox.width || 800;
-    const height = Math.max(bbox.height, 650);
+    const width = container.node().clientWidth || 800;
+    const height = 650; // Use a fixed height for stability
 
     const svg = container.append("svg")
         .attr("width", "100%")
@@ -95,13 +94,14 @@ export function drawParticipationMap(electionData, geoData, corp = "Senado") {
 
     const deptoData = {};
     Object.entries(terrData.detalles_departamentos).forEach(([dptoName, d]) => {
+        const normalized = dptoName.toUpperCase();
+        if (normalized === "CONSULADOS" || normalized === "EXTERIOR") return;
         deptoData[normalizeName(dptoName)] = { name: dptoName, data: { votos: d.votos } };
     });
 
     const values = Object.values(deptoData).map(d => d.data.votos);
     const maxV = d3.max(values);
     const maxDept = Object.values(deptoData).reduce((prev, current) => (prev.data.votos > current.data.votos) ? prev : current);
-    const minDept = Object.values(deptoData).reduce((prev, current) => (prev.data.votos < current.data.votos) ? prev : current);
 
     renderMap('#map-participation', geoData, 
         (data) => d3.interpolateLab("#cbd5e1", "#020617")(data.votos / maxV),
@@ -115,6 +115,28 @@ export function drawParticipationMap(electionData, geoData, corp = "Senado") {
         const behaviorKey = findKey(behaviorYear, normalizedTarget);
         const behavior = behaviorKey ? behaviorYear[behaviorKey] : { participacion_pct: 'N/A' };
         
+        // Calculate Top 7
+        const sortedTop7 = Object.values(deptoData)
+            .sort((a, b) => b.data.votos - a.data.votos)
+            .slice(0, 7);
+
+        let rankingHtml = `<div class="ranking-chart-container" style="margin-top: 20px;">
+                            <h5 style="font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 10px;">Top 7 Epicentros Electorales</h5>`;
+        sortedTop7.forEach(dept => {
+            const percentage = (dept.data.votos / maxV) * 100;
+            rankingHtml += `
+                <div class="ranking-item">
+                    <div class="ranking-header">
+                        <span class="ranking-party-name">${dept.name}</span>
+                        <span>${new Intl.NumberFormat('es-CO').format(dept.data.votos / 1000)}k</span>
+                    </div>
+                    <div class="ranking-bar-wrapper">
+                        <div class="ranking-bar" style="width: ${percentage}%; background: #475569"></div>
+                    </div>
+                </div>`;
+        });
+        rankingHtml += `</div>`;
+        
         container.innerHTML = `
             <div class="stats-card">
                 <h4>Radiografía de Densidad Electoral (${corp})</h4>
@@ -123,17 +145,15 @@ export function drawParticipationMap(electionData, geoData, corp = "Senado") {
                     <span class="stat-value">${behavior.participacion_pct}%</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">Costo Victoria (Prom.)</span>
-                    <span class="stat-value">${new Intl.NumberFormat('es-CO').format(terrData.costo_territorial_promedio_victoria / 1000)}k votos</span>
-                </div>
-                <div class="stat-item">
                     <span class="stat-label">Epicentro de Poder</span>
                     <span class="stat-value">${maxDept.name}</span>
                 </div>
-            </div>
-            <div class="analysis-text">
-                <p><b>Lo que pocos ven:</b> Con una participación del <b>${behavior.participacion_pct}%</b>, el peso de <b>${maxDept.name}</b> es determinante en la configuración del poder nacional.</p>
-                <p><b>El dato experto:</b> El costo de victoria promedia <b>${new Intl.NumberFormat('es-CO').format(terrData.costo_territorial_promedio_victoria)} votos</b>, reflejando la alta competencia urbana.</p>
+                
+                ${rankingHtml}
+
+                <div class="analysis-text" style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px;">
+                    <p><b>El peso del voto:</b> Con una participación del <b>${behavior.participacion_pct}%</b>, el Top 7 de departamentos concentra la mayoría del volumen electoral nacional.</p>
+                </div>
             </div>`;
     }
 }
@@ -148,6 +168,8 @@ export function drawPartyMap(electionData, geoData, corp = "Senado") {
 
     const deptoData = {};
     Object.entries(terrData.detalles_departamentos).forEach(([dptoName, d]) => {
+        const normalized = dptoName.toUpperCase();
+        if (normalized === "CONSULADOS" || normalized === "EXTERIOR") return;
         deptoData[normalizeName(dptoName)] = { name: dptoName, data: { winner: d.ganador, votos: d.votos } };
     });
 
@@ -178,15 +200,41 @@ export function drawPartyMap(electionData, geoData, corp = "Senado") {
         const winners = Object.values(deptoData).map(d => d.data.winner);
         const winnerCounts = {};
         winners.forEach(w => { if(w) winnerCounts[w] = (winnerCounts[w] || 0) + 1; });
-        const topWinner = Object.entries(winnerCounts).length > 0 ? Object.entries(winnerCounts).reduce((a, b) => a[1] > b[1] ? a : b)[0] : "N/A";
+        
+        // Ranking sorting
+        const sortedRanking = Object.entries(winnerCounts)
+            .sort((a, b) => b[1] - a[1]);
+        
+        const topWinner = sortedRanking.length > 0 ? sortedRanking[0][0] : "N/A";
+        const maxDepts = sortedRanking.length > 0 ? sortedRanking[0][1] : 1;
+
+        let rankingHtml = `<div class="ranking-chart-container">`;
+        sortedRanking.forEach(([party, count]) => {
+            const percentage = (count / maxDepts) * 100;
+            rankingHtml += `
+                <div class="ranking-item">
+                    <div class="ranking-header">
+                        <span class="ranking-party-name">${party}</span>
+                        <span>${count} Deptos</span>
+                    </div>
+                    <div class="ranking-bar-wrapper">
+                        <div class="ranking-bar" style="width: ${percentage}%; background: ${getWinnerCol(party)}"></div>
+                    </div>
+                </div>`;
+        });
+        rankingHtml += `</div>`;
 
         container.innerHTML = `
             <div class="stats-card">
-                <h4>Control de Maquinarias (${corp})</h4>
-                <div class="stat-item"><span class="stat-label">Hegemonía Territorial</span><span class="stat-value">${topWinner}</span></div>
-            </div>
-            <div class="analysis-text">
-                <p>Este mapa muestra la fragmentación del control territorial. El <b>${topWinner}</b> muestra una nacionalización del voto destacable.</p>
+                <h4>Ranking Territorial (${corp})</h4>
+                <div class="stat-item">
+                    <span class="stat-label">Líder Nacional</span>
+                    <span class="stat-value">${topWinner}</span>
+                </div>
+                ${rankingHtml}
+                <div class="analysis-text">
+                    <p>El <b>${topWinner}</b> consolida su hegemonía con presencia en <b>${maxDepts}</b> departamentos. Este ranking refleja la eficacia de la estructura territorial frente a la opinión nacional.</p>
+                </div>
             </div>`;
     }
 }
@@ -201,6 +249,8 @@ export function drawIdeologyMap(electionData, geoData, corp = "Senado") {
 
     const deptoData = {};
     Object.entries(terrData.detalles_departamentos).forEach(([dptoName, d]) => {
+        const normalized = dptoName.toUpperCase();
+        if (normalized === "CONSULADOS" || normalized === "EXTERIOR") return;
         deptoData[normalizeName(dptoName)] = { name: dptoName, data: { ideo: d.ideologia } };
     });
 
@@ -224,15 +274,41 @@ export function drawIdeologyMap(electionData, geoData, corp = "Senado") {
         const ideos = Object.values(deptoData).map(d => d.data.ideo);
         const ideoCounts = {};
         ideos.forEach(i => { if(i) ideoCounts[i] = (ideoCounts[i] || 0) + 1; });
-        const dominantIdeo = Object.entries(ideoCounts).length > 0 ? Object.entries(ideoCounts).reduce((a, b) => a[1] > b[1] ? a : b)[0] : "Centro";
+        
+        // Ranking sorting
+        const sortedRanking = Object.entries(ideoCounts)
+            .sort((a, b) => b[1] - a[1]);
+        
+        const topIdeo = sortedRanking.length > 0 ? sortedRanking[0][0] : "N/A";
+        const maxDepts = sortedRanking.length > 0 ? sortedRanking[0][1] : 1;
+
+        let rankingHtml = `<div class="ranking-chart-container">`;
+        sortedRanking.forEach(([ideo, count]) => {
+            const percentage = (count / maxDepts) * 100;
+            rankingHtml += `
+                <div class="ranking-item">
+                    <div class="ranking-header">
+                        <span class="ranking-party-name">${ideo}</span>
+                        <span>${count} Deptos</span>
+                    </div>
+                    <div class="ranking-bar-wrapper">
+                        <div class="ranking-bar" style="width: ${percentage}%; background: ${ideologyColorScale(ideo)}"></div>
+                    </div>
+                </div>`;
+        });
+        rankingHtml += `</div>`;
 
         container.innerHTML = `
             <div class="stats-card">
-                <h4>Eje Ideológico (${corp})</h4>
-                <div class="stat-item"><span class="stat-label">Bloque Dominante</span><span class="stat-value">${dominantIdeo}</span></div>
-            </div>
-            <div class="analysis-text">
-                <p>El mapa revela una fosa geográfica profunda entre el bloque de <b>${dominantIdeo}</b> y sus opositores.</p>
+                <h4>Ranking Territorial por Bloques (${corp})</h4>
+                <div class="stat-item">
+                    <span class="stat-label">Tendencia Predominante</span>
+                    <span class="stat-value">${topIdeo}</span>
+                </div>
+                ${rankingHtml}
+                <div class="analysis-text">
+                    <p>El mapa revela una configuración territorial liderada por el bloque de <b>${topIdeo}</b>, con presencia en <b>${maxDepts}</b> departamentos. Este equilibrio define la gobernabilidad legislativa regional.</p>
+                </div>
             </div>`;
     }
 }

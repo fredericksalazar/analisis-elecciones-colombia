@@ -600,6 +600,13 @@ body {
 .analysis-text {
     line-height: 1.6;
     color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.stats-card .analysis-text {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 .analysis-text b { color: var(--text-primary); }
@@ -608,6 +615,73 @@ body {
     width: 100%;
     flex: 1;
     min-height: 600px;
+    position: relative;
+}
+
+/* Map Legend */
+.map-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(255,255,255,0.02);
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+/* Ranking Chart */
+.ranking-chart-container {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.ranking-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.ranking-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.ranking-bar-wrapper {
+    height: 8px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.ranking-bar {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ranking-party-name {
+    font-weight: 600;
+    color: var(--text-primary);
 }
 
 @media (max-width: 1024px) {
