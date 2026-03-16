@@ -702,41 +702,780 @@
     },
     "territorio": {
         "2022": {
-            "Senado": {
+            "camara": {
                 "dominio_partidos": {
-                    "Centro Democrático": 7,
-                    "Pacto Histórico": 6,
-                    "Partido Conservador": 8,
-                    "Partido Liberal": 9,
-                    "Alianza Verde": 1,
-                    "Partido de la U": 2
+                    "PARTIDO LIBERAL COLOMBIANO": 7,
+                    "PARTIDO CENTRO DEMOCRÁTICO": 2,
+                    "PARTIDO CAMBIO RADICAL": 4,
+                    "PACTO HISTÓRICO": 7,
+                    "PARTIDO CONSERVADOR COLOMBIANO": 7,
+                    "PARTIDO ALIANZA VERDE": 1,
+                    "GENTE EN MOVIMIENTO": 1,
+                    "PARTIDO DE LA U": 4,
+                    "LIGA DE GOBERNANTES ANTICORRUPCIÓN": 1
                 },
                 "dominio_ideo": {
-                    "Derecha": 15,
-                    "Izquierda": 6,
-                    "Centro": 12
+                    "Centro": 9,
+                    "Derecha": 18,
+                    "Izquierda": 7
                 },
-                "total_votos_ganadores": 4897000,
-                "num_dptos": 33,
-                "costo_territorial_promedio_victoria": 148394.0
+                "total_votos_ganadores": 17526386,
+                "num_dptos": 34,
+                "detalles_departamentos": {
+                    "AMAZONAS": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 26469,
+                        "ideologia": "Centro"
+                    },
+                    "ANTIOQUIA": {
+                        "ganador": "PARTIDO CENTRO DEMOCRÁTICO",
+                        "votos": 2133780,
+                        "ideologia": "Derecha"
+                    },
+                    "ARAUCA": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 84808,
+                        "ideologia": "Centro"
+                    },
+                    "ATLANTICO": {
+                        "ganador": "PARTIDO CAMBIO RADICAL",
+                        "votos": 981961,
+                        "ideologia": "Derecha"
+                    },
+                    "BOGOTA D.C.": {
+                        "ganador": "PACTO HISTÓRICO",
+                        "votos": 2689646,
+                        "ideologia": "Izquierda"
+                    },
+                    "BOLIVAR": {
+                        "ganador": "PARTIDO CONSERVADOR COLOMBIANO",
+                        "votos": 787578,
+                        "ideologia": "Derecha"
+                    },
+                    "BOYACA": {
+                        "ganador": "PARTIDO ALIANZA VERDE",
+                        "votos": 489635,
+                        "ideologia": "Centro"
+                    },
+                    "CALDAS": {
+                        "ganador": "GENTE EN MOVIMIENTO",
+                        "votos": 383339,
+                        "ideologia": "Centro"
+                    },
+                    "CAQUETA": {
+                        "ganador": "PARTIDO CONSERVADOR COLOMBIANO",
+                        "votos": 118520,
+                        "ideologia": "Derecha"
+                    },
+                    "CASANARE": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 150104,
+                        "ideologia": "Centro"
+                    },
+                    "CAUCA": {
+                        "ganador": "PACTO HISTÓRICO",
+                        "votos": 384677,
+                        "ideologia": "Izquierda"
+                    },
+                    "CESAR": {
+                        "ganador": "PARTIDO CONSERVADOR COLOMBIANO",
+                        "votos": 410930,
+                        "ideologia": "Derecha"
+                    },
+                    "CHOCO": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 146979,
+                        "ideologia": "Centro"
+                    },
+                    "CONSULADOS": {
+                        "ganador": "PACTO HISTÓRICO",
+                        "votos": 118053,
+                        "ideologia": "Izquierda"
+                    },
+                    "CORDOBA": {
+                        "ganador": "PARTIDO DE LA U",
+                        "votos": 794125,
+                        "ideologia": "Derecha"
+                    },
+                    "CUNDINAMARCA": {
+                        "ganador": "PACTO HISTÓRICO",
+                        "votos": 972440,
+                        "ideologia": "Izquierda"
+                    },
+                    "GUAINIA": {
+                        "ganador": "PARTIDO CAMBIO RADICAL",
+                        "votos": 18605,
+                        "ideologia": "Derecha"
+                    },
+                    "GUAVIARE": {
+                        "ganador": "PARTIDO CONSERVADOR COLOMBIANO",
+                        "votos": 31459,
+                        "ideologia": "Derecha"
+                    },
+                    "HUILA": {
+                        "ganador": "PARTIDO CAMBIO RADICAL",
+                        "votos": 389846,
+                        "ideologia": "Derecha"
+                    },
+                    "LA GUAJIRA": {
+                        "ganador": "PARTIDO CONSERVADOR COLOMBIANO",
+                        "votos": 299652,
+                        "ideologia": "Derecha"
+                    },
+                    "MAGDALENA": {
+                        "ganador": "PARTIDO CENTRO DEMOCRÁTICO",
+                        "votos": 519441,
+                        "ideologia": "Derecha"
+                    },
+                    "META": {
+                        "ganador": "PACTO HISTÓRICO",
+                        "votos": 354338,
+                        "ideologia": "Izquierda"
+                    },
+                    "NARIÑO": {
+                        "ganador": "PARTIDO CONSERVADOR COLOMBIANO",
+                        "votos": 572538,
+                        "ideologia": "Derecha"
+                    },
+                    "NORTE DE SANTANDER": {
+                        "ganador": "PARTIDO CAMBIO RADICAL",
+                        "votos": 602546,
+                        "ideologia": "Derecha"
+                    },
+                    "PUTUMAYO": {
+                        "ganador": "PACTO HISTÓRICO",
+                        "votos": 94227,
+                        "ideologia": "Izquierda"
+                    },
+                    "QUINDIO": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 214506,
+                        "ideologia": "Centro"
+                    },
+                    "RISARALDA": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 371285,
+                        "ideologia": "Centro"
+                    },
+                    "SAN ANDRES": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 25410,
+                        "ideologia": "Centro"
+                    },
+                    "SANTANDER": {
+                        "ganador": "LIGA DE GOBERNANTES ANTICORRUPCIÓN",
+                        "votos": 853964,
+                        "ideologia": "Derecha"
+                    },
+                    "SUCRE": {
+                        "ganador": "PARTIDO DE LA U",
+                        "votos": 452973,
+                        "ideologia": "Derecha"
+                    },
+                    "TOLIMA": {
+                        "ganador": "PARTIDO CONSERVADOR COLOMBIANO",
+                        "votos": 501002,
+                        "ideologia": "Derecha"
+                    },
+                    "VALLE": {
+                        "ganador": "PACTO HISTÓRICO",
+                        "votos": 1515019,
+                        "ideologia": "Izquierda"
+                    },
+                    "VAUPES": {
+                        "ganador": "PARTIDO DE LA U",
+                        "votos": 13132,
+                        "ideologia": "Derecha"
+                    },
+                    "VICHADA": {
+                        "ganador": "PARTIDO DE LA U",
+                        "votos": 23399,
+                        "ideologia": "Derecha"
+                    }
+                },
+                "costo_territorial_promedio_victoria": 515482.0
+            },
+            "senado": {
+                "dominio_partidos": {
+                    "PARTIDO LIBERAL COLOMBIANO": 7,
+                    "PARTIDO CENTRO DEMOCRÁTICO": 5,
+                    "PARTIDO CAMBIO RADICAL": 5,
+                    "PACTO HISTÓRICO": 5,
+                    "PARTIDO CONSERVADOR COLOMBIANO": 5,
+                    "COALICIÓN ALIANZA VERDE Y CENTRO ESPERANZA": 3,
+                    "PARTIDO DE LA U": 4
+                },
+                "dominio_ideo": {
+                    "Centro": 10,
+                    "Derecha": 19,
+                    "Izquierda": 5
+                },
+                "total_votos_ganadores": 17530841,
+                "num_dptos": 34,
+                "detalles_departamentos": {
+                    "AMAZONAS": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 22863,
+                        "ideologia": "Centro"
+                    },
+                    "ANTIOQUIA": {
+                        "ganador": "PARTIDO CENTRO DEMOCRÁTICO",
+                        "votos": 2179147,
+                        "ideologia": "Derecha"
+                    },
+                    "ARAUCA": {
+                        "ganador": "PARTIDO CENTRO DEMOCRÁTICO",
+                        "votos": 83105,
+                        "ideologia": "Derecha"
+                    },
+                    "ATLANTICO": {
+                        "ganador": "PARTIDO CAMBIO RADICAL",
+                        "votos": 1041804,
+                        "ideologia": "Derecha"
+                    },
+                    "BOGOTA D.C.": {
+                        "ganador": "PACTO HISTÓRICO",
+                        "votos": 2676288,
+                        "ideologia": "Izquierda"
+                    },
+                    "BOLIVAR": {
+                        "ganador": "PARTIDO CONSERVADOR COLOMBIANO",
+                        "votos": 798085,
+                        "ideologia": "Derecha"
+                    },
+                    "BOYACA": {
+                        "ganador": "COALICIÓN ALIANZA VERDE Y CENTRO ESPERANZA",
+                        "votos": 481553,
+                        "ideologia": "Centro"
+                    },
+                    "CALDAS": {
+                        "ganador": "COALICIÓN ALIANZA VERDE Y CENTRO ESPERANZA",
+                        "votos": 380843,
+                        "ideologia": "Centro"
+                    },
+                    "CAQUETA": {
+                        "ganador": "PARTIDO CONSERVADOR COLOMBIANO",
+                        "votos": 114144,
+                        "ideologia": "Derecha"
+                    },
+                    "CASANARE": {
+                        "ganador": "PARTIDO CENTRO DEMOCRÁTICO",
+                        "votos": 149304,
+                        "ideologia": "Derecha"
+                    },
+                    "CAUCA": {
+                        "ganador": "PACTO HISTÓRICO",
+                        "votos": 372132,
+                        "ideologia": "Izquierda"
+                    },
+                    "CESAR": {
+                        "ganador": "PARTIDO DE LA U",
+                        "votos": 407654,
+                        "ideologia": "Derecha"
+                    },
+                    "CHOCO": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 143351,
+                        "ideologia": "Centro"
+                    },
+                    "CONSULADOS": {
+                        "ganador": "PARTIDO CENTRO DEMOCRÁTICO",
+                        "votos": 128645,
+                        "ideologia": "Derecha"
+                    },
+                    "CORDOBA": {
+                        "ganador": "PARTIDO DE LA U",
+                        "votos": 784048,
+                        "ideologia": "Derecha"
+                    },
+                    "CUNDINAMARCA": {
+                        "ganador": "PACTO HISTÓRICO",
+                        "votos": 970569,
+                        "ideologia": "Izquierda"
+                    },
+                    "GUAINIA": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 13195,
+                        "ideologia": "Centro"
+                    },
+                    "GUAVIARE": {
+                        "ganador": "PARTIDO CONSERVADOR COLOMBIANO",
+                        "votos": 30285,
+                        "ideologia": "Derecha"
+                    },
+                    "HUILA": {
+                        "ganador": "PARTIDO CAMBIO RADICAL",
+                        "votos": 383814,
+                        "ideologia": "Derecha"
+                    },
+                    "LA GUAJIRA": {
+                        "ganador": "PARTIDO DE LA U",
+                        "votos": 294730,
+                        "ideologia": "Derecha"
+                    },
+                    "MAGDALENA": {
+                        "ganador": "PARTIDO CAMBIO RADICAL",
+                        "votos": 535908,
+                        "ideologia": "Derecha"
+                    },
+                    "META": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 366832,
+                        "ideologia": "Centro"
+                    },
+                    "NARIÑO": {
+                        "ganador": "PARTIDO CONSERVADOR COLOMBIANO",
+                        "votos": 524627,
+                        "ideologia": "Derecha"
+                    },
+                    "NORTE DE SANTANDER": {
+                        "ganador": "PARTIDO CAMBIO RADICAL",
+                        "votos": 598310,
+                        "ideologia": "Derecha"
+                    },
+                    "PUTUMAYO": {
+                        "ganador": "PACTO HISTÓRICO",
+                        "votos": 84619,
+                        "ideologia": "Izquierda"
+                    },
+                    "QUINDIO": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 214159,
+                        "ideologia": "Centro"
+                    },
+                    "RISARALDA": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 370000,
+                        "ideologia": "Centro"
+                    },
+                    "SAN ANDRES": {
+                        "ganador": "PARTIDO CAMBIO RADICAL",
+                        "votos": 22271,
+                        "ideologia": "Derecha"
+                    },
+                    "SANTANDER": {
+                        "ganador": "COALICIÓN ALIANZA VERDE Y CENTRO ESPERANZA",
+                        "votos": 849439,
+                        "ideologia": "Centro"
+                    },
+                    "SUCRE": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 457976,
+                        "ideologia": "Centro"
+                    },
+                    "TOLIMA": {
+                        "ganador": "PARTIDO CONSERVADOR COLOMBIANO",
+                        "votos": 494591,
+                        "ideologia": "Derecha"
+                    },
+                    "VALLE": {
+                        "ganador": "PACTO HISTÓRICO",
+                        "votos": 1524491,
+                        "ideologia": "Izquierda"
+                    },
+                    "VAUPES": {
+                        "ganador": "PARTIDO DE LA U",
+                        "votos": 11398,
+                        "ideologia": "Derecha"
+                    },
+                    "VICHADA": {
+                        "ganador": "PARTIDO CENTRO DEMOCRÁTICO",
+                        "votos": 20661,
+                        "ideologia": "Derecha"
+                    }
+                },
+                "costo_territorial_promedio_victoria": 515613.0
             }
         },
         "2026": {
-            "Senado": {
+            "camara": {
                 "dominio_partidos": {
-                    "Centro Democrático": 2,
-                    "Pacto Histórico": 3,
-                    "Partido Conservador": 2,
-                    "Partido Liberal": 1
+                    "LA VOZ DEL AMAZONAS": 1,
+                    "PARTIDO CENTRO DEMOCRÁTICO": 5,
+                    "PARTIDO LIBERAL COLOMBIANO": 7,
+                    "PARTIDO CAMBIO RADICAL": 1,
+                    "MOVIMIENTO POLÍTICO PACTO HISTÓRICO": 5,
+                    "PARTIDO CONSERVADOR COLOMBIANO": 5,
+                    "PARTIDO ALIANZA VERDE": 1,
+                    "PACTO HISTÓRICO ALIANZA VERDE": 1,
+                    "COALICIÓN CAQUETÁ": 1,
+                    "PRIMERO CÓRDOBA": 1,
+                    "PARTIDO DE LA U": 3,
+                    "PACTO VERDE PUTUMAYO": 1,
+                    "CENTRO DEMOCRÁTICO - PARTIDO CONSERVADOR": 1,
+                    "PACTO POR RISARALDA": 1
                 },
                 "dominio_ideo": {
-                    "Derecha": 4,
-                    "Izquierda": 3,
-                    "Centro": 1
+                    "Centro": 9,
+                    "Derecha": 17,
+                    "Izquierda": 8
                 },
-                "total_votos_ganadores": 2805000,
-                "num_dptos": 8,
-                "costo_territorial_promedio_victoria": 350625.0
+                "total_votos_ganadores": 19947812,
+                "num_dptos": 34,
+                "detalles_departamentos": {
+                    "AMAZONAS": {
+                        "ganador": "LA VOZ DEL AMAZONAS",
+                        "votos": 30403,
+                        "ideologia": "Centro"
+                    },
+                    "ANTIOQUIA": {
+                        "ganador": "PARTIDO CENTRO DEMOCRÁTICO",
+                        "votos": 2409278,
+                        "ideologia": "Derecha"
+                    },
+                    "ARAUCA": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 96732,
+                        "ideologia": "Centro"
+                    },
+                    "ATLANTICO": {
+                        "ganador": "PARTIDO CAMBIO RADICAL",
+                        "votos": 1132758,
+                        "ideologia": "Derecha"
+                    },
+                    "BOGOTA D.C.": {
+                        "ganador": "MOVIMIENTO POLÍTICO PACTO HISTÓRICO",
+                        "votos": 2921783,
+                        "ideologia": "Izquierda"
+                    },
+                    "BOLIVAR": {
+                        "ganador": "PARTIDO CONSERVADOR COLOMBIANO",
+                        "votos": 969503,
+                        "ideologia": "Derecha"
+                    },
+                    "BOYACA": {
+                        "ganador": "PARTIDO ALIANZA VERDE",
+                        "votos": 530415,
+                        "ideologia": "Centro"
+                    },
+                    "CALDAS": {
+                        "ganador": "PACTO HISTÓRICO ALIANZA VERDE",
+                        "votos": 410203,
+                        "ideologia": "Izquierda"
+                    },
+                    "CAQUETA": {
+                        "ganador": "COALICIÓN CAQUETÁ",
+                        "votos": 139010,
+                        "ideologia": "Derecha"
+                    },
+                    "CASANARE": {
+                        "ganador": "PARTIDO CENTRO DEMOCRÁTICO",
+                        "votos": 170185,
+                        "ideologia": "Derecha"
+                    },
+                    "CAUCA": {
+                        "ganador": "MOVIMIENTO POLÍTICO PACTO HISTÓRICO",
+                        "votos": 452153,
+                        "ideologia": "Izquierda"
+                    },
+                    "CESAR": {
+                        "ganador": "PARTIDO CONSERVADOR COLOMBIANO",
+                        "votos": 493465,
+                        "ideologia": "Derecha"
+                    },
+                    "CHOCO": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 189375,
+                        "ideologia": "Centro"
+                    },
+                    "CONSULADOS": {
+                        "ganador": "PARTIDO CENTRO DEMOCRÁTICO",
+                        "votos": 223024,
+                        "ideologia": "Derecha"
+                    },
+                    "CORDOBA": {
+                        "ganador": "PRIMERO CÓRDOBA",
+                        "votos": 892582,
+                        "ideologia": "Derecha"
+                    },
+                    "CUNDINAMARCA": {
+                        "ganador": "MOVIMIENTO POLÍTICO PACTO HISTÓRICO",
+                        "votos": 1174247,
+                        "ideologia": "Izquierda"
+                    },
+                    "GUAINIA": {
+                        "ganador": "PARTIDO DE LA U",
+                        "votos": 20809,
+                        "ideologia": "Derecha"
+                    },
+                    "GUAVIARE": {
+                        "ganador": "PARTIDO CONSERVADOR COLOMBIANO",
+                        "votos": 36342,
+                        "ideologia": "Derecha"
+                    },
+                    "HUILA": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 420726,
+                        "ideologia": "Centro"
+                    },
+                    "LA GUAJIRA": {
+                        "ganador": "PARTIDO DE LA U",
+                        "votos": 327341,
+                        "ideologia": "Derecha"
+                    },
+                    "MAGDALENA": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 601024,
+                        "ideologia": "Centro"
+                    },
+                    "META": {
+                        "ganador": "PARTIDO CENTRO DEMOCRÁTICO",
+                        "votos": 436001,
+                        "ideologia": "Derecha"
+                    },
+                    "NARIÑO": {
+                        "ganador": "MOVIMIENTO POLÍTICO PACTO HISTÓRICO",
+                        "votos": 565449,
+                        "ideologia": "Izquierda"
+                    },
+                    "NORTE DE SANTANDER": {
+                        "ganador": "PARTIDO CONSERVADOR COLOMBIANO",
+                        "votos": 718860,
+                        "ideologia": "Derecha"
+                    },
+                    "PUTUMAYO": {
+                        "ganador": "PACTO VERDE PUTUMAYO",
+                        "votos": 110770,
+                        "ideologia": "Izquierda"
+                    },
+                    "QUINDIO": {
+                        "ganador": "CENTRO DEMOCRÁTICO - PARTIDO CONSERVADOR",
+                        "votos": 243901,
+                        "ideologia": "Derecha"
+                    },
+                    "RISARALDA": {
+                        "ganador": "PACTO POR RISARALDA",
+                        "votos": 411593,
+                        "ideologia": "Izquierda"
+                    },
+                    "SAN ANDRES": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 27392,
+                        "ideologia": "Centro"
+                    },
+                    "SANTANDER": {
+                        "ganador": "PARTIDO CENTRO DEMOCRÁTICO",
+                        "votos": 969320,
+                        "ideologia": "Derecha"
+                    },
+                    "SUCRE": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 494811,
+                        "ideologia": "Centro"
+                    },
+                    "TOLIMA": {
+                        "ganador": "PARTIDO CONSERVADOR COLOMBIANO",
+                        "votos": 552136,
+                        "ideologia": "Derecha"
+                    },
+                    "VALLE": {
+                        "ganador": "MOVIMIENTO POLÍTICO PACTO HISTÓRICO",
+                        "votos": 1731591,
+                        "ideologia": "Izquierda"
+                    },
+                    "VAUPES": {
+                        "ganador": "PARTIDO DE LA U",
+                        "votos": 15532,
+                        "ideologia": "Derecha"
+                    },
+                    "VICHADA": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 29098,
+                        "ideologia": "Centro"
+                    }
+                },
+                "costo_territorial_promedio_victoria": 586700.0
+            },
+            "senado": {
+                "dominio_partidos": {
+                    "PARTIDO LIBERAL COLOMBIANO": 8,
+                    "PARTIDO CENTRO DEMOCRÁTICO": 5,
+                    "PACTO HISTÓRICO SENADO": 12,
+                    "PARTIDO CONSERVADOR COLOMBIANO": 3,
+                    "ALIANZA POR COLOMBIA": 2,
+                    "PARTIDO DE LA U": 3,
+                    "COALICIÓN CAMBIO RADICAL - ALMA": 1
+                },
+                "dominio_ideo": {
+                    "Centro": 10,
+                    "Derecha": 12,
+                    "Izquierda": 12
+                },
+                "total_votos_ganadores": 20492278,
+                "num_dptos": 34,
+                "detalles_departamentos": {
+                    "AMAZONAS": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 28720,
+                        "ideologia": "Centro"
+                    },
+                    "ANTIOQUIA": {
+                        "ganador": "PARTIDO CENTRO DEMOCRÁTICO",
+                        "votos": 2469550,
+                        "ideologia": "Derecha"
+                    },
+                    "ARAUCA": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 97495,
+                        "ideologia": "Centro"
+                    },
+                    "ATLANTICO": {
+                        "ganador": "PACTO HISTÓRICO SENADO",
+                        "votos": 1216907,
+                        "ideologia": "Izquierda"
+                    },
+                    "BOGOTA D.C.": {
+                        "ganador": "PACTO HISTÓRICO SENADO",
+                        "votos": 3063903,
+                        "ideologia": "Izquierda"
+                    },
+                    "BOLIVAR": {
+                        "ganador": "PARTIDO CONSERVADOR COLOMBIANO",
+                        "votos": 997846,
+                        "ideologia": "Derecha"
+                    },
+                    "BOYACA": {
+                        "ganador": "ALIANZA POR COLOMBIA",
+                        "votos": 533976,
+                        "ideologia": "Centro"
+                    },
+                    "CALDAS": {
+                        "ganador": "ALIANZA POR COLOMBIA",
+                        "votos": 423340,
+                        "ideologia": "Centro"
+                    },
+                    "CAQUETA": {
+                        "ganador": "PACTO HISTÓRICO SENADO",
+                        "votos": 139579,
+                        "ideologia": "Izquierda"
+                    },
+                    "CASANARE": {
+                        "ganador": "PARTIDO CENTRO DEMOCRÁTICO",
+                        "votos": 173357,
+                        "ideologia": "Derecha"
+                    },
+                    "CAUCA": {
+                        "ganador": "PACTO HISTÓRICO SENADO",
+                        "votos": 463361,
+                        "ideologia": "Izquierda"
+                    },
+                    "CESAR": {
+                        "ganador": "PARTIDO DE LA U",
+                        "votos": 497135,
+                        "ideologia": "Derecha"
+                    },
+                    "CHOCO": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 186089,
+                        "ideologia": "Centro"
+                    },
+                    "CONSULADOS": {
+                        "ganador": "PARTIDO CENTRO DEMOCRÁTICO",
+                        "votos": 245755,
+                        "ideologia": "Derecha"
+                    },
+                    "CORDOBA": {
+                        "ganador": "PARTIDO DE LA U",
+                        "votos": 907876,
+                        "ideologia": "Derecha"
+                    },
+                    "CUNDINAMARCA": {
+                        "ganador": "PACTO HISTÓRICO SENADO",
+                        "votos": 1202572,
+                        "ideologia": "Izquierda"
+                    },
+                    "GUAINIA": {
+                        "ganador": "COALICIÓN CAMBIO RADICAL - ALMA",
+                        "votos": 16571,
+                        "ideologia": "Derecha"
+                    },
+                    "GUAVIARE": {
+                        "ganador": "PARTIDO CONSERVADOR COLOMBIANO",
+                        "votos": 36300,
+                        "ideologia": "Derecha"
+                    },
+                    "HUILA": {
+                        "ganador": "PACTO HISTÓRICO SENADO",
+                        "votos": 428408,
+                        "ideologia": "Izquierda"
+                    },
+                    "LA GUAJIRA": {
+                        "ganador": "PARTIDO DE LA U",
+                        "votos": 299092,
+                        "ideologia": "Derecha"
+                    },
+                    "MAGDALENA": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 607780,
+                        "ideologia": "Centro"
+                    },
+                    "META": {
+                        "ganador": "PARTIDO CENTRO DEMOCRÁTICO",
+                        "votos": 444507,
+                        "ideologia": "Derecha"
+                    },
+                    "NARIÑO": {
+                        "ganador": "PACTO HISTÓRICO SENADO",
+                        "votos": 597325,
+                        "ideologia": "Izquierda"
+                    },
+                    "NORTE DE SANTANDER": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 729623,
+                        "ideologia": "Centro"
+                    },
+                    "PUTUMAYO": {
+                        "ganador": "PACTO HISTÓRICO SENADO",
+                        "votos": 109325,
+                        "ideologia": "Izquierda"
+                    },
+                    "QUINDIO": {
+                        "ganador": "PACTO HISTÓRICO SENADO",
+                        "votos": 248090,
+                        "ideologia": "Izquierda"
+                    },
+                    "RISARALDA": {
+                        "ganador": "PACTO HISTÓRICO SENADO",
+                        "votos": 416012,
+                        "ideologia": "Izquierda"
+                    },
+                    "SAN ANDRES": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 24197,
+                        "ideologia": "Centro"
+                    },
+                    "SANTANDER": {
+                        "ganador": "PARTIDO CENTRO DEMOCRÁTICO",
+                        "votos": 981929,
+                        "ideologia": "Derecha"
+                    },
+                    "SUCRE": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 506270,
+                        "ideologia": "Centro"
+                    },
+                    "TOLIMA": {
+                        "ganador": "PARTIDO CONSERVADOR COLOMBIANO",
+                        "votos": 560102,
+                        "ideologia": "Derecha"
+                    },
+                    "VALLE": {
+                        "ganador": "PACTO HISTÓRICO SENADO",
+                        "votos": 1799955,
+                        "ideologia": "Izquierda"
+                    },
+                    "VAUPES": {
+                        "ganador": "PACTO HISTÓRICO SENADO",
+                        "votos": 11848,
+                        "ideologia": "Izquierda"
+                    },
+                    "VICHADA": {
+                        "ganador": "PARTIDO LIBERAL COLOMBIANO",
+                        "votos": 27483,
+                        "ideologia": "Centro"
+                    }
+                },
+                "costo_territorial_promedio_victoria": 602714.0
             }
         }
     }

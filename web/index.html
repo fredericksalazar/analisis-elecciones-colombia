@@ -176,22 +176,66 @@
             <!-- Section 3: Territorio y Geografía (Mapas) -->
             <section id="territorial-maps" class="glass-panel slide-up delay-3">
                 <div class="section-header">
-                    <h2><i data-lucide="map"></i> Geografía del Poder (Senado 2026)</h2>
+                    <h2><i data-lucide="map"></i> Geografía del Poder (2026)</h2>
                     <p class="section-desc">Cómo se divide el territorio nacional según las fuerzas políticas</p>
                 </div>
+
+                <!-- Global switcher removed for per-map switchers -->
                 
-                <div class="map-grid">
-                    <div class="map-card">
-                        <h3>Participación por Departamento</h3>
-                        <div id="map-participation" class="d3-map"></div>
+                <div class="map-container">
+                    <!-- Fila 1: Participación -->
+                    <div class="map-row slide-up">
+                        <div class="map-visual">
+                            <div class="map-header-mini">
+                                <h3>Participación por Departamento</h3>
+                                <p>Volumen total de votación capturada en el territorio</p>
+                                <div class="corp-switcher-mini" data-map="participation">
+                                    <button class="mini-tab active" data-corp="Senado">Senado</button>
+                                    <button class="mini-tab" data-corp="Cámara">Cámara</button>
+                                </div>
+                            </div>
+                            <div id="map-participation" class="d3-map"></div>
+                        </div>
+                        <div class="map-analysis" id="analysis-participation">
+                            <!-- JS will inject analysis here -->
+                            <div class="analysis-placeholder">Cargando análisis estadístico...</div>
+                        </div>
                     </div>
-                    <div class="map-card">
-                        <h3>Partido Dominante (Mayoría de Votos)</h3>
-                        <div id="map-party" class="d3-map"></div>
+
+                    <!-- Fila 2: Partido Dominante -->
+                    <div class="map-row slide-up">
+                        <div class="map-visual">
+                            <div class="map-header-mini">
+                                <h3>Partido Dominante (Votos)</h3>
+                                <p>Fuerza política con mayor respaldo por departamento</p>
+                                <div class="corp-switcher-mini" data-map="party">
+                                    <button class="mini-tab active" data-corp="Senado">Senado</button>
+                                    <button class="mini-tab" data-corp="Cámara">Cámara</button>
+                                </div>
+                            </div>
+                            <div id="map-party" class="d3-map"></div>
+                        </div>
+                        <div class="map-analysis" id="analysis-party">
+                             <!-- JS will inject analysis here -->
+                        </div>
                     </div>
-                    <div class="map-card">
-                        <h3>Dominio Ideológico</h3>
-                        <div id="map-ideology" class="d3-map"></div>
+
+                    <!-- Fila 3: Dominio Ideológico -->
+                    <div class="map-row slide-up">
+                        <div class="map-visual">
+                            <div class="map-header-mini">
+                                <h3>Dominio Ideológico</h3>
+                                <p>Prevalencia de bloques: Izquierda, Centro o Derecha</p>
+                                <div class="corp-switcher-mini" data-map="ideology">
+                                    <button class="mini-tab active" data-corp="Senado">Senado</button>
+                                    <button class="mini-tab" data-corp="Cámara">Cámara</button>
+                                </div>
+                            </div>
+                            <div id="map-ideology" class="d3-map"></div>
+                        </div>
+                        <div class="map-analysis" id="analysis-ideology">
+                             <!-- JS will inject analysis here -->
+                        </div>
                     </div>
                 </div>
             </section>
@@ -225,6 +269,6 @@
     </div>
 
     <!-- App Logic -->
-    <script type="module" src="js/app.js?v=20260313101500"></script>
+    <script type="module" src="js/app.js?v=20260316120000"></script>
 </body>
 </html>

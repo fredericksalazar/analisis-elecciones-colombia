@@ -184,7 +184,13 @@ def main():
         votos = int(row['votos'])
         
         if c not in terr_analysis[y]:
-            terr_analysis[y][c] = {"dominio_partidos": {}, "dominio_ideo": {}, "total_votos_ganadores": 0, "num_dptos": 0}
+            terr_analysis[y][c] = {
+                "dominio_partidos": {}, 
+                "dominio_ideo": {}, 
+                "total_votos_ganadores": 0, 
+                "num_dptos": 0,
+                "detalles_departamentos": {} # NEW: For map visualization
+            }
             
         if winner not in terr_analysis[y][c]["dominio_partidos"]:
             terr_analysis[y][c]["dominio_partidos"][winner] = 0
@@ -196,6 +202,13 @@ def main():
         
         terr_analysis[y][c]["total_votos_ganadores"] += votos
         terr_analysis[y][c]["num_dptos"] += 1
+
+        # NEW: Store per-department data for the map
+        terr_analysis[y][c]["detalles_departamentos"][dpto] = {
+            "ganador": winner,
+            "votos": votos,
+            "ideologia": ideo
+        }
 
     for y, corps in terr_analysis.items():
         for c, data in corps.items():

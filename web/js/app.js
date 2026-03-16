@@ -2,7 +2,7 @@
 import { renderMacroKPIs, renderPartyCards, renderAdvancedAnalysis } from './components.js';
 import { drawHemiciclo, drawIdeologyCharts, drawVotesBarCharts, drawVotesVariationCharts, renderCongressTable, renderIdeologyTable } from './charts.js';
 import { calculateAdvancedMetrics } from './analysis.js';
-import { drawMaps } from './maps.js';
+import { drawParticipationMap, drawPartyMap, drawIdeologyMap } from './maps.js?v=20260316140000';
 
 let electionData = null;
 
@@ -12,8 +12,8 @@ async function initApp() {
     setupThemeToggle();
 
     try {
-        // Fetch JSON Data
-        const response = await fetch('data/resultados_analisis.json');
+        // Fetch JSON Data with cache-busting
+        const response = await fetch(`data/resultados_analisis.json?t=${Date.now()}`);
         if (!response.ok) throw new Error("Could not load data");
         electionData = await response.json();
         
@@ -36,14 +36,27 @@ async function initApp() {
     }
 }
 
+let cachedGeoData = null;
+
 function initializeVisualizations(data) {
     // Topojson load for maps
-    d3.json('data/colombia.json').then(geoData => {
-        drawMaps(data, geoData);
-    }).catch(e => {
-        console.warn("Could not load geometry for maps, skipping maps.", e);
-        document.getElementById('territorial-maps').style.display = 'none';
-    });
+    if (!cachedGeoData) {
+        d3.json('data/colombia.json').then(geoData => {
+            cachedGeoData = geoData;
+            drawParticipationMap(data, geoData, "Senado");
+            drawPartyMap(data, geoData, "Senado");
+            drawIdeologyMap(data, geoData, "Senado");
+            setupMapTabs(data, geoData);
+        }).catch(e => {
+            console.warn("Could not load geometry for maps, skipping maps.", e);
+            document.getElementById('territorial-maps').style.display = 'none';
+        });
+    } else {
+        drawParticipationMap(data, cachedGeoData, "Senado");
+        drawPartyMap(data, cachedGeoData, "Senado");
+        drawIdeologyMap(data, cachedGeoData, "Senado");
+        setupMapTabs(data, cachedGeoData);
+    }
 
     // Draw Hemiciclos
     drawHemiciclo(data.partidos.Senado, '#senado-hemiciclo', "Senado");
@@ -131,6 +144,32 @@ function setupTabs() {
             tab.classList.add('active');
             const target = tab.getAttribute('data-target');
             document.getElementById(target).classList.add('active');
+        });
+    });
+}
+
+function setupMapTabs(data, geoData) {
+    const switchers = document.querySelectorAll('.corp-switcher-mini');
+    
+    switchers.forEach(switcher => {
+        const mapType = switcher.dataset.map;
+        const tabs = switcher.querySelectorAll('.mini-tab');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const corp = tab.getAttribute('data-corp');
+                
+                if (mapType === 'participation') {
+                    drawParticipationMap(data, geoData, corp);
+                } else if (mapType === 'party') {
+                    drawPartyMap(data, geoData, corp);
+                } else if (mapType === 'ideology') {
+                    drawIdeologyMap(data, geoData, corp);
+                }
+            });
         });
     });
 }
