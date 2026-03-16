@@ -85,6 +85,25 @@
                 </div>
             </section>
 
+            <!-- Section 0.5: Variación de Votos (2026 vs 2022) -->
+            <section id="votes-variation" class="glass-panel slide-up delay-1">
+                <div class="section-header">
+                    <h2><i data-lucide="percent"></i> Variación de Votos por Partidos</h2>
+                    <p class="section-desc">Porcentaje de crecimiento o caída respecto a las elecciones del 2022</p>
+                </div>
+
+                <div class="votes-charts-container">
+                    <div class="votes-chart-wrapper variation-chart">
+                        <h3>Variación Senado (%)</h3>
+                        <canvas id="senado-variation-chart"></canvas>
+                    </div>
+                    <div class="votes-chart-wrapper variation-chart">
+                        <h3>Variación Cámara (%)</h3>
+                        <canvas id="camara-variation-chart"></canvas>
+                    </div>
+                </div>
+            </section>
+
             <!-- Section 2: Hemiciclo & Ideology -->
             <section id="ideology-hemiciclo" class="glass-panel slide-up delay-2">
                 <div class="section-header">
@@ -128,6 +147,28 @@
                     </div>
                     <div class="story-box insight-ideology">
                         <!-- Narrative populated by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2.5: Advanced Analysis -->
+            <section id="advanced-analysis" class="glass-panel slide-up delay-3">
+                <div class="section-header">
+                    <h2><i data-lucide="microscope"></i> Análisis Técnico Avanzado</h2>
+                    <p class="section-desc">Métricas sofisticadas para entender la salud y competitividad del sistema electoral</p>
+                </div>
+
+                <div class="corporation-analysis-group">
+                    <h3 style="margin-top: 2rem; color: var(--accent); font-size: 1.2rem;">Senado de la República</h3>
+                    <div class="advanced-metrics-grid" id="advanced-metrics-senado">
+                        <!-- Senado cards go here -->
+                    </div>
+                </div>
+
+                <div class="corporation-analysis-group" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px dashed var(--border-color);">
+                    <h3 style="color: var(--accent); font-size: 1.2rem;">Cámara de Representantes</h3>
+                    <div class="advanced-metrics-grid" id="advanced-metrics-camara">
+                        <!-- Cámara cards go here -->
                     </div>
                 </div>
             </section>

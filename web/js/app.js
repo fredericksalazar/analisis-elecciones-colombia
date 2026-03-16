@@ -1,6 +1,7 @@
 // Main Application Logic
-import { renderMacroKPIs, renderPartyCards } from './components.js';
-import { drawHemiciclo, drawIdeologyCharts, drawVotesBarCharts, renderCongressTable, renderIdeologyTable } from './charts.js';
+import { renderMacroKPIs, renderPartyCards, renderAdvancedAnalysis } from './components.js';
+import { drawHemiciclo, drawIdeologyCharts, drawVotesBarCharts, drawVotesVariationCharts, renderCongressTable, renderIdeologyTable } from './charts.js';
+import { calculateAdvancedMetrics } from './analysis.js';
 import { drawMaps } from './maps.js';
 
 let electionData = null;
@@ -80,9 +81,25 @@ function initializeVisualizations(data) {
     // Draw Votes Distribution Bar Charts
     drawVotesBarCharts(data);
 
+    // Draw Votes Variation Charts
+    drawVotesVariationCharts(data);
+
     // Draw Party Cards
     renderPartyCards(data.partidos.Senado, '#party-senado-view');
     renderPartyCards(data.partidos.Cámara, '#party-camara-view');
+
+    // Advanced Analysis
+    setupAdvancedAnalysis(data);
+}
+
+export function setupAdvancedAnalysis(data) {
+    // Render Senado
+    const senadoMetrics = calculateAdvancedMetrics(data, 'Senado');
+    renderAdvancedAnalysis(senadoMetrics, 'advanced-metrics-senado');
+    
+    // Render Cámara
+    const camaraMetrics = calculateAdvancedMetrics(data, 'Cámara');
+    renderAdvancedAnalysis(camaraMetrics, 'advanced-metrics-camara');
 }
 
 

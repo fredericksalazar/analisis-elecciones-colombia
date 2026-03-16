@@ -123,3 +123,43 @@ function cleanPartyStr(str) {
     if(str.includes("Verde")) return "av";
     return "default";
 }
+
+export function renderAdvancedAnalysis(metrics, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = '';
+
+    Object.entries(metrics).forEach(([key, m]) => {
+        const trendVal = m.trend ? parseFloat(m.trend) : 0;
+        const trendHtml = m.trend ? `
+            <div class="adv-trend ${trendVal > 0 ? 'up' : 'down'}">
+                <i data-lucide="${trendVal > 0 ? 'trending-up' : 'trending-down'}"></i>
+                <span class="trend-num">${Math.abs(trendVal)}</span>
+                <span class="trend-text">${m.trendLabel || ''}</span>
+            </div>
+        ` : '';
+
+        const html = `
+            <div class="adv-card">
+                <div class="adv-header">
+                    <span class="adv-label">${m.label}</span>
+                    <div class="metric-status ${m.status}" title="Estado: ${m.status}"></div>
+                </div>
+                <div class="adv-value-row">
+                    <div class="adv-value">${m.val}</div>
+                    <div class="adv-interpretation ${m.status}">${m.interpretation}</div>
+                </div>
+                ${trendHtml}
+                <div class="adv-info-badge">
+                    <i data-lucide="shield-check" style="width: 12px"></i>
+                    ${m.info}
+                </div>
+                <div class="adv-desc">${m.desc}</div>
+            </div>
+        `;
+        container.insertAdjacentHTML('beforeend', html);
+    });
+    
+    // Re-run lucide for newly added icons
+    lucide.createIcons();
+}

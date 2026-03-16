@@ -364,6 +364,78 @@ export function drawVotesBarCharts(electionData) {
     camaraVotesChart = createBarChart('Cámara', electionData.partidos.Cámara, 'camara-votes-chart');
 }
 
+// Global variables for variation charts
+let senadoVariationChart = null;
+let camaraVariationChart = null;
+
+// Draw horizontal bar charts for vote variation (%)
+export function drawVotesVariationCharts(electionData) {
+    const formatPercent = (num) => (num > 0 ? '+' : '') + num.toFixed(2) + '%';
+
+    const createVariationChart = (corpName, corpData, canvasId) => {
+        // Get parties that have comparative variation data
+        const parties = Object.entries(corpData)
+            .filter(([_, data]) => data && data.comparativo && typeof data.comparativo.variacion_votos_pct === 'number')
+            .sort((a, b) => b[1].comparativo.variacion_votos_pct - a[1].comparativo.variacion_votos_pct);
+
+        if (parties.length === 0) return null;
+
+        const labels = parties.map(([name]) => name);
+        const variations = parties.map(([_, data]) => data.comparativo.variacion_votos_pct);
+        const colors = parties.map(([name, data]) => getPartyColor(name, data.ideologia));
+
+        const textSecondary = getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim();
+
+        const ctx = document.getElementById(canvasId).getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Variación %',
+                    data: variations,
+                    backgroundColor: variations.map(v => v >= 0 ? 'rgba(16, 185, 129, 0.7)' : 'rgba(239, 68, 68, 0.7)'),
+                    borderColor: variations.map(v => v >= 0 ? 'rgb(16, 185, 129)' : 'rgb(239, 68, 68)'),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => `Variación: ${formatPercent(context.raw)}`
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: textSecondary,
+                            callback: (value) => value + '%'
+                        },
+                        grid: { color: 'rgba(128, 128, 128, 0.1)' }
+                    },
+                    y: {
+                        ticks: { color: textSecondary, font: { family: 'Inter', size: 12 } },
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+        return chart;
+    };
+
+    if (senadoVariationChart) senadoVariationChart.destroy();
+    if (camaraVariationChart) camaraVariationChart.destroy();
+
+    senadoVariationChart = createVariationChart('Senado', electionData.partidos.Senado, 'senado-variation-chart');
+    camaraVariationChart = createVariationChart('Cámara', electionData.partidos.Cámara, 'camara-variation-chart');
+}
+
 // Global listener for theme toggles to update Chart.js colors
 window.addEventListener('themeChanged', () => {
     // If we have live charts, we need to update their text colors
@@ -391,6 +463,16 @@ window.addEventListener('themeChanged', () => {
         camaraVotesChart.options.scales.x.ticks.color = legendColor;
         camaraVotesChart.options.scales.y.ticks.color = legendColor;
         camaraVotesChart.update();
+    }
+    if(senadoVariationChart) {
+        senadoVariationChart.options.scales.x.ticks.color = legendColor;
+        senadoVariationChart.options.scales.y.ticks.color = legendColor;
+        senadoVariationChart.update();
+    }
+    if(camaraVariationChart) {
+        camaraVariationChart.options.scales.x.ticks.color = legendColor;
+        camaraVariationChart.options.scales.y.ticks.color = legendColor;
+        camaraVariationChart.update();
     }
 });
 
