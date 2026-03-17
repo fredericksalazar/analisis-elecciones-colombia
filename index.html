@@ -3,14 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Análisis profundo y visual de las elecciones legislativas en Colombia 2026. Compara resultados del Senado y Cámara, tendencias ideológicas y participación ciudadana con datos precisos y mapas interactivos.">
+    <meta name="description" content="Explora el análisis interactivo de las elecciones legislativas en Colombia. Compara resultados por departamento, partidos políticos y tendencias de votación entre 2022 y 2026 con datos abiertos.">
     <meta name="keywords" content="Elecciones Colombia 2026, Senado, Cámara, Análisis Político, Datos Electorales, Mapas Políticos, Democracia Colombiana">
-    <title>Colombia 2026: El Nuevo Mapa Político | Análisis Electoral Experto</title>
+    <title>Análisis Elecciones Colombia 2022-2026 | Datos y Tendencias Legislativas</title>
     
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fredericksalazar.github.io/análisis-elecciones-colombia/">
+    <meta property="og:title" content="Análisis Elecciones Colombia 2022-2026 | Datos y Tendencias Legislativas">
+    <meta property="og:description" content="Explora el análisis interactivo de las elecciones legislativas en Colombia. Compara resultados por departamento, partidos políticos y tendencias de votación entre 2022 y 2026 con datos abiertos.">
+    <meta property="og:image" content="https://fredericksalazar.github.io/análisis-elecciones-colombia/assets/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://fredericksalazar.github.io/análisis-elecciones-colombia/">
+    <meta property="twitter:title" content="Análisis Elecciones Colombia 2022-2026 | Datos y Tendencias Legislativas">
+    <meta property="twitter:description" content="Explora el análisis interactivo de las elecciones legislativas en Colombia. Compara resultados por departamento, partidos políticos y tendencias de votación entre 2022 y 2026 con datos abiertos.">
+    <meta property="twitter:image" content="https://fredericksalazar.github.io/análisis-elecciones-colombia/assets/og-image.png">
+    
     
     <!-- Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -21,6 +31,9 @@
 
     <!-- App Styles -->
     <link rel="stylesheet" href="css/styles.css?v=20260312212100">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="app-container">
@@ -43,7 +56,8 @@
         <header class="hero">
             <div class="hero-content">
                 <span class="badge-new">Proyecto de Análisis Político</span>
-                <h1 class="glitch-text" data-text="Análisis estadístico descriptivo Elecciones legislativas Colombia 2026">Análisis estadístico descriptivo Elecciones legislativas Colombia 2026</h1>
+                <h1 class="glitch-text" data-text="Radiografía Electoral: Colombia 2022 vs 2026">Radiografía Electoral: Colombia 2022 vs 2026</h1>
+                <p class="hero-intro">Bienvenido a la plataforma de visualización de datos de las elecciones legislativas. Aquí transformamos el escrutinio en conocimiento para entender el nuevo mapa del poder político en Colombia. Filtra, compara y analiza los cambios en la representación democrática por regiones.</p>
                 
                 <div class="hero-details">
                     <div class="detail-section">
@@ -96,6 +110,7 @@
                 <div class="section-header">
                     <h2><i data-lucide="bar-chart-3"></i> Distribución de Votos por Partidos</h2>
                     <p class="section-desc">Cantidad total de votos recibidos por cada partido (2026)</p>
+                    <p class="section-analytical-note"><strong>Distribución del Escrutinio por Aval:</strong> Este gráfico detalla el peso relativo de las fuerzas políticas. Observa el crecimiento o contracción de las coaliciones frente al periodo anterior</p>
                 </div>
 
                 <div class="votes-charts-container">
@@ -203,6 +218,7 @@
                 <div class="section-header">
                     <h2><i data-lucide="map"></i> Geografía del Poder (2026)</h2>
                     <p class="section-desc">Cómo se divide el territorio nacional según las fuerzas políticas</p>
+                    <p class="section-analytical-note"><strong>Geografía del Voto:</strong> Analiza cómo votaron las regiones. El comportamiento electoral en departamentos como Antioquia, Valle o Bogotá define el rumbo del Congreso.</p>
                 </div>
 
                 <!-- Global switcher removed for per-map switchers -->
@@ -286,10 +302,24 @@
                 </div>
                 
             </section>
+            <!-- Section 5: Notas Metodológicas -->
+            <section id="methodology" class="glass-panel slide-up delay-3">
+                <div class="section-header">
+                    <h2><i data-lucide="info"></i> Notas Metodológicas</h2>
+                </div>
+                <p class="section-desc" style="font-size: 0.95rem; color: var(--text-secondary);">
+                    Los datos presentados provienen de los archivos oficiales de la Registraduría Nacional del Estado Civil. El procesamiento se realizó mediante scripts de código abierto para garantizar la transparencia y trazabilidad del análisis político.
+                </p>
+            </section>
         </main>
         
         <footer>
-            <p>Generado con ❤️ usando datos analíticos simulados 2022-2026.</p>
+            <p>
+                <a href="https://github.com/fredericksalazar" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none; font-weight: 600; transition: var(--transition);">
+                    Desarrollado por Frederick Salazar | Data Engineering & Political Analysis
+                </a>
+            </p>
+            <p style="margin-top: 0.5rem; opacity: 0.7; font-size: 0.85rem;">Dividendo digital y análisis electoral 2022-2026.</p>
         </footer>
     </div>
 

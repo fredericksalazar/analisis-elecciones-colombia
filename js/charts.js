@@ -557,9 +557,9 @@ export function renderCongressTable(corpData, containerSelector) {
                     <span class="party-dot" style="background-color: ${color};"></span>
                     ${pName}
                 </td>
-                <td class="col-2026">${c2026 > 0 ? c2026 : 0}</td>
-                <td class="col-old">${c2022 > 0 ? c2022 : 0}</td>
-                <td class="col-diff" style="color: ${diffColor}; font-weight: 600;">${diffStr}</td>
+                <td class="col-2026 data-number">${c2026 > 0 ? c2026 : 0}</td>
+                <td class="col-old data-number">${c2022 > 0 ? c2022 : 0}</td>
+                <td class="col-diff data-number" style="color: ${diffColor}; font-weight: 600;">${diffStr}</td>
             </tr>
         `;
     });
@@ -618,10 +618,10 @@ export function renderIdeologyTable(ideoData, containerSelector) {
                     <span class="party-dot" style="background-color: ${color};"></span>
                     ${ideo}
                 </td>
-                <td class="col-2026">${c2026}</td>
-                <td class="col-2026" style="font-size: 0.8em; opacity: 0.8;">${fmt(v2026)}</td>
-                <td class="col-old">${c2022}</td>
-                <td class="col-diff" style="color: ${diffColor}; font-weight: 600;">${diffStr}</td>
+                <td class="col-2026 data-number">${c2026}</td>
+                <td class="col-2026 data-number" style="font-size: 0.8em; opacity: 0.8;">${fmt(v2026)}</td>
+                <td class="col-old data-number">${c2022}</td>
+                <td class="col-diff data-number" style="color: ${diffColor}; font-weight: 600;">${diffStr}</td>
             </tr>
         `;
     });
