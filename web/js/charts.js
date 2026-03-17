@@ -1,3 +1,29 @@
+// Register Global Bar Labels Plugin
+Chart.register({
+    id: 'customBarLabels',
+    afterDatasetsDraw(chart) {
+        if (chart.config.type !== 'bar') return;
+        // Only for votes charts
+        if (chart.canvas && !chart.canvas.id.includes('votes')) return;
+
+        const { ctx, data } = chart;
+        const textSecondary = getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim() || '#64748b';
+        
+        ctx.save();
+        ctx.font = '600 12px Inter';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = textSecondary;
+
+        chart.getDatasetMeta(0).data.forEach((bar, index) => {
+            const val = data.datasets[0].data[index];
+            const value = new Intl.NumberFormat('es-CO').format(val);
+            ctx.fillText(value, bar.x + 10, bar.y);
+        });
+        ctx.restore();
+    }
+});
+
 // Visualization Logic for Charts and Hemiciclos
 
 // Function to generate the coordinates for a semicircular seating arrangement
@@ -333,6 +359,7 @@ export function drawVotesBarCharts(electionData) {
                 },
                 scales: {
                     x: {
+                        grace: '20%',
                         ticks: {
                             color: textSecondary,
                             callback: function(value) {
@@ -351,6 +378,11 @@ export function drawVotesBarCharts(electionData) {
                         grid: {
                             display: false
                         }
+                    }
+                },
+                layout: {
+                    padding: {
+                        right: 60
                     }
                 }
             }

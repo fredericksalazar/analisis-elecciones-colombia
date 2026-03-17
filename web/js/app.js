@@ -1,6 +1,6 @@
 // Main Application Logic
 import { renderMacroKPIs, renderPartyCards, renderAdvancedAnalysis } from './components.js';
-import { drawHemiciclo, drawIdeologyCharts, drawVotesBarCharts, drawVotesVariationCharts, renderCongressTable, renderIdeologyTable } from './charts.js';
+import { drawHemiciclo, drawIdeologyCharts, drawVotesBarCharts, drawVotesVariationCharts, renderCongressTable, renderIdeologyTable } from './charts.js?v=20260316160500';
 import { calculateAdvancedMetrics } from './analysis.js';
 import { drawParticipationMap, drawPartyMap, drawIdeologyMap } from './maps.js?v=20260316140000';
 

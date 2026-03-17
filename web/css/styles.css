@@ -130,31 +130,148 @@ body {
 
 /* Hero Section */
 .hero {
+    padding: 6rem 0 4rem;
     text-align: center;
-    padding: 4rem 0;
-    margin-bottom: 3rem;
+    position: relative;
 }
+
+.hero-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.badge-new {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 100px;
+    color: var(--accent);
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.nav-brand {
+    display: none;
+}
+
 .hero h1 {
     font-family: var(--font-display);
-    font-size: 4rem;
+    font-size: clamp(2.5rem, 8vw, 4rem);
     font-weight: 800;
     line-height: 1.1;
-    margin-bottom: 1rem;
-    background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
-    -webkit-background-clip: text;
-    color: transparent;
+    margin-bottom: 2rem;
+    color: #334155; /* Gris oscuro solicitado */
+    position: relative;
+    letter-spacing: -0.02em;
 }
+
+[data-theme="dark"] .hero h1 {
+    color: #cbd5e1; /* Gris claro para modo oscuro para que sea legible */
+}
+
 .hero .subtitle {
-    font-size: 1.5rem;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-    font-family: var(--font-display);
+    display: none;
 }
-.story-lead {
-    font-size: 1.125rem;
+.hero-details {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    text-align: left;
+    margin-top: 4rem;
+    padding-top: 4rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.detail-section h3 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+}
+
+.detail-section h3 i {
+    color: var(--accent);
+    width: 24px;
+    height: 24px;
+}
+
+.detail-section p {
     color: var(--text-secondary);
-    max-width: 800px;
-    margin: 0 auto;
+    font-size: 1.05rem;
+    line-height: 1.75;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.tech-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--bg-glass);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.tech-badge i { width: 16px; height: 16px; color: var(--accent); }
+
+.tech-badge:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    background: rgba(56, 189, 248, 0.05);
+}
+
+.donation-group {
+    grid-column: span 2;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.btn-donation {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.btn-donation i { width: 22px; height: 22px; }
+
+.btn-donation.bmc { background: #FFDD00; color: #000000; }
+.btn-donation.paypal { background: #0070BA; color: #ffffff; }
+
+.btn-donation:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.1);
+}
+
+@media (max-width: 900px) {
+    .hero-details { grid-template-columns: 1fr; gap: 3rem; }
+    .donation-group { flex-direction: column; width: 100%; align-items: stretch; }
+    .btn-donation { justify-content: center; }
 }
 
 /* UI Components */
@@ -452,7 +569,7 @@ body {
 }
 
 /* Party Cards Detail */
-.party-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+.party-grid.active { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
 .party-card {
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
