@@ -11,28 +11,28 @@ export function renderMacroKPIs(data) {
 
     const kpis = [
         {
-            label: "Total Votantes (2026)",
+            label: "TOTAL VOTANTES (El Tamaño de la Democracia)",
             val: formatNumber(comp26.votantes),
             trendVal: `${cmp.variacion_votantes_abs > 0 ? '+' : ''}${formatNumber(cmp.variacion_votantes_abs)} desde 2022`,
             trendClass: cmp.variacion_votantes_abs > 0 ? 'up' : 'down'
         },
         {
-            label: "Participación",
+            label: "PARTICIPACIÓN EFECTIVA",
             val: `${comp26.participacion_pct}%`,
             trendVal: `${cmp.variacion_participacion_pp > 0 ? '+' : ''}${cmp.variacion_participacion_pp} pp`,
             trendClass: cmp.variacion_participacion_pp > 0 ? 'up' : 'down'
         },
         {
-            label: "Abstención",
+            label: "ABSTENCIÓN (El Gigante Silencioso)",
             val: `${comp26.abstencion_pct}%`,
             trendVal: `${cmp.variacion_participacion_pp > 0 ? '-' : '+'}${Math.abs(cmp.variacion_participacion_pp)} pp`,
-            trendClass: cmp.variacion_participacion_pp > 0 ? 'down' : 'up' // Less abstention is good (blue/green usually, but here up means more)
+            trendClass: cmp.variacion_participacion_pp > 0 ? 'down' : 'up'
         },
         {
-            label: "Votos Nulos/Inválidos",
+            label: "VOTOS NULOS / INVÁLIDOS (Barrera Pedagógica)",
             val: `${comp26.nulos_invalidos_pct}%`,
             trendVal: `${cmp.variacion_nulos_invalidos_pp > 0 ? '+' : ''}${cmp.variacion_nulos_invalidos_pp} pp`,
-            trendClass: cmp.variacion_nulos_invalidos_pp < 0 ? 'up' : 'down' // Reduction is good
+            trendClass: cmp.variacion_nulos_invalidos_pp < 0 ? 'up' : 'down'
         }
     ];
 
@@ -48,8 +48,7 @@ export function renderMacroKPIs(data) {
 
     // Write narrative
     const insightBox = document.querySelector('.insight-macro');
-    let dirParticipation = cmp.variacion_participacion_pp > 0 ? "aumento" : "caída";
-    insightBox.innerHTML = `<strong>Insight:</strong> En las elecciones de 2026 observamos un(a) ${dirParticipation} en la participación cívica, sumando <strong>${formatNumber(cmp.variacion_votantes_abs)}</strong> votantes respecto a 2022. Sorpresivamente, los errores de votación (nulos e inválidos) bajaron, lo cual indica un electorado más informado y un proceso electoral depurado.`;
+    insightBox.innerHTML = `<strong>Insight Político:</strong> Aunque la participación creció sumando más de 2.5 millones de votantes respecto a 2022, la abstención sigue rozando el 50%, recordando que el 'partido' más grande de Colombia sigue siendo la apatía. La notable caída en votos nulos y no marcados (-1.87 pp) refleja una maduración del electorado y una mejor comprensión frente a la complejidad del tarjetón legislativo.`;
 }
 
 export function renderPartyCards(partyData, containerId) {
