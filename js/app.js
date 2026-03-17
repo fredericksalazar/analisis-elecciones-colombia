@@ -28,6 +28,8 @@ async function initApp() {
         setTimeout(() => {
             initializeVisualizations(electionData);
             initIntersectionObserver();
+            // Final icon refresh
+            if (typeof lucide !== 'undefined') lucide.createIcons();
         }, 100);
 
     } catch (e) {

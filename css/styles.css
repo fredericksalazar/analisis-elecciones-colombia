@@ -68,6 +68,14 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Base Accessibility: Touch Targets */
+a, button, select, input, .mini-tab, .tab-btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 p {
     font-size: 1rem;
     line-height: 1.6;
@@ -186,6 +194,21 @@ p {
     color: var(--text-primary);
     position: relative;
     letter-spacing: -0.04em;
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 1.8rem;
+        letter-spacing: -0.02em;
+    }
+    .hero-cta {
+        flex-direction: column;
+        width: 100%;
+    }
+    .btn-outline {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 [data-theme="dark"] .hero h1 {
@@ -701,10 +724,12 @@ p {
     border: 1px solid var(--border-color);
     border-radius: 1rem;
     padding: 1.5rem;
-    height: 350px;
+    height: 400px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 /* Party Cards Detail */
@@ -1014,12 +1039,36 @@ p {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
+    .congress-layout {
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 768px) {
     .votes-chart-wrapper {
         min-height: 350px;
+        height: auto;
     }
+    .app-container {
+        padding: 0 1rem;
+    }
+    .glass-panel {
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+}
+
+/* Responsive Table Wrapper */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+}
+
+canvas {
+    width: 100%;
 }
 
 /* Footer */
@@ -1040,8 +1089,23 @@ footer { text-align: center; padding: 2rem 0; color: var(--text-secondary); font
 /* D3 SVG Styling overrides */
 svg { overflow: visible; }
 .seat { cursor: pointer; }
-PATH { stroke: var(--bg-primary); stroke-width: 0.5px; transition: opacity 0.3s; }
-PATH:hover { opacity: 0.8; }
+.d3-map path { 
+    stroke: var(--bg-primary); 
+    stroke-width: 0.5px; 
+    transition: opacity 0.3s; 
+}
+.d3-map path:hover { opacity: 0.8; }
+
+/* Lucide Icon Resilience */
+.lucide {
+    width: 1em;
+    height: 1em;
+    stroke-width: 2px;
+    stroke: currentColor;
+    fill: none;
+    display: inline-block;
+    vertical-align: middle;
+}
 
 /* Accessibility Utilities */
 .sr-only {

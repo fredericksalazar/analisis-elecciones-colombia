@@ -234,13 +234,17 @@
                         <h3>Cámara de Representantes</h3>
                         <div id="camara-hemiciclo" aria-label="Diagrama de hemiciclo interactivo de la Cámara de Representantes 2026"></div>
                         <div class="sr-only">Representación visual de las 188 curules de la Cámara, con el desglose por partido político y mayorías.</div>
-                        <div id="camara-table-container" class="congress-table-container"></div>
+                        <div class="table-responsive">
+                            <div id="camara-table-container" class="congress-table-container"></div>
+                        </div>
                     </div>
                     <div class="hemiciclo-wrapper" id="senado-hemiciclo-container">
                         <h3>Senado</h3>
                         <div id="senado-hemiciclo" aria-label="Diagrama de hemiciclo interactivo del Senado de la República 2026"></div>
                         <div class="sr-only">Representación visual de las 108 curules del Senado, mostrando la composición de las bancadas y coaliciones.</div>
-                        <div id="senado-table-container" class="congress-table-container"></div>
+                        <div class="table-responsive">
+                            <div id="senado-table-container" class="congress-table-container"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -251,13 +255,17 @@
                         <h3>Cámara por Ideología</h3>
                         <div id="ideology-camara-hemiciclo" aria-label="Diagrama de hemiciclo de la Cámara organizado por bloques ideológicos"></div>
                         <div class="sr-only">Mapa del poder ideológico en la Cámara, agrupando a los representantes en bloques de Izquierda, Centro y Derecha.</div>
-                        <div id="ideology-camara-table-container" class="congress-table-container"></div>
+                        <div class="table-responsive">
+                            <div id="ideology-camara-table-container" class="congress-table-container"></div>
+                        </div>
                     </div>
                     <div class="hemiciclo-wrapper" id="ideology-senado-container">
                         <h3>Senado por Ideología</h3>
                         <div id="ideology-senado-hemiciclo" aria-label="Diagrama de hemiciclo del Senado organizado por bloques ideológicos"></div>
                         <div class="sr-only">Mapa del poder ideológico en el Senado, mostrando el balance entre los grandes bloques políticos nacionales.</div>
-                        <div id="ideology-senado-table-container" class="congress-table-container"></div>
+                        <div class="table-responsive">
+                            <div id="ideology-senado-table-container" class="congress-table-container"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -444,12 +452,14 @@
     <!-- App Logic -->
     <script type="module" src="js/app.js?v=20260316162000"></script>
     <script>
-        // Asegurar que los iconos se rendericen incluso con carga diferida de módulos
-        document.addEventListener('DOMContentLoaded', function() {
+        // Sistema de recuperación de iconos Lucide (Chrome/Safari Compatibility)
+        function refreshIcons() {
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
-        });
+        }
+        document.addEventListener('DOMContentLoaded', refreshIcons);
+        window.addEventListener('load', refreshIcons);
     </script>
 </body>
 </html>

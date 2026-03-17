@@ -275,29 +275,64 @@ export function drawIdeologyCharts(ideoData) {
     // Chart configs
     const commonOptions = {
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
+        aspectRatio: 1,
         plugins: {
-            legend: { position: 'bottom', labels: { color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim() } },
+            legend: { 
+                position: 'bottom', 
+                labels: { 
+                    color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim(),
+                    font: { family: 'Inter', size: 12 }
+                } 
+            },
         },
         cutout: '65%',
         borderWidth: 0
     };
 
     if(chart22) chart22.destroy();
-    const ctx22 = document.getElementById('ideo-2022-chart').getContext('2d');
-    chart22 = new Chart(ctx22, {
-        type: 'doughnut',
-        data: { labels: labels, datasets: [{ data: data22, backgroundColor: colors }] },
-        options: { ...commonOptions, plugins: { ...commonOptions.plugins, title: {display: true, text: 'Distribución 2022', color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim(), font: {family: 'Outfit', size: 16}} } }
-    });
+    const canvas22 = document.getElementById('ideo-2022-chart');
+    if (canvas22) {
+        const ctx22 = canvas22.getContext('2d');
+        chart22 = new Chart(ctx22, {
+            type: 'doughnut',
+            data: { labels: labels, datasets: [{ data: data22, backgroundColor: colors }] },
+            options: { 
+                ...commonOptions, 
+                plugins: { 
+                    ...commonOptions.plugins, 
+                    title: {
+                        display: true, 
+                        text: 'Distribución 2022', 
+                        color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim(), 
+                        font: {family: 'Inter', size: 18, weight: '700'}
+                    } 
+                } 
+            }
+        });
+    }
 
     if(chart26) chart26.destroy();
-    const ctx26 = document.getElementById('ideo-2026-chart').getContext('2d');
-    chart26 = new Chart(ctx26, {
-        type: 'doughnut',
-        data: { labels: labels, datasets: [{ data: data26, backgroundColor: colors }] },
-        options: { ...commonOptions, plugins: { ...commonOptions.plugins, title: {display: true, text: 'Distribución 2026', color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim(), font: {family: 'Outfit', size: 16}} } }
-    });
+    const canvas26 = document.getElementById('ideo-2026-chart');
+    if (canvas26) {
+        const ctx26 = canvas26.getContext('2d');
+        chart26 = new Chart(ctx26, {
+            type: 'doughnut',
+            data: { labels: labels, datasets: [{ data: data26, backgroundColor: colors }] },
+            options: { 
+                ...commonOptions, 
+                plugins: { 
+                    ...commonOptions.plugins, 
+                    title: {
+                        display: true, 
+                        text: 'Distribución 2026', 
+                        color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim(), 
+                        font: {family: 'Inter', size: 18, weight: '700'}
+                    } 
+                } 
+            }
+        });
+    }
 
     // Write narrative
     const targetEl = document.querySelector('.insight-ideology');
@@ -349,7 +384,7 @@ export function drawVotesBarCharts(electionData) {
             options: {
                 indexAxis: 'y',
                 responsive: true,
-                maintainAspectRatio: false,
+                maintainAspectRatio: true,
                 plugins: {
                     legend: {
                         display: true,
@@ -434,7 +469,7 @@ export function drawVotesVariationCharts(electionData) {
             options: {
                 indexAxis: 'y',
                 responsive: true,
-                maintainAspectRatio: false,
+                maintainAspectRatio: true,
                 plugins: {
                     legend: { display: false },
                     tooltip: {
