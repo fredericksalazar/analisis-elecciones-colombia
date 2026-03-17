@@ -71,23 +71,23 @@
 
         <header class="hero">
             <div class="hero-content">
-                <span class="badge-new">Proyecto de Análisis Político</span>
-                <h1 class="glitch-text" data-text="Análisis de las Elecciones Legislativas en Colombia 2022-2026">Análisis de las Elecciones Legislativas en Colombia 2022-2026</h1>
-                <p class="hero-intro">Bienvenido a la plataforma de visualización de datos de las elecciones legislativas. Aquí transformamos el escrutinio en conocimiento para entender el nuevo mapa del poder político en Colombia. Filtra, compara y analiza los cambios en la representación democrática por regiones.</p>
+                <h1 class="glitch-text" data-text="Análisis de las Elecciones Legislativas en Colombia 2022-2026: Una Perspectiva desde la Ingeniería de Datos">
+                    Análisis de las Elecciones Legislativas en Colombia 2022-2026: Una Perspectiva desde la Ingeniería de Datos
+                </h1>
+
+                <div class="hero-cta">
+                    <a href="#votes-distribution" class="btn-outline"><i data-lucide="bar-chart-3"></i> Ver Gráficos por Partido</a>
+                    <a href="#territorial-maps" class="btn-outline"><i data-lucide="map"></i> Análisis Geográfico</a>
+                </div>
                 
                 <section class="hero-details">
-                    <header class="detail-full-width">
-                        <h2 style="font-size: 1.5rem; color: var(--accent); margin-bottom: 2rem; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 0.5rem;">
-                            Análisis Electoral Colombia 2022-2026: Una Perspectiva desde la Ingeniería de Datos
-                        </h2>
-                    </header>
 
-                    <article class="detail-section">
+                    <article class="detail-section compact-text">
                         <h3><i data-lucide="info"></i> Naturaleza del Proyecto</h3>
                         <p>Este es un proyecto de investigación técnico-académica de carácter independiente. Su propósito fundamental es la democratización de la información mediante la visualización avanzada de datos, permitiendo a ciudadanos, académicos y analistas comprender la transición del poder legislativo en Colombia con precisión quirúrgica.</p>
                     </article>
 
-                    <article class="detail-section">
+                    <article class="detail-section compact-text">
                         <h3><i data-lucide="git-branch"></i> Motivación y Filosofía Open Source</h3>
                         <p>Desarrollado bajo la filosofía de Software Libre, este proyecto nace de la necesidad de ofrecer herramientas de análisis político que sean transparentes y auditables. Todo el procesamiento de datos y la lógica de visualización están disponibles de forma abierta para fomentar la colaboración y la integridad de la información.</p>
                     </article>
@@ -381,5 +381,13 @@
 
     <!-- App Logic -->
     <script type="module" src="js/app.js?v=20260316162000"></script>
+    <script>
+        // Asegurar que los iconos se rendericen incluso con carga diferida de módulos
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
 </body>
 </html>
