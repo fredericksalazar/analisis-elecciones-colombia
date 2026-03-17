@@ -34,6 +34,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AnalysisNewsArticle",
+      "headline": "Análisis Estadístico Elecciones Colombia 2022-2026",
+      "description": "Plataforma de visualización de datos sobre el comportamiento electoral legislativo en Colombia.",
+      "author": {
+        "@type": "Person",
+        "name": "Frederick Salazar"
+      },
+      "datePublished": "2026-03-16",
+      "keywords": "Elecciones Colombia, Datos Electorales, Registraduría, Análisis Político"
+    }
+    </script>
 </head>
 <body>
     <div class="app-container">
@@ -56,35 +72,63 @@
         <header class="hero">
             <div class="hero-content">
                 <span class="badge-new">Proyecto de Análisis Político</span>
-                <h1 class="glitch-text" data-text="Radiografía Electoral: Colombia 2022 vs 2026">Radiografía Electoral: Colombia 2022 vs 2026</h1>
+                <h1 class="glitch-text" data-text="Análisis de las Elecciones Legislativas en Colombia 2022-2026">Análisis de las Elecciones Legislativas en Colombia 2022-2026</h1>
                 <p class="hero-intro">Bienvenido a la plataforma de visualización de datos de las elecciones legislativas. Aquí transformamos el escrutinio en conocimiento para entender el nuevo mapa del poder político en Colombia. Filtra, compara y analiza los cambios en la representación democrática por regiones.</p>
                 
-                <div class="hero-details">
-                    <div class="detail-section">
-                        <h3><i data-lucide="target"></i> Objetivo del Proyecto</h3>
-                        <p>Proporcionar una herramienta de visualización de datos de alta precisión para entender la transición del poder en la legislatura colombiana. El objetivo es democratizar el acceso a análisis políticos complejos mediante una interfaz intuitiva que compara el ciclo 2022-2026.</p>
-                    </div>
+                <section class="hero-details">
+                    <header class="detail-full-width">
+                        <h2 style="font-size: 1.5rem; color: var(--accent); margin-bottom: 2rem; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 0.5rem;">
+                            Análisis Electoral Colombia 2022-2026: Una Perspectiva desde la Ingeniería de Datos
+                        </h2>
+                    </header>
 
-                    <div class="detail-section">
-                        <h3><i data-lucide="cpu"></i> Stack Tecnológico</h3>
-                        <div class="tech-stack">
-                            <span class="tech-badge"><i data-lucide="code-2"></i> HTML5/CSS3</span>
-                            <span class="tech-badge"><i data-lucide="terminal"></i> D3.js</span>
-                            <span class="tech-badge"><i data-lucide="pie-chart"></i> Chart.js</span>
-                            <span class="tech-badge"><i data-lucide="database"></i> TopoJSON</span>
-                            <span class="tech-badge"><i data-lucide="box"></i> Lucide Icons</span>
+                    <article class="detail-section">
+                        <h3><i data-lucide="info"></i> Naturaleza del Proyecto</h3>
+                        <p>Este es un proyecto de investigación técnico-académica de carácter independiente. Su propósito fundamental es la democratización de la información mediante la visualización avanzada de datos, permitiendo a ciudadanos, académicos y analistas comprender la transición del poder legislativo en Colombia con precisión quirúrgica.</p>
+                    </article>
+
+                    <article class="detail-section">
+                        <h3><i data-lucide="git-branch"></i> Motivación y Filosofía Open Source</h3>
+                        <p>Desarrollado bajo la filosofía de Software Libre, este proyecto nace de la necesidad de ofrecer herramientas de análisis político que sean transparentes y auditables. Todo el procesamiento de datos y la lógica de visualización están disponibles de forma abierta para fomentar la colaboración y la integridad de la información.</p>
+                    </article>
+
+                    <article class="detail-section">
+                        <h3><i data-lucide="user-check"></i> Autoría Técnica</h3>
+                        <p>El proyecto es diseñado y mantenido por <strong>Frederick Adolfo Salazar Sánchez</strong>, Ingeniero de Datos Senior y desarrollador de software, combinando arquitectura de datos robusta con una interfaz intuitiva para transformar el escrutinio masivo en conocimiento accionable.</p>
+                        
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/fredericksalazar/" target="_blank" rel="noopener noreferrer">
+                                <i data-lucide="linkedin"></i> <span>LinkedIn</span>
+                            </a>
+                            <a href="https://github.com/fredericksalazar" target="_blank" rel="noopener noreferrer">
+                                <i data-lucide="github"></i> <span>GitHub</span>
+                            </a>
+                            <a href="https://twitter.com/fredericksalazar" target="_blank" rel="noopener noreferrer">
+                                <i data-lucide="twitter"></i> <span>@fredericksalazar</span>
+                            </a>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="donation-group">
-                        <a href="#" class="btn-donation bmc">
-                            <i data-lucide="coffee"></i> Buy me a coffee
-                        </a>
-                        <a href="#" class="btn-donation paypal">
-                            <i data-lucide="credit-card"></i> PayPal
-                        </a>
-                    </div>
-                </div>
+                    <article class="detail-section disclaimer">
+                        <p style="font-style: italic; opacity: 0.8; font-size: 0.95rem; border-left: 3px solid var(--accent); padding-left: 1rem; margin-top: 1rem;">
+                            Nota: Este sitio no tiene afiliación política; su único interés es el análisis técnico de datos públicos oficiales.
+                        </p>
+                    </article>
+
+                    <article class="detail-section support-section">
+                        <h3><i data-lucide="heart"></i> Apoya esta iniciativa</h3>
+                        <p>Si encuentras valor en este análisis y deseas apoyar la continuidad de este proyecto de código abierto, puedes contribuir al mantenimiento de los servidores y la actualización de datos:</p>
+                        
+                        <div class="support-actions">
+                            <a href="https://www.buymeacoffee.com/fredericksalazar" target="_blank" class="btn-donation bmc">
+                                <i data-lucide="coffee"></i> Invítame a un café
+                            </a>
+                            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=fredefass01@gmail.com&amount=10.00&item_name=Apoyo+Proyecto+Elecciones+Colombia&currency_code=USD" target="_blank" class="btn-donation paypal">
+                                <i data-lucide="credit-card"></i> Aporte de 10 USD vía PayPal
+                            </a>
+                        </div>
+                    </article>
+                </section>
             </div>
         </header>
 
@@ -116,11 +160,13 @@
                 <div class="votes-charts-container">
                     <div class="votes-chart-wrapper">
                         <h3>Senado</h3>
-                        <canvas id="senado-votes-chart"></canvas>
+                        <canvas id="senado-votes-chart" aria-label="Gráfico interactivo de distribución de votos para el Senado 2026"></canvas>
+                        <div class="sr-only">Este gráfico muestra los votos totales obtenidos por los partidos en el Senado. El Pacto Histórico y los partidos tradicionales lideran el escrutinio nacional.</div>
                     </div>
                     <div class="votes-chart-wrapper">
                         <h3>Cámara</h3>
-                        <canvas id="camara-votes-chart"></canvas>
+                        <canvas id="camara-votes-chart" aria-label="Gráfico interactivo de distribución de votos para la Cámara 2026"></canvas>
+                        <div class="sr-only">Distribución de votos por partido para la Cámara de Representantes, reflejando el poder regional de las fuerzas políticas.</div>
                     </div>
                 </div>
             </section>
@@ -135,11 +181,13 @@
                 <div class="votes-charts-container">
                     <div class="votes-chart-wrapper variation-chart">
                         <h3>Variación Senado (%)</h3>
-                        <canvas id="senado-variation-chart"></canvas>
+                        <canvas id="senado-variation-chart" aria-label="Gráfico interactivo de variación porcentual de votos en Senado"></canvas>
+                        <div class="sr-only">Comparativa porcentual del crecimiento o caída de votos de cada partido en Senado frente al periodo 2022.</div>
                     </div>
                     <div class="votes-chart-wrapper variation-chart">
                         <h3>Variación Cámara (%)</h3>
-                        <canvas id="camara-variation-chart"></canvas>
+                        <canvas id="camara-variation-chart" aria-label="Gráfico interactivo de variación porcentual de votos en Cámara"></canvas>
+                        <div class="sr-only">Análisis de la fluctuación del voto por partido en la Cámara de Representantes, comparando 2026 con 2022.</div>
                     </div>
                 </div>
             </section>
@@ -154,12 +202,14 @@
                 <div class="congress-layout">
                     <div class="hemiciclo-wrapper" id="camara-hemiciclo-container">
                         <h3>Cámara de Representantes</h3>
-                        <div id="camara-hemiciclo"></div>
+                        <div id="camara-hemiciclo" aria-label="Diagrama de hemiciclo interactivo de la Cámara de Representantes 2026"></div>
+                        <div class="sr-only">Representación visual de las 188 curules de la Cámara, con el desglose por partido político y mayorías.</div>
                         <div id="camara-table-container" class="congress-table-container"></div>
                     </div>
                     <div class="hemiciclo-wrapper" id="senado-hemiciclo-container">
                         <h3>Senado</h3>
-                        <div id="senado-hemiciclo"></div>
+                        <div id="senado-hemiciclo" aria-label="Diagrama de hemiciclo interactivo del Senado de la República 2026"></div>
+                        <div class="sr-only">Representación visual de las 108 curules del Senado, mostrando la composición de las bancadas y coaliciones.</div>
                         <div id="senado-table-container" class="congress-table-container"></div>
                     </div>
                 </div>
@@ -169,12 +219,14 @@
                 <div class="congress-layout ideology-hemiciclo-layout">
                     <div class="hemiciclo-wrapper" id="ideology-camara-container">
                         <h3>Cámara por Ideología</h3>
-                        <div id="ideology-camara-hemiciclo"></div>
+                        <div id="ideology-camara-hemiciclo" aria-label="Diagrama de hemiciclo de la Cámara organizado por bloques ideológicos"></div>
+                        <div class="sr-only">Mapa del poder ideológico en la Cámara, agrupando a los representantes en bloques de Izquierda, Centro y Derecha.</div>
                         <div id="ideology-camara-table-container" class="congress-table-container"></div>
                     </div>
                     <div class="hemiciclo-wrapper" id="ideology-senado-container">
                         <h3>Senado por Ideología</h3>
-                        <div id="ideology-senado-hemiciclo"></div>
+                        <div id="ideology-senado-hemiciclo" aria-label="Diagrama de hemiciclo del Senado organizado por bloques ideológicos"></div>
+                        <div class="sr-only">Mapa del poder ideológico en el Senado, mostrando el balance entre los grandes bloques políticos nacionales.</div>
                         <div id="ideology-senado-table-container" class="congress-table-container"></div>
                     </div>
                 </div>
@@ -182,8 +234,9 @@
                 <div class="ideology-shift-wrapper">
                     <h3>Variación Ideológica (Izquierda vs Derecha vs Centro)</h3>
                     <div class="ideology-charts">
-                        <div class="chart-box"><canvas id="ideo-2022-chart"></canvas></div>
-                        <div class="chart-box"><canvas id="ideo-2026-chart"></canvas></div>
+                        <div class="chart-box"><canvas id="ideo-2022-chart" aria-label="Distribución ideológica 2022"></canvas></div>
+                        <div class="chart-box"><canvas id="ideo-2026-chart" aria-label="Distribución ideológica 2026"></canvas></div>
+                        <div class="sr-only">Comparativa de tortas que muestra el cambio en el peso de la Izquierda, el Centro y la Derecha entre los dos últimos periodos legislativos.</div>
                     </div>
                     <div class="story-box insight-ideology">
                         <!-- Narrative populated by JS -->
@@ -235,7 +288,8 @@
                                     <button class="mini-tab" data-corp="Cámara">Cámara</button>
                                 </div>
                             </div>
-                            <div id="map-participation" class="d3-map"></div>
+                            <div id="map-participation" class="d3-map" aria-label="Mapa interactivo de participación electoral por departamento"></div>
+                            <div class="sr-only">Mapa coroplético de Colombia que resalta la densidad de votos por departamento, identificando los centros de poder electoral.</div>
                         </div>
                         <div class="map-analysis" id="analysis-participation">
                             <!-- JS will inject analysis here -->
@@ -254,7 +308,8 @@
                                     <button class="mini-tab" data-corp="Cámara">Cámara</button>
                                 </div>
                             </div>
-                            <div id="map-party" class="d3-map"></div>
+                            <div id="map-party" class="d3-map" aria-label="Mapa interactivo de partidos políticos dominantes por región"></div>
+                            <div class="sr-only">Mapa que identifica el partido ganador en cada departamento, visualizando el mapa del poder partidista actual.</div>
                         </div>
                         <div class="map-analysis" id="analysis-party">
                              <!-- JS will inject analysis here -->
@@ -272,7 +327,8 @@
                                     <button class="mini-tab" data-corp="Cámara">Cámara</button>
                                 </div>
                             </div>
-                            <div id="map-ideology" class="d3-map"></div>
+                            <div id="map-ideology" class="d3-map" aria-label="Mapa interactivo de bloques ideológicos dominantes por departamento"></div>
+                            <div class="sr-only">Mapa que colorea las regiones según el bloque ideológico predominante (Izquierda, Centro o Derecha).</div>
                         </div>
                         <div class="map-analysis" id="analysis-ideology">
                              <!-- JS will inject analysis here -->
