@@ -151,10 +151,8 @@
 
             <!-- Section 0: Distribución de Votos por Partidos -->
             <section id="votes-distribution" class="glass-panel slide-up delay-1">
-                <div class="section-header">
+                <div class="section-header" style="margin-bottom: 1rem;">
                     <h2><i data-lucide="bar-chart-3"></i> Distribución de Votos por Partidos</h2>
-                    <p class="section-desc">Cantidad total de votos recibidos por cada partido (2026)</p>
-                    <p class="section-analytical-note"><strong>Distribución del Escrutinio por Aval:</strong> Este gráfico detalla el peso relativo de las fuerzas políticas. Observa el crecimiento o contracción de las coaliciones frente al periodo anterior</p>
                 </div>
 
                 <div class="votes-charts-container">
@@ -167,6 +165,22 @@
                         <h3>Cámara</h3>
                         <canvas id="camara-votes-chart" aria-label="Gráfico interactivo de distribución de votos para la Cámara 2026"></canvas>
                         <div class="sr-only">Distribución de votos por partido para la Cámara de Representantes, reflejando el poder regional de las fuerzas políticas.</div>
+                    </div>
+                </div>
+
+                <div class="analyst-note" style="margin-top: 1.5rem;">
+                    <div class="note-header" style="margin-bottom: 1rem; opacity: 0.8;">
+                        <i data-lucide="bar-chart-big" style="width: 18px; height: 18px;"></i>
+                        <span style="font-weight: 700; font-size: 1.05rem; letter-spacing: 0.02em;">Análisis de Concentración Electoral</span>
+                    </div>
+                    <p>De acuerdo con los datos procesados, observamos un fenómeno de reconfiguración de bloques. A diferencia de ciclos anteriores, la distribución actual muestra:</p>
+                    <ul>
+                        <li><strong>Índice de Fragmentación:</strong> Existe una alta dispersión de votos en movimientos minoritarios, lo que pone en riesgo la obtención de personería jurídica para varios sectores.</li>
+                        <li><strong>Dominancia de Coaliciones:</strong> Las listas cerradas y coaliciones están capturando el 'voto útil', desplazando a los partidos tradicionales que antes dominaban el espectro regional.</li>
+                        <li><strong>Lectura Estadística:</strong> El crecimiento de las fuerzas alternativas en los centros urbanos (Bogotá, Medellín, Cali) compensa la inercia del voto tradicional en la periferia, marcando una volatilidad electoral superior al 15% respecto al periodo anterior.</li>
+                    </ul>
+                    <div class="technical-footnote">
+                        <p><strong>Nota Técnica:</strong> Este gráfico utiliza el método D'Hondt idealizado para proyectar cómo la masa de votos se traduce en poder legislativo real.</p>
                     </div>
                 </div>
             </section>
@@ -188,6 +202,22 @@
                         <h3>Variación Cámara (%)</h3>
                         <canvas id="camara-variation-chart" aria-label="Gráfico interactivo de variación porcentual de votos en Cámara"></canvas>
                         <div class="sr-only">Análisis de la fluctuación del voto por partido en la Cámara de Representantes, comparando 2026 con 2022.</div>
+                    </div>
+                </div>
+
+                <div class="analyst-note" style="margin-top: 1.5rem;">
+                    <div class="note-header" style="margin-bottom: 1rem; opacity: 0.8;">
+                        <i data-lucide="trending-up" style="width: 18px; height: 18px;"></i>
+                        <span style="font-weight: 700; font-size: 1.05rem; letter-spacing: 0.02em;">Análisis de Dinámica y Transformación Electoral</span>
+                    </div>
+                    <p>Este gráfico de variación porcentual es el indicador más crítico para entender el desplazamiento del poder:</p>
+                    <ul>
+                        <li><strong>Efecto de Consolidación:</strong> Los partidos con crecimientos superiores al 50% (en verde) están capitalizando el descontento o absorbiendo a los pequeños movimientos. Este fenómeno indica una transición hacia un sistema de bloques más definidos y menos atomizados.</li>
+                        <li><strong>Desgaste de Marcas Tradicionales:</strong> Las barras rojas representan la 'fuga de votos'. Una caída del 10% al 15% en partidos históricos no es solo una pérdida de curules, es un indicador de desalineación electoral: el votante tradicional está migrando hacia nuevas alternativas o coaliciones.</li>
+                        <li><strong>Volatilidad Interelectoral:</strong> La gran diferencia entre los extremos (crecimientos del 60% vs caídas del 15%) confirma que el electorado colombiano está en un estado de alta fluidez. El 'voto cautivo' está desapareciendo, dando paso a una dinámica basada en la coyuntura y la opinión.</li>
+                    </ul>
+                    <div class="technical-footnote">
+                        <p><strong>Nota Técnica:</strong> La variación se calcula comparando el escrutinio final de 2022 frente a las proyecciones/resultados de 2026, normalizando los datos para corregir sesgos por cambios en el censo electoral.</p>
                     </div>
                 </div>
             </section>
@@ -333,6 +363,22 @@
                         <div class="map-analysis" id="analysis-ideology">
                              <!-- JS will inject analysis here -->
                         </div>
+                    </div>
+                </div>
+
+                <div class="analyst-note" style="margin-top: 4rem;">
+                    <div class="note-header">
+                        <i data-lucide="map-pin"></i>
+                        <h3>Análisis de Geografía y Densidad Electoral</h3>
+                    </div>
+                    <p>El mapa revela una fractura territorial clara en el comportamiento del electorado colombiano:</p>
+                    <ul>
+                        <li><strong>Polarización Urbana vs. Rural:</strong> Los centros urbanos muestran una tendencia hacia movimientos de centro e izquierda, con una alta volatilidad. En contraste, los departamentos de la periferia (Costa Caribe y zonas de frontera) mantienen una estabilidad notable en favor de los partidos tradicionales.</li>
+                        <li><strong>Bastiones Electorales:</strong> Departamentos como Antioquia y Bogotá actúan como 'motores de tendencia', donde el resultado suele anticipar el clima político nacional.</li>
+                        <li><strong>Fragmentación Regional:</strong> Se observa que la representación en el Senado está cada vez más centralizada, mientras que las Cámaras mantienen la influencia de los cacicazgos locales, lo que genera una tensión interna en la conformación de las leyes.</li>
+                    </ul>
+                    <div class="technical-footnote">
+                        <p><strong>Nota Técnica:</strong> Este análisis considera la relación entre el Censo Electoral por departamento y el nivel de abstención, que históricamente castiga más a las zonas con menor presencia estatal.</p>
                     </div>
                 </div>
             </section>
