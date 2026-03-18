@@ -5,17 +5,22 @@
 const normalizeName = (name) => {
     if(!name) return "";
     return name.toUpperCase()
-               .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // remove accents
+               .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
                .replace("SANTAFE DE BOGOTA D.C", "BOGOTA D.C.")
                .replace("BOGOTA, D.C.", "BOGOTA D.C.")
                .replace("BOGOTA", "BOGOTA D.C.")
                .trim();
 };
 
+const normalizeCorp = (corp) => {
+    if (!corp) return "";
+    return corp.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+};
+
 const findKey = (obj, target) => {
     if (!obj) return null;
     return Object.keys(obj).find(k => 
-        k.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") === target
+        normalizeCorp(k) === target
     );
 };
 
@@ -86,7 +91,7 @@ function getCSScolor(name) { return getComputedStyle(document.documentElement).g
 
 export function drawParticipationMap(electionData, geoData, corp = "Senado") {
     const year = "2026";
-    const normalizedTarget = corp.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const normalizedTarget = normalizeCorp(corp);
     const terrKey = findKey(electionData.territorio[year], normalizedTarget);
     const terrData = terrKey ? electionData.territorio[year][terrKey] : null;
 
@@ -160,7 +165,7 @@ export function drawParticipationMap(electionData, geoData, corp = "Senado") {
 
 export function drawPartyMap(electionData, geoData, corp = "Senado") {
     const year = "2026";
-    const normalizedTarget = corp.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const normalizedTarget = normalizeCorp(corp);
     const terrKey = findKey(electionData.territorio[year], normalizedTarget);
     const terrData = terrKey ? electionData.territorio[year][terrKey] : null;
 
@@ -174,9 +179,24 @@ export function drawPartyMap(electionData, geoData, corp = "Senado") {
     });
 
     const partyColors = {
-        'Pacto Histórico': '#f472b6', 'Centro Democrático': '#38bdf8', 'Partido Liberal': '#dc2626',
-        'Partido Conservador': '#2563eb', 'Alianza por Colombia': '#22c55e', 'Partido de la U': '#facc15',
-        'Cambio Radical': '#0f766e', 'Alianza Verde': '#10b981', 'MIRA': '#4338ca', 'default': '#64748b'
+        'Pacto Historico': '#FF00FF', 'Coalicion Pacto Historico': '#FF00FF',
+        'Centro Democratico': '#0393F7',
+        'Partido Liberal': '#D32F2F',
+        'Partido Conservador': '#1565C0',
+        'Cambio Radical': '#00897B', 'CR y ALMA': '#00897B',
+        'Alianza por Colombia': '#2E7D32', 'Alianza Verde': '#2E7D32', 'A.V.': '#2E7D32',
+        'Partido de la U': '#F9A825',
+        'Salvacion Nacional': '#166534',
+        'Ahora Colombia': '#9C27B0',
+        'CJL y MIRA': '#83067B', 'MIRA': '#83067B',
+        'Nos Une Colombia': '#AA4400',
+        'MAIS': '#D35F5F', 'AICO': '#78909C',
+        'Fuerza Ciudadana': '#E65100',
+        'Nuevo Liberalismo': '#FF5722',
+        'Frente Amplio Unitario': '#AD1457', 'Frente Amplio': '#AD1457',
+        'Creemos': '#263238',
+        'A.V. y Centro Esperanza': '#00695C',
+        'default': '#64748b'
     };
     
     const getWinnerCol = (winnerName) => {
@@ -241,7 +261,7 @@ export function drawPartyMap(electionData, geoData, corp = "Senado") {
 
 export function drawIdeologyMap(electionData, geoData, corp = "Senado") {
     const year = "2026";
-    const normalizedTarget = corp.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const normalizedTarget = normalizeCorp(corp);
     const terrKey = findKey(electionData.territorio[year], normalizedTarget);
     const terrData = terrKey ? electionData.territorio[year][terrKey] : null;
 
@@ -315,7 +335,7 @@ export function drawIdeologyMap(electionData, geoData, corp = "Senado") {
 
 export function drawVariationMap(electionData, geoData, corp = "Senado") {
     const year = "2026";
-    const normalizedTarget = corp.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const normalizedTarget = normalizeCorp(corp);
     const terrKey = findKey(electionData.territorio[year], normalizedTarget);
     const terrData = terrKey ? electionData.territorio[year][terrKey] : null;
 

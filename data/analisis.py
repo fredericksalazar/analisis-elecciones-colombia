@@ -9,15 +9,15 @@ def load_csv(path):
 
 def main():
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    gen_data = load_csv(os.path.join(base_dir, 'resumen_general_elecciones_completo.csv'))
-    part_data = load_csv(os.path.join(base_dir, 'elecciones_legislativas_partidos.csv'))
+    gen_data = load_csv(os.path.join(base_dir, 'resumen_general_wikipedia.csv'))
+    part_data = load_csv(os.path.join(base_dir, 'elecciones_legislativas_partidos_wikipedia.csv'))
     terr_data = load_csv(os.path.join(base_dir, 'eleccione_legislativas_territorio.csv'))
 
     res = {
         "comportamiento_electoral": {},
-        "partidos": {"Senado": {}, "Cámara": {}},
-        "ideologia": {"Senado": {}, "Cámara": {}},
-        "indicadores_avanzados": {"Senado": {}, "Cámara": {}},
+        "partidos": {"Senado": {}, "Camara": {}},
+        "ideologia": {"Senado": {}, "Camara": {}},
+        "indicadores_avanzados": {"Senado": {}, "Camara": {}},
         "territorio": {}
     }
 
@@ -47,10 +47,10 @@ def main():
         }
     
     comparativo = {}
-    for c in ["Senado", "Cámara"]:
+    for c in ["Senado", "Camara"]:
         try:
-            d26 = comportamiento["2026"][c]
-            d22 = comportamiento["2022"][c]
+            d26 = comportamiento["2026"].get(c)
+            d22 = comportamiento["2022"].get(c)
             comparativo[c] = {
                 "variacion_votantes_abs": d26["votantes"] - d22["votantes"],
                 "variacion_participacion_pp": round(d26["participacion_pct"] - d22["participacion_pct"], 2),
@@ -79,8 +79,13 @@ def main():
         totales_corp[y][c]["votos"] += votos
         totales_corp[y][c]["curules"] += curules
 
-    partidos_dict = {"Senado": {}, "Cámara": {}}
-    ideologia_dict = {"Senado": {}, "Cámara": {}}
+    for row in gen_data:
+        y = row['year']
+        c = row['corp']
+        totales_corp[y][c]["votos"] = int(row['validos'])
+
+    partidos_dict = {"Senado": {}, "Camara": {}}
+    ideologia_dict = {"Senado": {}, "Camara": {}}
 
     for row in part_data:
         y = row['year']
@@ -88,11 +93,11 @@ def main():
         p = row['partido']
         votos = int(row['votos'])
         curules = int(row['curules'])
-        ideo = row['ideo']
+        ideo = row['ideologia'] if 'ideologia' in row else row.get('ideo', '')
 
         # Partidos
         if p not in partidos_dict[c]:
-            partidos_dict[c][p] = {"ideologia": ideo, "2022": None, "2026": None}
+            partidos_dict[c][p] = {"ideologia": ideo, "color": row.get('color', '#94a3b8'), "2022": None, "2026": None}
             
         t_votos = totales_corp[y][c]["votos"]
         t_curules = totales_corp[y][c]["curules"]
@@ -115,10 +120,11 @@ def main():
             "costo_votos_por_curul": costo_curul
         }
 
-        # Ideologia
+        # Ideologia (solo partidos con votos > 0)
         if ideo not in ideologia_dict[c]:
             ideologia_dict[c][ideo] = {"2022": {"votos": 0, "curules": 0}, "2026": {"votos": 0, "curules": 0}}
-        ideologia_dict[c][ideo][y]["votos"] += votos
+        if votos > 0:
+            ideologia_dict[c][ideo][y]["votos"] += votos
         ideologia_dict[c][ideo][y]["curules"] += curules
 
     # Calcular variaciones partidos
@@ -126,10 +132,17 @@ def main():
         for p, data in partidos.items():
             d22 = data["2022"]
             d26 = data["2026"]
-            if d22 and d26:
+            if d22 and d26 and d22["votos"] > 0:
                 data["comparativo"] = {
                     "variacion_votos_abs": d26["votos"] - d22["votos"],
                     "variacion_votos_pct": round(((d26["votos"] - d22["votos"]) / d22["votos"]) * 100, 2),
+                    "curules_adicionales": d26["curules"] - d22["curules"],
+                    "variacion_poder_relativo_pp": round(d26["poder_relativo_curules_pct"] - d22["poder_relativo_curules_pct"], 2)
+                }
+            elif d22 and d26:
+                data["comparativo"] = {
+                    "variacion_votos_abs": d26["votos"] - d22["votos"],
+                    "variacion_votos_pct": None,
                     "curules_adicionales": d26["curules"] - d22["curules"],
                     "variacion_poder_relativo_pp": round(d26["poder_relativo_curules_pct"] - d22["poder_relativo_curules_pct"], 2)
                 }
@@ -156,11 +169,11 @@ def main():
     res["ideologia"] = ideologia_dict
 
     # 4. Indicadores Avanzados: IHH
-    for c in ["Senado", "Cámara"]:
+    for c in ["Senado", "Camara"]:
         for y in ["2022", "2026"]:
             sum_sq_votos = 0
             for p, data in partidos_dict[c].items():
-                if data[y]:
+                if data[y] and data[y]["cuota_poder_votos_pct"] > 0:
                     sum_sq_votos += (data[y]["cuota_poder_votos_pct"] ** 2)
             
             if y not in res["indicadores_avanzados"][c]:

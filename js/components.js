@@ -57,7 +57,7 @@ export function renderPartyCards(partyData, containerId) {
 
     // Filter out parties that don't have 2026 data and sort by 2026 curules
     const partiesList = Object.entries(partyData)
-        .filter(([_, data]) => data['2026'] !== null)
+        .filter(([_, data]) => data['2026'] !== null && (data['2026'].votos || 0) > 0)
         .sort((a, b) => b[1]['2026'].curules - a[1]['2026'].curules);
 
     const formatNumber = (num) => new Intl.NumberFormat('es-CO').format(num);
@@ -65,7 +65,7 @@ export function renderPartyCards(partyData, containerId) {
     partiesList.forEach(([partyName, pData]) => {
         const d26 = pData['2026'];
         const cmp = pData.comparativo;
-        const color = pData['2026'].color || getComputedStyle(document.documentElement).getPropertyValue(`--party-${cleanPartyStr(partyName)}`).trim() || '#64748b'; // default gray
+        const color = pData.color || cleanPartyStr(partyName);
 
         let curulesCmpHtml = '';
         if (typeof cmp === 'object') {
@@ -111,16 +111,159 @@ export function renderPartyCards(partyData, containerId) {
     });
 }
 
+// Comprehensive distinct color palette for all parties
+const PARTY_COLORS_COMPONENTS = {
+    "Pacto Historico": "#FF00FF",
+    "Coalicion Pacto Historico": "#FF00FF",
+    "Coalicion PH": "#FF00FF",
+    "Coalicion PH-Alianza Verde": "#FF00FF",
+    "A.V. y PH": "#FF00FF",
+    "Pacto H. y A. Verde": "#FF00FF",
+    "PH-Alianza Verde": "#FF00FF",
+    "PH y MAIS": "#FF00FF",
+    "PH y A. Verde": "#FF00FF",
+    "PH-MAIS-ED": "#FF00FF",
+    "Putumayo Tambien": "#FF00FF",
+    "Coalicion PH-MAIS": "#FF00FF",
+    "Coalicion PH-MAIS-ED": "#FF00FF",
+    "Coalicion Putumayo Tambien": "#FF00FF",
+
+    "Centro Democratico": "#0393F7",
+    "CD y MIRA": "#0393F7",
+    "CD-LAU": "#0393F7",
+    "PC-CD": "#0393F7",
+    "CoR-MIRA-AV": "#0393F7",
+    "Coalicion CD-MIRA": "#0393F7",
+    "Coalicion CD-LAU": "#0393F7",
+    "Coalicion PC-CD": "#0393F7",
+    "Coalicion CoR-MIRA-AV": "#0393F7",
+    "Coalicion PC-PU": "#0393F7",
+    "Coalicion NL-ASI-AV": "#0393F7",
+    "Coalicion PDC-LF-ADA": "#0393F7",
+    "Partido Democrata": "#0393F7",
+
+    "Partido Liberal": "#D32F2F",
+    "Coalicion PL-CoR": "#D32F2F",
+    "PL y CoR": "#D32F2F",
+    "PL-CJL": "#D32F2F",
+    "Coalicion PL-CJL": "#D32F2F",
+
+    "Partido Conservador": "#1565C0",
+    "Coalicion PC-MSN": "#1565C0",
+    "Coalicion CD-PC": "#1565C0",
+    "Coalicion PC-CD": "#1565C0",
+
+    "Partido de la U": "#F9A825",
+    "LAU-CR": "#F9A825",
+    "Coalicion LAU-CR": "#F9A825",
+
+    "Cambio Radical": "#00897B",
+    "CR y ALMA": "#00897B",
+    "CR-CJL-LIGA": "#00897B",
+    "CR-MIRA": "#00897B",
+    "Coalicion CR y ALMA": "#00897B",
+    "Coalicion CR-CJL-LIGA": "#00897B",
+    "Coalicion CR-MIRA": "#00897B",
+    "Coalicion CR-LAU-MSN-OXI": "#00897B",
+    "Coalicion PC-MSN": "#00897B",
+
+    "A.V.": "#2E7D32",
+    "Alianza Verde": "#2E7D32",
+    "A.V. y Centro Esperanza": "#00695C",
+    "Alianza por Colombia": "#2E7D32",
+    "Alternativos AV-PDA": "#2E7D32",
+    "AV-EM": "#2E7D32",
+    "AV y AICO": "#2E7D32",
+    "NL-ASI-AV": "#2E7D32",
+    "Coalicion AV-AICO": "#2E7D32",
+    "Coalicion AV-EM": "#2E7D32",
+    "Coalicion A.V.": "#2E7D32",
+    "Coalicion Alianza Verde": "#2E7D32",
+    "Coalicion NL-ASI-AV": "#2E7D32",
+    "Coalicion Verde Esperanza": "#2E7D32",
+    "Coalicion Frente Amplio": "#2E7D32",
+    "Coalicion A.V. y PH": "#2E7D32",
+    "Coalicion PH-Alianza Verde": "#2E7D32",
+    "Coalicion PH y MAIS": "#2E7D32",
+    "Coalicion PH-MAIS": "#2E7D32",
+    "Coalicion Verde Esperanza": "#2E7D32",
+    "Coalicion MAIS-CoR": "#D35F5F",
+
+    "Ahora Colombia": "#9C27B0",
+    "Coalicion Ahora Colombia": "#9C27B0",
+
+    "Salvacion Nacional": "#166534",
+    "MSN": "#166534",
+    "Coalicion PC-MSN": "#166534",
+    "Coalicion CR-LAU-MSN-OXI": "#166534",
+
+    "Nos Une Colombia": "#AA4400",
+    "Liga Anticorrupcion": "#AA4400",
+    "Coalicion Nos Une Colombia": "#AA4400",
+
+    "CJL y MIRA": "#83067B",
+    "MIRA": "#83067B",
+    "Coalicion CR-CJL-MIRA": "#83067B",
+    "Coalicion CR-MIRA": "#83067B",
+    "CoR y MIRA": "#83067B",
+    "Coalicion CoR-MIRA": "#83067B",
+
+    "Fuerza Ciudadana": "#E65100",
+    "Coalicion Fuerza Ciudadana": "#E65100",
+    "Movimiento Fuerza Ciudadana": "#E65100",
+
+    "Nuevo Liberalismo": "#FF5722",
+    "Coalicion Nuevo Liberalismo": "#FF5722",
+    "Partido Nuevo Liberalismo": "#FF5722",
+
+    "Frente Amplio Unitario": "#AD1457",
+    "Coalicion Frente Amplio": "#AD1457",
+    "Frente Amplio": "#AD1457",
+
+    "Creemos": "#263238",
+    "Con Toda Por Colombia": "#4E342E",
+    "Partido Oxigeno": "#00BFA5",
+    "Patriotas": "#8D6E63",
+
+    "MAIS": "#D35F5F",
+    "Coalicion MAIS-CoR": "#D35F5F",
+    "Coalicion PH y MAIS": "#D35F5F",
+    "Coalicion PH-MAIS": "#D35F5F",
+    "Coalicion PH-MAIS-ED": "#D35F5F",
+
+    "AICO": "#78909C",
+    "Coalicion AV-AICO": "#78909C",
+
+    "El Naranjo": "#E67E22",
+    "La Fuerza": "#E9451E",
+    "ASI": "#F9A825",
+
+    "Coalicion PL-CoR": "#D32F2F",
+    "Coalicion CoR-MIRA": "#83067B",
+    "Coalicion Vamos": "#3498DB",
+
+    "Indigenas Sen": "#607D8B",
+    "Indigenas Cam": "#607D8B",
+    "Comunes Sen": "#800000",
+    "Comunes Cam": "#800000",
+    "Comunes": "#800000",
+    "CITREP": "#CCCCCC",
+    "Poblacion Raizal": "#26A69A",
+    "Afrodescendientes": "#795548",
+    "Exterior": "#90A4AE",
+    "Estatuto Oposicion Sen": "#CCCCCC",
+    "Estatuto Oposicion Cam": "#CCCCCC",
+    "Estatuto de la Oposicion": "#CCCCCC",
+    "Curul Segunda Formula Vicepresidencial": "#CCCCCC",
+    "Curul Indigena": "#607D8B",
+    "Circunscripcion Indigena": "#607D8B",
+    "Circunscripcion Afrodescendiente": "#795548",
+    "Circunscripcion Internacional": "#90A4AE",
+};
+
+
 function cleanPartyStr(str) {
-    // Quick mapper for css variables
-    if(str.includes("Histórico")) return "ph";
-    if(str.includes("Conservador")) return "pc";
-    if(str.includes("Liberal")) return "pl";
-    if(str.includes("Centro Democrático")) return "cd";
-    if(str.includes("Cambio")) return "cr";
-    if(str.includes("U")) return "u";
-    if(str.includes("Verde")) return "av";
-    return "default";
+    return PARTY_COLORS_COMPONENTS[str] || '#64748b';
 }
 
 export function renderAdvancedAnalysis(metrics, containerId) {

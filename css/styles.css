@@ -681,40 +681,102 @@ p {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.85rem;
-    text-align: right;
 }
-.congress-comp-table th {
+.congress-comp-table thead th,
+.congress-comp-table tbody td {
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    text-align: center;
+    vertical-align: middle;
+}
+.congress-comp-table thead th:last-child,
+.congress-comp-table tbody td:last-child {
+    border-right: none;
+}
+.congress-comp-table thead th:first-child,
+.congress-comp-table tbody td:first-child {
+    text-align: left;
+    width: 46%;
+}
+.congress-comp-table thead th:nth-child(2),
+.congress-comp-table tbody td:nth-child(2) {
+    width: 17%;
+}
+.congress-comp-table thead th:nth-child(3),
+.congress-comp-table tbody td:nth-child(3) {
+    width: 17%;
+}
+.congress-comp-table thead th:nth-child(4),
+.congress-comp-table tbody td:nth-child(4) {
+    width: 20%;
+}
+.congress-comp-table thead th {
     background: var(--bg-hover);
     color: var(--text-primary);
     font-weight: 600;
-    padding: 0.75rem 0.75rem;
-    border-bottom: 1px solid var(--border-color);
-    line-height: 1.2;
-    vertical-align: bottom;
+    line-height: 1.3;
 }
-.congress-comp-table th:first-child {
-    text-align: left;
-    background: transparent;
-    border-bottom: none;
-}
-.congress-comp-table td {
-    padding: 0.75rem 0.75rem;
-    border-bottom: 1px solid var(--border-color);
+.congress-comp-table tbody td {
     color: var(--text-secondary);
-    vertical-align: middle;
 }
-.congress-comp-table .party-col {
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-primary);
+.congress-comp-table tbody td:first-child {
+    padding-left: 0.5rem;
+}
+.congress-comp-table.ideology-table thead th:first-child,
+.congress-comp-table.ideology-table tbody td:first-child {
+    width: 30%;
+}
+.congress-comp-table.ideology-table thead th:nth-child(2),
+.congress-comp-table.ideology-table tbody td:nth-child(2) {
+    width: 20%;
+}
+.congress-comp-table.ideology-table thead th:nth-child(3),
+.congress-comp-table.ideology-table tbody td:nth-child(3) {
+    width: 20%;
+}
+.congress-comp-table.ideology-table thead th:nth-child(4),
+.congress-comp-table.ideology-table tbody td:nth-child(4) {
+    width: 15%;
+}
+.congress-comp-table.ideology-table thead th:nth-child(5),
+.congress-comp-table.ideology-table tbody td:nth-child(5) {
+    width: 15%;
 }
 .congress-comp-table .party-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
     display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.5);
+    vertical-align: middle;
+    margin-right: 0.4rem;
+}
+.diff-indicator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.15rem;
+    padding: 0.1rem 0.3rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+.diff-up {
+    color: #16a34a;
+    background: rgba(22, 163, 74, 0.12);
+}
+.diff-up::before {
+    content: "▲";
+    font-size: 0.7rem;
+}
+.diff-down {
+    color: #dc2626;
+    background: rgba(220, 38, 38, 0.12);
+}
+.diff-down::before {
+    content: "▼";
+    font-size: 0.7rem;
 }
 
 
@@ -1043,7 +1105,7 @@ p {
 .votes-chart-wrapper {
     display: flex;
     flex-direction: column;
-    height: 500px;
+    height: 800px;
     width: 100%;
     min-width: 0;
     background: var(--bg-secondary);
@@ -1054,7 +1116,7 @@ p {
 }
 
 .votes-chart-wrapper h3 {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     font-family: var(--font-display);
     font-weight: 500;
     font-size: 1.1rem;
@@ -1063,7 +1125,12 @@ p {
 
 .votes-chart-wrapper canvas {
     flex: 1;
-    max-height: calc(100% - 2.5rem);
+    min-height: 0;
+    width: 100% !important;
+}
+
+.votes-chart-wrapper.variation-chart {
+    height: 600px;
 }
 
 @media (max-width: 1024px) {

@@ -1,0 +1,64 @@
+year,corp,partido,votos,curules,color,ideologia
+2022,Camara,Afrodescendientes,0,1,#795548,Izquierda
+2022,Camara,Alianza Verde,1093836,11,#32CD32,Centro
+2022,Camara,Alternativos,60527,1,#32CD32,Izquierda
+2022,Camara,CCE,445549,5,#8322A8,Centro
+2022,Camara,CITREP,0,16,#AAAAAA,Centro
+2022,Camara,Cambio Radical,1404141,17,#E96316,Derecha
+2022,Camara,Centro Democratico,1928251,18,#0393F7,Derecha
+2022,Camara,Colombia Renaciente,62490,1,#DD0C15,Izquierda
+2022,Camara,Comunes Cam,21423,5,#800000,Izquierda
+2022,Camara,Curul Segunda Formula Vicepresidencial Cam,0,1,#CCCCCC,Centro
+2022,Camara,Exterior,0,1,#90A4AE,Centro
+2022,Camara,Fuerza Ciudadana,71175,1,#5B4B8A,Izquierda
+2022,Camara,Indigenas Cam,0,1,#607D8B,Izquierda
+2022,Camara,LIGA,172342,1,#FED141,Derecha
+2022,Camara,MIRA,288617,2,#8322A8,Derecha
+2022,Camara,Nuevo Liberalismo,282271,2,#FFCC0C,Centro
+2022,Camara,Pacto Historico,3071627,29,#9F3A86,Izquierda
+2022,Camara,Partido Conservador,2179573,26,#0A62AD,Derecha
+2022,Camara,Partido Liberal,2403894,33,#FF0318,Centro
+2022,Camara,Partido de la U,1439579,15,#FFA339,Centro
+2022,Camara,Poblacion Raizal,0,1,#26A69A,Izquierda
+2022,Senado,Alianza Verde,1958369,13,#32CD32,Centro
+2022,Senado,CJL y MIRA,584806,4,#000080,Derecha
+2022,Senado,Cambio Radical,1609173,11,#E96316,Derecha
+2022,Senado,Centro Democratico,1949905,13,#0393F7,Derecha
+2022,Senado,Comunes Sen,25708,5,#800000,Izquierda
+2022,Senado,Curul Segunda Formula Presidencial,0,1,#CCCCCC,Centro
+2022,Senado,Indigenas Sen,0,2,#607D8B,Izquierda
+2022,Senado,Pacto Historico,2880254,20,#9F3A86,Izquierda
+2022,Senado,Partido Conservador,2238678,15,#0A62AD,Derecha
+2022,Senado,Partido Liberal,2112528,14,#FF0318,Centro
+2022,Senado,Partido de la U,1506567,10,#FFA339,Centro
+2026,Camara,ASI,65696,2,#FFCC0C,Izquierda
+2026,Camara,Afrodescendientes,0,1,#795548,Izquierda
+2026,Camara,Ahora Colombia,677260,2,#FF00FF,Derecha
+2026,Camara,Alianza Verde,902056,8,#32CD32,Centro
+2026,Camara,CITREP,0,16,#AAAAAA,Centro
+2026,Camara,Cambio Radical,1049566,12,#E96316,Derecha
+2026,Camara,Centro Democratico,3397874,32,#0393F7,Derecha
+2026,Camara,Creemos,285354,2,#8F114F,Derecha
+2026,Camara,Curul Segunda Formula Vicepresidencial Cam,0,1,#CCCCCC,Centro
+2026,Camara,Exterior,0,1,#90A4AE,Centro
+2026,Camara,Fuerza Cauca,61138,1,#5B4B8A,Derecha
+2026,Camara,Indigenas Cam,0,1,#607D8B,Izquierda
+2026,Camara,La Fuerza,139936,1,#E42520,Izquierda
+2026,Camara,Pacto Historico,4209469,40,#9F3A86,Izquierda
+2026,Camara,Partido Conservador,2040126,19,#0A62AD,Derecha
+2026,Camara,Partido Liberal,2255763,27,#FF0318,Centro
+2026,Camara,Partido de la U,1047542,12,#FFA339,Centro
+2026,Camara,Partido democrata,106849,1,#104786,Izquierda
+2026,Camara,Poblacion Raizal,0,1,#26A69A,Izquierda
+2026,Camara,Salvacion Nacional,64494,1,#7A9FB7,Derecha
+2026,Senado,Ahora Colombia,900606,5,#FF00FF,Derecha
+2026,Senado,Alianza Verde,1904154,10,#32CD32,Centro
+2026,Senado,Cambio Radical,1248021,7,#E96316,Derecha
+2026,Senado,Centro Democratico,3035715,17,#0393F7,Derecha
+2026,Senado,Curul Segunda Formula Presidencial,0,1,#CCCCCC,Centro
+2026,Senado,Indigenas Sen,0,2,#607D8B,Izquierda
+2026,Senado,Pacto Historico,4413636,25,#9F3A86,Izquierda
+2026,Senado,Partido Conservador,1863663,10,#0A62AD,Derecha
+2026,Senado,Partido Liberal,2275182,13,#FF0318,Centro
+2026,Senado,Partido de la U,1565786,9,#FFA339,Centro
+2026,Senado,Salvacion Nacional,705924,4,#7A9FB7,Derecha

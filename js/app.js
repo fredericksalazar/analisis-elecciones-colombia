@@ -1,8 +1,8 @@
 // Main Application Logic
-import { renderMacroKPIs, renderPartyCards, renderAdvancedAnalysis } from './components.js?v=20260317114500';
-import { drawHemiciclo, drawIdeologyCharts, drawVotesBarCharts, drawVotesVariationCharts, renderCongressTable, renderIdeologyTable } from './charts.js?v=20260316160500';
+import { renderMacroKPIs, renderPartyCards, renderAdvancedAnalysis } from './components.js?v=20260318q';
+import { drawHemiciclo, drawIdeologyCharts, drawVotesBarCharts, drawVotesVariationCharts, renderCongressTable, renderIdeologyTable } from './charts.js?v=20260318q';
 import { calculateAdvancedMetrics } from './analysis.js';
-import { drawParticipationMap, drawPartyMap, drawIdeologyMap, drawVariationMap } from './maps.js?v=20260316140000';
+import { drawParticipationMap, drawPartyMap, drawIdeologyMap, drawVariationMap } from './maps.js?v=20260318q';
 
 let electionData = null;
 
@@ -66,8 +66,8 @@ function initializeVisualizations(data) {
     drawHemiciclo(data.partidos.Senado, '#senado-hemiciclo', "Senado");
     renderCongressTable(data.partidos.Senado, '#senado-table-container');
 
-    drawHemiciclo(data.partidos.Cámara, '#camara-hemiciclo', "Cámara");
-    renderCongressTable(data.partidos.Cámara, '#camara-table-container');
+    drawHemiciclo(data.partidos.Camara, '#camara-hemiciclo', "Cámara");
+    renderCongressTable(data.partidos.Camara, '#camara-table-container');
 
 
 
@@ -84,13 +84,13 @@ function initializeVisualizations(data) {
     };
 
     const senadoIdeoHemicicloData = transformToIdeoHemiciclo(data.ideologia.Senado);
-    const camaraIdeoHemicicloData = transformToIdeoHemiciclo(data.ideologia.Cámara);
+    const camaraIdeoHemicicloData = transformToIdeoHemiciclo(data.ideologia.Camara);
 
     drawHemiciclo(senadoIdeoHemicicloData, '#ideology-senado-hemiciclo', "Senado");
     drawHemiciclo(camaraIdeoHemicicloData, '#ideology-camara-hemiciclo', "Cámara");
 
     renderIdeologyTable(data.ideologia.Senado, '#ideology-senado-table-container');
-    renderIdeologyTable(data.ideologia.Cámara, '#ideology-camara-table-container');
+    renderIdeologyTable(data.ideologia.Camara, '#ideology-camara-table-container');
 
     // Draw Ideology Trend Doughnuts (Keep existing)
     drawIdeologyCharts(data.ideologia.Senado);
@@ -103,7 +103,7 @@ function initializeVisualizations(data) {
 
     // Draw Party Cards
     renderPartyCards(data.partidos.Senado, '#party-senado-view');
-    renderPartyCards(data.partidos.Cámara, '#party-camara-view');
+    renderPartyCards(data.partidos.Camara, '#party-camara-view');
 
     // Advanced Analysis
     setupAdvancedAnalysis(data);
@@ -115,7 +115,7 @@ export function setupAdvancedAnalysis(data) {
     renderAdvancedAnalysis(senadoMetrics, 'advanced-metrics-senado');
     
     // Render Cámara
-    const camaraMetrics = calculateAdvancedMetrics(data, 'Cámara');
+    const camaraMetrics = calculateAdvancedMetrics(data, 'Camara');
     renderAdvancedAnalysis(camaraMetrics, 'advanced-metrics-camara');
 }
 

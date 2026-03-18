@@ -1,0 +1,59 @@
+nombre_normalizado,alias,color_hex,css_variable,ideologia
+Pacto Historico,Pacto Historico,#9F3A86,--party-ph,Izquierda
+Pacto Historico,PH Verde,#9F3A86,--party-ph,Izquierda
+Pacto Historico,PH MAIS,#9F3A86,--party-ph,Izquierda
+Pacto Historico,PH Risaralda,#9F3A86,--party-ph,Izquierda
+Pacto Historico,Putumayo,#9F3A86,--party-ph,Izquierda
+Centro Democratico,Centro Democratico,#0393F7,--party-cd,Derecha
+Centro Democratico,CD MIRA,#0393F7,--party-cd,Derecha
+Centro Democratico,CoR MIRA,#0393F7,--party-cd,Derecha
+Centro Democratico,CD AP DC,#0393F7,--party-cd,Derecha
+Centro Democratico,CD PC,#0393F7,--party-cd,Derecha
+Centro Democratico,CD PU,#0393F7,--party-cd,Derecha
+Centro Democratico,CD CC,#0393F7,--party-cd,Derecha
+Partido Liberal,Partido Liberal,#FF0318,--party-pl,Centro
+Partido Liberal,PL CJL,#FF0318,--party-pl,Centro
+Partido Liberal,Liberal CoR,#FF0318,--party-pl,Centro
+Partido Conservador,Partido Conservador,#0A62AD,--party-pc,Derecha
+Partido Conservador,PC CC,#0A62AD,--party-pc,Derecha
+Partido Conservador,PU CR,#0A62AD,--party-pc,Derecha
+Partido de la U,Partido de la U,#FFA339,--party-u,Centro
+Cambio Radical,Cambio Radical,#E96316,--party-cr,Derecha
+Cambio Radical,CR y ALMA,#E96316,--party-cr,Derecha
+Cambio Radical,CR PUG MSN,#E96316,--party-cr,Derecha
+Cambio Radical,CR CJL LIGA,#E96316,--party-cr,Derecha
+Cambio Radical,CR MV,#E96316,--party-cr,Derecha
+Cambio Radical,CR MIRA,#E96316,--party-cr,Derecha
+Alianza Verde,A.V. y Centro Esperanza,#32CD32,--party-av,Centro
+Alianza Verde,A.V.,#32CD32,--party-av,Centro
+Alianza Verde,AV En Marcha,#32CD32,--party-av,Centro
+Alianza Verde,AV AICO,#32CD32,--party-av,Izquierda
+Alianza Verde,NL ASI,#32CD32,--party-av,Centro
+Alianza por Colombia,Alianza por Colombia,#008000,--party-apc,Derecha
+MIRA,MIRA,#8322A8,--party-mira,Derecha
+CJL y MIRA,CJL y MIRA,#000080,--party-mira,Derecha
+Ahora Colombia,Ahora Colombia,#FF00FF,--party-ac,Derecha
+Ahora Colombia,MSN,#FF00FF,--party-ac,Derecha
+Salvacion Nacional,Salvacion Nacional,#7A9FB7,--party-sn,Derecha
+Salvacion Nacional,PC MSN,#7A9FB7,--party-sn,Derecha
+Creemos,Creemos,#8F114F,--party-creemos,Derecha
+Fuerza Ciudadana,Fuerza Ciudadana,#5B4B8A,--party-fc,Izquierda
+Nuevo Liberalismo,Nuevo Liberalismo,#FFCC0C,--party-nl,Centro
+ASI,ASI,#FFCC0C,--party-asi,Izquierda
+La Fuerza,La Fuerza,#E42520,--party-lf,Izquierda
+Colombia Renaciente,Colombia Renaciente,#DD0C15,--party-cor,Izquierda
+LIGA,LIGA,#FED141,--party-nu,Derecha
+CCE,CCE,#8322A8,--party-cce,Centro
+Alternativos,Alternativos,#32CD32,--party-av,Izquierda
+Fuerza Cauca,Fuerza Cauca,#5B4B8A,--party-fc,Derecha
+Partido democrata,Partido democrata,#104786,--party-pdc,Izquierda
+Comunes Sen,Comunes Sen,#800000,--party-com,Izquierda
+Comunes Cam,Comunes Cam,#800000,--party-com,Izquierda
+Indigenas Sen,Indigenas Sen,#607D8B,--party-ind,Izquierda
+Indigenas Cam,Indigenas Cam,#607D8B,--party-ind,Izquierda
+Poblacion Raizal,Poblacion Raizal,#26A69A,--party-raizal,Izquierda
+Afrodescendientes,Afrodescendientes,#795548,--party-afro,Izquierda
+Exterior,Exterior,#90A4AE,--party-ext,Centro
+CITREP,CITREP,#AAAAAA,--party-citrep,Centro
+Curul Segunda Formula Presidencial,Estatuto Oposicion Sen,#000000,--party-stat,Centro
+Curul Segunda Formula Vicepresidencial Cam,Curul Segunda Formula Vicepresidencial,#000000,--party-stat,Centro
