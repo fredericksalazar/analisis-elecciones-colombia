@@ -2,7 +2,7 @@
 import { renderMacroKPIs, renderPartyCards, renderAdvancedAnalysis } from './components.js?v=20260317114500';
 import { drawHemiciclo, drawIdeologyCharts, drawVotesBarCharts, drawVotesVariationCharts, renderCongressTable, renderIdeologyTable } from './charts.js?v=20260316160500';
 import { calculateAdvancedMetrics } from './analysis.js';
-import { drawParticipationMap, drawPartyMap, drawIdeologyMap } from './maps.js?v=20260316140000';
+import { drawParticipationMap, drawPartyMap, drawIdeologyMap, drawVariationMap } from './maps.js?v=20260316140000';
 
 let electionData = null;
 
@@ -46,6 +46,7 @@ function initializeVisualizations(data) {
         d3.json('data/colombia.json').then(geoData => {
             cachedGeoData = geoData;
             drawParticipationMap(data, geoData, "Senado");
+            drawVariationMap(data, geoData, "Senado");
             drawPartyMap(data, geoData, "Senado");
             drawIdeologyMap(data, geoData, "Senado");
             setupMapTabs(data, geoData);
@@ -55,6 +56,7 @@ function initializeVisualizations(data) {
         });
     } else {
         drawParticipationMap(data, cachedGeoData, "Senado");
+        drawVariationMap(data, cachedGeoData, "Senado");
         drawPartyMap(data, cachedGeoData, "Senado");
         drawIdeologyMap(data, cachedGeoData, "Senado");
         setupMapTabs(data, cachedGeoData);
@@ -166,6 +168,8 @@ function setupMapTabs(data, geoData) {
                 
                 if (mapType === 'participation') {
                     drawParticipationMap(data, geoData, corp);
+                } else if (mapType === 'variation') {
+                    drawVariationMap(data, geoData, corp);
                 } else if (mapType === 'party') {
                     drawPartyMap(data, geoData, corp);
                 } else if (mapType === 'ideology') {

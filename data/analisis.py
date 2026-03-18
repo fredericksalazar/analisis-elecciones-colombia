@@ -8,7 +8,7 @@ def load_csv(path):
         return list(reader)
 
 def main():
-    base_dir = '/Users/frederick/GitHub/análisis-elecciones-colombia/data'
+    base_dir = os.path.dirname(os.path.abspath(__file__))
     gen_data = load_csv(os.path.join(base_dir, 'resumen_general_elecciones_completo.csv'))
     part_data = load_csv(os.path.join(base_dir, 'elecciones_legislativas_partidos.csv'))
     terr_data = load_csv(os.path.join(base_dir, 'eleccione_legislativas_territorio.csv'))
@@ -214,6 +214,23 @@ def main():
         for c, data in corps.items():
             if data["num_dptos"] > 0:
                 data["costo_territorial_promedio_victoria"] = round(data["total_votos_ganadores"] / data["num_dptos"], 0)
+
+    # 5b. Variación de participación electoral por departamento (2026 vs 2022)
+    for c in ["senado", "camara"]:
+        dptos_2026 = terr_analysis["2026"].get(c, {}).get("detalles_departamentos", {})
+        dptos_2022 = terr_analysis["2022"].get(c, {}).get("detalles_departamentos", {})
+
+        for dpto_name, d26_data in dptos_2026.items():
+            if dpto_name in dptos_2022:
+                v22 = dptos_2022[dpto_name].get("votos", 0)
+                v26 = d26_data.get("votos", 0)
+                if v22 > 0:
+                    variacion = round(((v26 - v22) / v22) * 100, 2)
+                else:
+                    variacion = None
+            else:
+                variacion = None
+            d26_data["variacion_participacion_pct"] = variacion
 
     res["territorio"] = terr_analysis
 

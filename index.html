@@ -361,7 +361,48 @@
                         </div>
                     </div>
 
-                    <!-- Fila 2: Partido Dominante -->
+                    <!-- Fila 2: Variación de Participación -->
+                    <div class="map-row slide-up">
+                        <div class="map-visual">
+                            <div class="map-header-mini">
+                                <h3>Dinámica de la Movilización</h3>
+                                <p>Variación porcentual de la participación electoral por departamento entre 2022 y 2026</p>
+                                <div class="corp-switcher-mini" data-map="variation">
+                                    <button class="mini-tab active" data-corp="Senado">Senado</button>
+                                    <button class="mini-tab" data-corp="Cámara">Cámara</button>
+                                </div>
+                            </div>
+                            <div id="map-variation" class="d3-map" aria-label="Mapa interactivo de variación de participación electoral por departamento"></div>
+                            <div class="variation-legend">
+                                <div class="legend-item">
+                                    <span class="legend-dot" style="background: #ef4444"></span>
+                                    <span>Mayor decrecimiento</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-dot" style="background: #fca5a5"></span>
+                                    <span>Decrecimiento leve</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-dot" style="background: #ffffff"></span>
+                                    <span>Sin cambio</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-dot" style="background: #6ee7b7"></span>
+                                    <span>Crecimiento leve</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-dot" style="background: #10b981"></span>
+                                    <span>Mayor crecimiento</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="map-analysis" id="analysis-variation">
+                            <!-- JS will inject analysis here -->
+                            <div class="analysis-placeholder">Cargando análisis estadístico...</div>
+                        </div>
+                    </div>
+
+                    <!-- Fila 4: Partido Dominante -->
                     <div class="map-row slide-up">
                         <div class="map-visual">
                             <div class="map-header-mini">
@@ -380,7 +421,7 @@
                         </div>
                     </div>
 
-                    <!-- Fila 3: Dominio Ideológico -->
+                    <!-- Fila 5: Dominio Ideológico -->
                     <div class="map-row slide-up">
                         <div class="map-visual">
                             <div class="map-header-mini">
@@ -392,7 +433,10 @@
                                 </div>
                             </div>
                             <div id="map-ideology" class="d3-map" aria-label="Mapa interactivo de bloques ideológicos dominantes por departamento"></div>
-                            <div class="sr-only">Mapa que colorea las regiones según el bloque ideológico predominante (Izquierda, Centro o Dere                <div class="analyst-note analyst-note-geography">
+                            <div class="sr-only">Mapa que colorea las regiones según el bloque ideológico predominante (Izquierda, Centro o Derecha)</div>
+                        </div>
+                        <div class="map-analysis" id="analysis-ideology">
+                            <div class="analyst-note analyst-note-geography">
                     <div class="note-header">
                         <i data-lucide="globe"></i>
                         <h3>Radiografía del Control Territorial</h3>
@@ -406,9 +450,10 @@
                     <div class="technical-footnote">
                         <p><strong>El Dato Clave (Abstención Diferencial):</strong> La visualización coroplética pondera el volumen de votos frente al censo habilitado por departamento, revelando que el poder no solo reside en quién gana, sino en qué regiones la maquinaria logra movilizar (o suprimir) el voto con mayor efectividad táctica.</p>
                     </div>
-                </div>                <p><strong>Nota Técnica:</strong> Este análisis considera la relación entre el Censo Electoral por departamento y el nivel de abstención, que históricamente castiga más a las zonas con menor presencia estatal.</p>
-                    </div>
                 </div>
+                <p><strong>Nota Técnica:</strong> Este análisis considera la relación entre el Censo Electoral por departamento y el nivel de abstención, que históricamente castiga más a las zonas con menor presencia estatal.</p>
+                        </div>
+                    </div>
             </section>
 
             <!-- Section 4: Party Analysis Detail -->

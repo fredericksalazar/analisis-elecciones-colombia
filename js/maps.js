@@ -313,9 +313,131 @@ export function drawIdeologyMap(electionData, geoData, corp = "Senado") {
     }
 }
 
+export function drawVariationMap(electionData, geoData, corp = "Senado") {
+    const year = "2026";
+    const normalizedTarget = corp.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const terrKey = findKey(electionData.territorio[year], normalizedTarget);
+    const terrData = terrKey ? electionData.territorio[year][terrKey] : null;
+
+    if (!terrData) return;
+
+    const deptoData = {};
+    Object.entries(terrData.detalles_departamentos).forEach(([dptoName, d]) => {
+        const normalized = dptoName.toUpperCase();
+        if (normalized === "CONSULADOS" || normalized === "EXTERIOR") return;
+        deptoData[normalizeName(dptoName)] = { name: dptoName, data: { variacion: d.variacion_participacion_pct, votos: d.votos } };
+    });
+
+    const values = Object.values(deptoData).map(d => d.data.variacion).filter(v => v !== null && v !== undefined);
+    const maxV = d3.max(values) || 1;
+    const minV = d3.min(values) || -1;
+
+    const getVariationColor = (variacion) => {
+        if (variacion === null || variacion === undefined) return "#64748b";
+        if (variacion >= 0) {
+            return d3.interpolateLab("#d1fae5", "#10b981")(variacion / maxV);
+        } else {
+            return d3.interpolateLab("#fee2e2", "#ef4444")(Math.abs(variacion) / Math.abs(minV));
+        }
+    };
+
+    renderMap('#map-variation', geoData,
+        (data) => getVariationColor(data.variacion),
+        (name, data) => {
+            const v = data.variacion;
+            const sign = v > 0 ? '+' : '';
+            const color = v > 0 ? '#10b981' : (v < 0 ? '#ef4444' : '#64748b');
+            const label = v > 0 ? '↑ Crecimiento' : (v < 0 ? '↓ Decrecimiento' : 'Sin cambio');
+            return `<strong>${name}</strong><br/>Variación: <span style="color:${color}">${sign}${v}%</span><br/><small>${label}</small>`;
+        },
+        deptoData
+    );
+
+    const container = document.getElementById('analysis-variation');
+    if (container) {
+        const sortedGrowth = Object.values(deptoData)
+            .filter(d => d.data.variacion !== null && d.data.variacion !== undefined && d.data.variacion > 0)
+            .sort((a, b) => b.data.variacion - a.data.variacion)
+            .slice(0, 5);
+
+        const sortedDrop = Object.values(deptoData)
+            .filter(d => d.data.variacion !== null && d.data.variacion !== undefined && d.data.variacion < 0)
+            .sort((a, b) => a.data.variacion - b.data.variacion)
+            .slice(0, 5);
+
+        const avgVar = values.length > 0
+            ? (values.reduce((a, b) => a + b, 0) / values.length).toFixed(2)
+            : 'N/A';
+        const maxDept = sortedGrowth.length > 0 ? sortedGrowth[0] : null;
+        const minDept = sortedDrop.length > 0 ? sortedDrop[0] : null;
+
+        let rankingGrowthHtml = '';
+        if (sortedGrowth.length > 0) {
+            const maxGrowth = sortedGrowth[0].data.variacion;
+            rankingGrowthHtml += `<div class="ranking-chart-container" style="margin-top: 12px;"><h5 style="font-size: 0.7rem; color: #10b981; text-transform: uppercase; margin-bottom: 8px;">↑ Departamentos con Mayor Crecimiento</h5>`;
+            sortedGrowth.forEach(dept => {
+                const percentage = (dept.data.variacion / maxGrowth) * 100;
+                rankingGrowthHtml += `
+                    <div class="ranking-item">
+                        <div class="ranking-header">
+                            <span class="ranking-party-name">${dept.name}</span>
+                            <span style="color: #10b981">+${dept.data.variacion}%</span>
+                        </div>
+                        <div class="ranking-bar-wrapper">
+                            <div class="ranking-bar" style="width: ${percentage}%; background: #10b981"></div>
+                        </div>
+                    </div>`;
+            });
+            rankingGrowthHtml += `</div>`;
+        }
+
+        let rankingDropHtml = '';
+        if (sortedDrop.length > 0) {
+            const minDrop = sortedDrop[0].data.variacion;
+            rankingDropHtml += `<div class="ranking-chart-container" style="margin-top: 12px;"><h5 style="font-size: 0.7rem; color: #ef4444; text-transform: uppercase; margin-bottom: 8px;">↓ Departamentos con Mayor Decrecimiento</h5>`;
+            sortedDrop.forEach(dept => {
+                const percentage = (Math.abs(dept.data.variacion) / Math.abs(minDrop)) * 100;
+                rankingDropHtml += `
+                    <div class="ranking-item">
+                        <div class="ranking-header">
+                            <span class="ranking-party-name">${dept.name}</span>
+                            <span style="color: #ef4444">${dept.data.variacion}%</span>
+                        </div>
+                        <div class="ranking-bar-wrapper">
+                            <div class="ranking-bar" style="width: ${percentage}%; background: #ef4444"></div>
+                        </div>
+                    </div>`;
+            });
+            rankingDropHtml += `</div>`;
+        }
+
+        container.innerHTML = `
+            <div class="stats-card">
+                <h4>Dinámica de la Movilización (${corp})</h4>
+                <div class="stat-item">
+                    <span class="stat-label">Variación Promedio</span>
+                    <span class="stat-value" style="color: ${avgVar > 0 ? '#10b981' : '#ef4444'}">${avgVar > 0 ? '+' : ''}${avgVar}%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Mayor Crecimiento</span>
+                    <span class="stat-value" style="color: #10b981">${maxDept ? maxDept.name + ' (+' + maxDept.data.variacion + '%)' : 'N/A'}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Mayor Decrecimiento</span>
+                    <span class="stat-value" style="color: #ef4444">${minDept ? minDept.name + ' (' + minDept.data.variacion + '%)' : 'N/A'}</span>
+                </div>
+                ${rankingGrowthHtml}
+                ${rankingDropHtml}
+                <div class="analysis-text" style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px;">
+                    <p>La <b>variación porcentual</b> mide el cambio en la cantidad de votos entre 2022 y 2026 por departamento. El verde oscuro indica regiones con mayor activación electoral, mientras que el rojo oscuro señala zonas donde la participación se contrajo significativamente.</p>
+                </div>
+            </div>`;
+    }
+}
+
 export function drawMaps(electionData, geoData, corp = "Senado") {
-    // Initializer for all maps
     drawParticipationMap(electionData, geoData, corp);
+    drawVariationMap(electionData, geoData, corp);
     drawPartyMap(electionData, geoData, corp);
     drawIdeologyMap(electionData, geoData, corp);
 }
