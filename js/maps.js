@@ -179,23 +179,67 @@ export function drawPartyMap(electionData, geoData, corp = "Senado") {
     });
 
     const partyColors = {
-        'Pacto Historico': '#FF00FF', 'Coalicion Pacto Historico': '#FF00FF',
+        // Pacto Historico variants
+        'Pacto Historico': '#9F3A86',
+        'PACTO HISTÓRICO': '#9F3A86',
+        'MOVIMIENTO POLÍTICO PACTO HISTÓRICO': '#9F3A86',
+        'PACTO HISTÓRICO SENADO': '#9F3A86',
+        'PACTO HISTÓRICO ALIANZA VERDE': '#9F3A86',
+        'PACTO VERDE PUTUMAYO': '#9F3A86',
+        'PACTO POR RISARALDA': '#9F3A86',
+        'Coalicion Pacto Historico': '#9F3A86',
+        // Centro Democratico
         'Centro Democratico': '#0393F7',
-        'Partido Liberal': '#D32F2F',
-        'Partido Conservador': '#1565C0',
-        'Cambio Radical': '#00897B', 'CR y ALMA': '#00897B',
-        'Alianza por Colombia': '#2E7D32', 'Alianza Verde': '#2E7D32', 'A.V.': '#2E7D32',
-        'Partido de la U': '#F9A825',
-        'Salvacion Nacional': '#166534',
-        'Ahora Colombia': '#9C27B0',
-        'CJL y MIRA': '#83067B', 'MIRA': '#83067B',
-        'Nos Une Colombia': '#AA4400',
-        'MAIS': '#D35F5F', 'AICO': '#78909C',
-        'Fuerza Ciudadana': '#E65100',
-        'Nuevo Liberalismo': '#FF5722',
-        'Frente Amplio Unitario': '#AD1457', 'Frente Amplio': '#AD1457',
-        'Creemos': '#263238',
-        'A.V. y Centro Esperanza': '#00695C',
+        'PARTIDO CENTRO DEMOCRÁTICO': '#0393F7',
+        'CENTRO DEMOCRÁTICO - PARTIDO CONSERVADOR': '#0393F7',
+        // Partido Liberal
+        'Partido Liberal': '#FF0318',
+        'PARTIDO LIBERAL COLOMBIANO': '#FF0318',
+        // Partido Conservador
+        'Partido Conservador': '#0A62AD',
+        'PARTIDO CONSERVADOR COLOMBIANO': '#0A62AD',
+        // Cambio Radical
+        'Cambio Radical': '#E96316',
+        'PARTIDO CAMBIO RADICAL': '#E96316',
+        'COALICIÓN CAMBIO RADICAL - ALMA': '#E96316',
+        'CR y ALMA': '#E96316',
+        // Alianza Verde / APC
+        'Alianza Verde': '#32CD32',
+        'Alianza por Colombia': '#008000',
+        'PARTIDO ALIANZA VERDE': '#32CD32',
+        'COALICIÓN ALIANZA VERDE Y CENTRO ESPERANZA': '#32CD32',
+        'A.V.': '#32CD32',
+        // Partido de la U
+        'Partido de la U': '#FFA339',
+        'PARTIDO DE LA U': '#FFA339',
+        // MIRA
+        'CJL y MIRA': '#8322A8',
+        'MIRA': '#8322A8',
+        // Ahora Colombia
+        'Ahora Colombia': '#FF00FF',
+        // Salvacion Nacional
+        'Salvacion Nacional': '#7A9FB7',
+        // Mais, AICO
+        'MAIS': '#D35F5F',
+        'AICO': '#78909C',
+        // Fuerza Ciudadana
+        'Fuerza Ciudadana': '#5B4B8A',
+        // Nuevo Liberalismo
+        'Nuevo Liberalismo': '#FFCC0C',
+        // LIGA
+        'LIGA': '#FED141',
+        'Liga de Gobernantes Anticorrupción': '#FED141',
+        // Creemos
+        'Creemos': '#8F114F',
+        // La Fuerza
+        'La Fuerza': '#E42520',
+        // Others
+        'Frente Amplio Unitario': '#32CD32',
+        'Frente Amplio': '#32CD32',
+        'GENTE EN MOVIMIENTO': '#5B4B8A',
+        'LA VOZ DEL AMAZONAS': '#9F3A86',
+        'COALICIÓN CAQUETÁ': '#9F3A86',
+        'PRIMERO CÓRDOBA': '#0A62AD',
         'default': '#64748b'
     };
     
