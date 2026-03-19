@@ -1,13 +1,13 @@
 // Global Chart.js Font Configuration
 Chart.defaults.font.family = '"Google Sans", sans-serif';
 
-// Register Global Bar Labels Plugin
+// Register Global Bar Labels Plugin (only for variation charts, not votes)
 Chart.register({
     id: 'customBarLabels',
     afterDatasetsDraw(chart) {
         if (chart.config.type !== 'bar') return;
-        // Only for votes charts
-        if (chart.canvas && !chart.canvas.id.includes('votes')) return;
+        // Only for variation charts (senado-variation or camara-variation)
+        if (!chart.canvas || !chart.canvas.id.includes('variation')) return;
 
         const { ctx, data } = chart;
         const textSecondary = getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim() || '#64748b';
@@ -522,11 +522,14 @@ function getPartyColor(name, ideology) {
 let chart22 = null;
 let chart26 = null;
 
-// Plugin para mostrar porcentajes dentro del gráfico
+// Plugin para mostrar porcentajes dentro del gráfico (SOLO para doughnut charts)
 const percentPlugin = {
     id: 'percentLabels',
     afterDatasetsDraw(chart) {
-        const { ctx, data, chartArea: { top, bottom, left, right } } = chart;
+        // Solo aplicar a gráficos de torta/doughnut
+        if (chart.config.type !== 'doughnut' && chart.config.type !== 'pie') return;
+        
+        const { ctx, data } = chart;
         const total = data.datasets[0].data.reduce((a, b) => a + b, 0);
         
         ctx.save();
@@ -641,6 +644,11 @@ export function drawIdeologyCharts(ideoData) {
 // Draw horizontal bar charts for votes by party (optimized: top 20 + Otros)
 export function drawVotesBarCharts(electionData) {
     const formatNumber = (num) => new Intl.NumberFormat('es-CO').format(num);
+    const formatCompact = (num) => {
+        if (num >= 1000000) return (num / 1000000).toFixed(1).replace('.0', '') + 'M';
+        if (num >= 1000) return (num / 1000).toFixed(1).replace('.0', '') + 'K';
+        return num.toString();
+    };
     const TOP_N = 20;
 
     const createBarChart = (corpName, corpData, canvasId) => {
@@ -694,30 +702,26 @@ export function drawVotesBarCharts(electionData) {
                     legend: { display: false },
                     tooltip: {
                         callbacks: {
-                            title: (items) => {
-                                const idx = items[0].dataIndex;
-                                const pct = ((votes[idx] / totalVotes) * 100).toFixed(1);
-                                return `${items[0].label} (${pct}%)`;
-                            },
                             label: (context) => {
-                                return `${formatNumber(context.raw)} votos`;
+                                return `${formatCompact(context.raw)} votos`;
                             }
                         }
                     }
                 },
                 scales: {
                     x: {
-                        grace: '10%',
+                        grace: '20%',
                         ticks: {
                             color: textSecondary,
-                            callback: (value) => formatNumber(value)
+                            font: { family: 'Google Sans', size: 14, weight: 600 },
+                            callback: (value) => formatCompact(value)
                         },
                         grid: { color: 'rgba(128, 128, 128, 0.1)' }
                     },
                     y: {
                         ticks: {
                             color: textSecondary,
-                            font: { family: 'Google Sans', size: 13 },
+                            font: { family: 'Google Sans', size: 14, weight: 600 },
                             crossAlign: 'far'
                         },
                         grid: { display: false }
@@ -734,6 +738,90 @@ export function drawVotesBarCharts(electionData) {
 
     senadoVotesChart = createBarChart('Senado', electionData.partidos.Senado, 'senado-votes-chart');
     camaraVotesChart = createBarChart('Cámara', electionData.partidos.Camara, 'camara-votes-chart');
+    
+    // Create pie charts for vote distribution
+    senadoPieChart = createPieChart('Senado', electionData.partidos.Senado, 'senado-pie-chart');
+    camaraPieChart = createPieChart('Cámara', electionData.partidos.Camara, 'camara-pie-chart');
+}
+
+// Global variables for pie charts
+let senadoPieChart = null;
+let camaraPieChart = null;
+
+// Create doughnut chart for vote distribution
+function createPieChart(corpName, corpData, canvasId) {
+    const formatNumber = (num) => new Intl.NumberFormat('es-CO').format(num);
+    
+    const parties = Object.entries(corpData)
+        .filter(([_, data]) => data['2026'] !== null && (data['2026'].votos || 0) > 0)
+        .sort((a, b) => b[1]['2026'].votos - a[1]['2026'].votos);
+
+    if (parties.length === 0) return null;
+
+    // Group smaller parties into "Otros" if there are many
+    const topParties = parties.slice(0, 8);
+    const restParties = parties.slice(8);
+
+    const labels = topParties.map(([name]) => name);
+    const votes = topParties.map(([_, data]) => data['2026'].votos);
+    const colors = topParties.map(([name, data]) => data.color || getPartyColor(name, data.ideologia));
+
+    if (restParties.length > 0) {
+        const otrosVotes = restParties.reduce((sum, [_, data]) => sum + (data['2026']?.votos || 0), 0);
+        labels.push(`Otros (${restParties.length})`);
+        votes.push(otrosVotes);
+        colors.push('#94a3b8');
+    }
+
+    const textPrimary = getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim();
+    const textSecondary = getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim();
+
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return null;
+    
+    const ctx = canvas.getContext('2d');
+    const totalVotes = votes.reduce((a, b) => a + b, 0);
+
+    const pieChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: votes,
+                backgroundColor: colors,
+                borderColor: colors,
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: textSecondary,
+                        font: { family: 'Google Sans', size: 12 },
+                        padding: 12,
+                        usePointStyle: true,
+                        pointStyle: 'circle'
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: (context) => {
+                            const pct = ((context.raw / totalVotes) * 100).toFixed(1);
+                            return `${formatNumber(context.raw)} votos (${pct}%)`;
+                        }
+                    }
+                }
+            },
+            cutout: '70%',
+            borderWidth: 0
+        }
+    });
+
+    return pieChart;
 }
 
 // Global variables for variation charts

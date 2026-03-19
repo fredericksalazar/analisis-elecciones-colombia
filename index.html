@@ -40,7 +40,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- App Styles -->
-    <link rel="stylesheet" href="css/styles.css?v=20260318r">
+    <link rel="stylesheet" href="css/styles.css?v=20260319d">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
@@ -165,14 +165,25 @@
 
                 <div class="votes-charts-container">
                     <div class="votes-chart-wrapper">
-                        <h3>Senado</h3>
+                        <h3>Senado - Votos por Partido</h3>
                         <canvas id="senado-votes-chart" aria-label="Gráfico interactivo de distribución de votos para el Senado 2026"></canvas>
                         <div class="sr-only">Este gráfico muestra los votos totales obtenidos por los partidos en el Senado. El Pacto Histórico y los partidos tradicionales lideran los datos electorales nacionales.</div>
                     </div>
                     <div class="votes-chart-wrapper">
-                        <h3>Cámara</h3>
+                        <h3>Cámara - Votos por Partido</h3>
                         <canvas id="camara-votes-chart" aria-label="Gráfico interactivo de distribución de votos para la Cámara 2026"></canvas>
                         <div class="sr-only">Distribución de votos por partido para la Cámara de Representantes, reflejando el poder regional de las fuerzas políticas.</div>
+                    </div>
+                </div>
+
+                <div class="pie-charts-container">
+                    <div class="pie-chart-wrapper">
+                        <h3>Senado - Distribución (%)</h3>
+                        <canvas id="senado-pie-chart" aria-label="Gráfico de torta de distribución porcentual del Senado 2026"></canvas>
+                    </div>
+                    <div class="pie-chart-wrapper">
+                        <h3>Cámara - Distribución (%)</h3>
+                        <canvas id="camara-pie-chart" aria-label="Gráfico de torta de distribución porcentual de la Cámara 2026"></canvas>
                     </div>
                 </div>
 
@@ -473,9 +484,50 @@
                 <div class="section-header">
                     <h2><i data-lucide="info"></i> Notas Metodológicas</h2>
                 </div>
-                <p class="section-desc">
-                    Los datos presentados provienen de los archivos oficiales de la Registraduría Nacional del Estado Civil. El procesamiento se realizó mediante scripts de código abierto para garantizar la transparencia y trazabilidad del análisis político.
-                </p>
+                
+                <div class="methodology-content">
+                    <h3>Fuentes de Datos</h3>
+                    <p>Este análisis se construyó a partir de múltiples fuentes de información electoral:</p>
+                    <ul>
+                        <li><strong>Wikipedia - Elecciones Legislativas de Colombia:</strong> Los datos oficiales de votación por partido fueron extraídos de los artículos de Wikipedia dedicados a las elecciones legislativas colombianas. Las fuentes primarias incluyen los preconteos oficiales de la Registraduría Nacional del Estado Civil disponibles en el momento del análisis.
+                            <br><a href="https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Colombia_de_2026" target="_blank" rel="noopener noreferrer">https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Colombia_de_2026</a>
+                        </li>
+                        <li><strong>Registraduría Nacional del Estado Civil:</strong> Los archivos CSV con datos de votación por partido y territorio fueron obtenidos de los reportes oficiales de preconteo publicados por la Registraduría durante las jornadas electorales.</li>
+                        <li><strong>Datos Geo-espaciales (GeoJSON):</strong> La cartografía de Colombia por departamentos fue obtenida de fuentes cartográficas abiertas, adaptada y simplificada para su uso en visualizaciones web.</li>
+                    </ul>
+
+                    <h3>Proceso de Transformación de Datos</h3>
+                    <p>El flujo de procesamiento de datos sigue una arquitectura de código abierto:</p>
+                    <ol>
+                        <li><strong>Extracción:</strong> Los datos crudos de votación son extraídos desde Wikipedia y los archivos CSV de la Registraduría.</li>
+                        <li><strong>Normalización:</strong> Se aplica el archivo <code>partidos_maestro.csv</code> que actúa como diccionario de datos, normalizando los nombres de partidos y coaliciones a una nomenclatura estándar. Este archivo define colores, ideologías y aliases para cada partido político.</li>
+                        <li><strong>Consolidación:</strong> Mediante el script <code>consolidate_coalitions.py</code>, las coaliciones multipartidistas son distribuidas proporcionalmente entre sus partidos miembros según el mapa de equivalencias definido.</li>
+                        <li><strong>Análisis:</strong> El script <code>analisis.py</code> calcula todos los indicadores avanzados: variaciones porcentuales, eficiencia electoral (costo por curul), distribución ideológica, y análisis territorial.</li>
+                        <li><strong>Serialización:</strong> Los datos procesados son exportados a <code>resultados_analisis.json</code>, el formato consumido por la aplicación web.</li>
+                    </ol>
+
+                    <h3>Pipeline Técnico</h3>
+                    <p>Todos los scripts de procesamiento están disponibles en el repositorio del proyecto bajo licencia de código abierto. El pipeline puede ser ejecutado nuevamente cuando se publiquen datos oficiales definitivos del escrutinio.</p>
+
+                    <h3>Aviso Legal y Descargo de Responsabilidad</h3>
+                    <div class="legal-disclaimer">
+                        <p><strong>⚠️ Estado de los datos:</strong> Los resultados presentados en este análisis están basados en datos de preconteo y conteo preliminar reportados por medios de comunicación y la Registraduría Nacional del Estado Civil. Estos datos son <strong>NO definitivos</strong> y pueden variar significativamente una vez завершен el escrutinio oficial. El proyecto no se hace responsable por discrepancias entre los datos presentados y los resultados oficiales finalmente certificados.</p>
+                        
+                        <p><strong>🚫 Restricciones de Uso:</strong> Este análisis y todos los datos, visualizaciones, y contenido generado por este proyecto <strong>NO pueden ser utilizados para:</strong></p>
+                        <ul>
+                            <li>Campañas electorales de ningún tipo</li>
+                            <li>Propaganda política o publicidad partidista</li>
+                            <li>Apoyo o beneficio de partidos políticos, candidatos o movimientos</li>
+                            <li>Propagación de desinformación electoral</li>
+                            <li>Comercialización o reventa del contenido</li>
+                            <li>Cualquier propósito que involucre la manipulación de la opinión pública electoral</li>
+                        </ul>
+                        
+                        <p><strong>📋 Requerimiento de Autorización:</strong> El uso, reproducción, distribución o adaptación de cualquier contenido de este proyecto requiere <strong>autorización previa y escrita</strong> de Frederick Adolfo Salazar, titular del proyecto. Para solicitar permisos, contacte a través de los canales oficiales indicados.</p>
+                        
+                        <p><strong>📊 Sobre el Análisis:</strong> Este es un proyecto de análisis técnico y educativo, diseñado para promover la transparencia electoral y la comprensión ciudadana del proceso democrático colombiano. El proyecto no respalda ni apoya a ningún partido político, candidato o posición ideológica particular.</p>
+                    </div>
+                </div>
             </section>
 
             <!-- Duplicate Support Section -->
