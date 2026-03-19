@@ -443,7 +443,16 @@ p {
     margin-top: 1rem;
     margin-bottom: 0.75rem;
 }
-.section-desc { color: var(--text-secondary); font-size: 0.875rem; }
+.section-desc { color: var(--text-secondary); font-size: 1rem; line-height: 1.6; }
+
+#methodology p,
+.support-section p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: none;
+    margin-bottom: 0;
+}
 
 /* Estilo especial para los datos numéricos */
 .data-number {
@@ -1291,7 +1300,7 @@ p {
 .analysis-text {
     line-height: 1.6;
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
 }
 
 .stats-card .analysis-text {
@@ -1301,6 +1310,18 @@ p {
 }
 
 .analysis-text b { color: var(--text-primary); }
+
+.map-analysis h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.map-analysis p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
 
 .d3-map {
     width: 100%;

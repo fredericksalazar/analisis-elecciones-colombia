@@ -522,6 +522,35 @@ function getPartyColor(name, ideology) {
 let chart22 = null;
 let chart26 = null;
 
+// Plugin para mostrar porcentajes dentro del gráfico
+const percentPlugin = {
+    id: 'percentLabels',
+    afterDatasetsDraw(chart) {
+        const { ctx, data, chartArea: { top, bottom, left, right } } = chart;
+        const total = data.datasets[0].data.reduce((a, b) => a + b, 0);
+        
+        ctx.save();
+        ctx.font = 'bold 14px "Google Sans"';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        chart.getDatasetMeta(0).data.forEach((element, index) => {
+            const value = data.datasets[0].data[index];
+            const percent = ((value / total) * 100).toFixed(1);
+            const { x, y } = element.tooltipPosition();
+            
+            // Solo mostrar si el segmento es lo suficientemente grande
+            if (value / total > 0.05) {
+                ctx.fillStyle = '#ffffff';
+                ctx.fillText(`${percent}%`, x, y);
+            }
+        });
+        ctx.restore();
+    }
+};
+
+Chart.register(percentPlugin);
+
 // Horizontal bar charts for votes by party
 let senadoVotesChart = null;
 let camaraVotesChart = null;
@@ -548,6 +577,7 @@ export function drawIdeologyCharts(ideoData) {
                     font: { family: 'Google Sans', size: 14 }
                 } 
             },
+            percentLabels: {}
         },
         cutout: '65%',
         borderWidth: 0
