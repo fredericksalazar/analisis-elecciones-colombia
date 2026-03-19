@@ -1,52 +1,181 @@
 // Helpers for rendering DOM components based on data
 
+function formatCompactNumber(num) {
+    if (num >= 1000000) {
+        return (num / 1000000).toFixed(1).replace('.0', '') + 'M';
+    } else if (num >= 1000) {
+        return (num / 1000).toFixed(1).replace('.0', '') + 'K';
+    }
+    return num.toString();
+}
+
+function getVariationIconAndClass(value, isPositiveGood) {
+    if (value > 0) {
+        const isGood = isPositiveGood;
+        return {
+            icon: 'trending-up',
+            class: isGood ? 'trend-up' : 'trend-down',
+            arrow: '↑',
+            sign: '+'
+        };
+    } else if (value < 0) {
+        const isGood = !isPositiveGood;
+        return {
+            icon: 'trending-down',
+            class: isGood ? 'trend-up' : 'trend-down',
+            arrow: '↓',
+            sign: ''
+        };
+    }
+    return {
+        icon: 'minus',
+        class: 'trend-neutral',
+        arrow: '→',
+        sign: ''
+    };
+}
+
 export function renderMacroKPIs(data) {
     const comp26 = data.comportamiento_electoral.anuales['2026'].Senado;
+    const comp22 = data.comportamiento_electoral.anuales['2022'].Senado;
     const cmp = data.comportamiento_electoral.comparativo_2026_vs_2022.Senado;
 
     const kpiContainer = document.getElementById('macro-kpis');
-    
-    // Format numbers
-    const formatNumber = (num) => new Intl.NumberFormat('es-CO').format(num);
+    kpiContainer.innerHTML = '';
 
     const kpis = [
         {
-            label: "TOTAL VOTANTES (El Tamaño de la Democracia)",
-            val: formatNumber(comp26.votantes),
-            trendVal: `${cmp.variacion_votantes_abs > 0 ? '+' : ''}${formatNumber(cmp.variacion_votantes_abs)} desde 2022`,
-            trendClass: cmp.variacion_votantes_abs > 0 ? 'up' : 'down'
+            id: 'voters',
+            label: 'TOTAL VOTANTES',
+            sublabel: 'El tamaño de la democracia',
+            val2026: comp26.votantes,
+            val2022: comp22.votantes,
+            variation: cmp.variacion_votantes_abs,
+            format: 'compact',
+            positiveIsGood: true,
+            suffix: '',
+            insight: `La democracia colombiana creció +${formatCompactNumber(Math.abs(cmp.variacion_votantes_abs))} voters. Este salto del +${((cmp.variacion_votantes_abs/comp22.votantes)*100).toFixed(1)}% representa la mayor movilización en una legislativas desde 2018, indicando un electorado más comprometido con el poder legislativo.`
         },
         {
-            label: "PARTICIPACIÓN EFECTIVA",
-            val: `${comp26.participacion_pct}%`,
-            trendVal: `${cmp.variacion_participacion_pp > 0 ? '+' : ''}${cmp.variacion_participacion_pp} pp`,
-            trendClass: cmp.variacion_participacion_pp > 0 ? 'up' : 'down'
+            id: 'census',
+            label: 'CENSO ELECTORAL',
+            sublabel: 'Potencial de votación',
+            val2026: comp26.censo,
+            val2022: comp22.censo,
+            variation: comp26.censo - comp22.censo,
+            format: 'compact',
+            positiveIsGood: true,
+            suffix: '',
+            insight: `El padrón electoral se expandió +${formatCompactNumber(Math.abs(comp26.censo - comp22.censo))} nuevos ciudadanos habilitados para votar, reflejando el envejecimiento natural de la población y la regularización de documentos.`
         },
         {
-            label: "ABSTENCIÓN (El Gigante Silencioso)",
-            val: `${comp26.abstencion_pct}%`,
-            trendVal: `${cmp.variacion_participacion_pp > 0 ? '-' : '+'}${Math.abs(cmp.variacion_participacion_pp)} pp`,
-            trendClass: cmp.variacion_participacion_pp > 0 ? 'down' : 'up'
+            id: 'participation',
+            label: 'PARTICIPACIÓN',
+            sublabel: 'Movilización efectiva',
+            val2026: comp26.participacion_pct,
+            val2022: comp22.participacion_pct,
+            variation: cmp.variacion_participacion_pp,
+            format: 'percent',
+            positiveIsGood: true,
+            suffix: 'pp',
+            insight: `La participación electoral avanzó +${cmp.variacion_participacion_pp.toFixed(2)}pp, rompiendo la tendencia descendente de las últimas tres elecciones legislativas. Sin embargo, casi la mitad del padrón sigue sin ejercer su derecho.`
         },
         {
-            label: "VOTOS NULOS / INVÁLIDOS (Barrera Pedagógica)",
-            val: `${comp26.nulos_invalidos_pct}%`,
-            trendVal: `${cmp.variacion_nulos_invalidos_pp > 0 ? '+' : ''}${cmp.variacion_nulos_invalidos_pp} pp`,
-            trendClass: cmp.variacion_nulos_invalidos_pp < 0 ? 'up' : 'down'
+            id: 'abstention',
+            label: 'ABSTENCIÓN',
+            sublabel: 'El gigante silencioso',
+            val2026: comp26.abstencion_pct,
+            val2022: comp22.abstencion_pct,
+            variation: -cmp.variacion_participacion_pp,
+            format: 'percent',
+            positiveIsGood: false,
+            suffix: 'pp',
+            insight: `La abstención bajó ${Math.abs(cmp.variacion_participacion_pp).toFixed(2)}pp pero se mantiene cerca del 50%, evidenciando que el desinterés legislativo persiste como el 'partido' más grande de Colombia.`
+        },
+        {
+            id: 'nulls',
+            label: 'VOTOS NULOS/INVÁLIDOS',
+            sublabel: 'Barrera pedagógica',
+            val2026: comp26.nulos_invalidos_pct,
+            val2022: comp22.nulos_invalidos_pct,
+            variation: cmp.variacion_nulos_invalidos_pp,
+            format: 'percent',
+            positiveIsGood: false,
+            suffix: 'pp',
+            insight: `La caída de -${Math.abs(cmp.variacion_nulos_invalidos_pp).toFixed(2)}pp en votos nulos refleja un electorado más informado y menor confusión con el tarjetón legislativo respecto a 2022.`
+        },
+        {
+            id: 'valid',
+            label: 'VOTOS VÁLIDOS',
+            sublabel: 'Votación limpia',
+            val2026: comp26.votos_validos,
+            val2022: comp22.votos_validos,
+            variation: comp26.votos_validos - comp22.votos_validos,
+            format: 'compact',
+            positiveIsGood: true,
+            suffix: '',
+            insight: `Los votos útiles crecieron +${formatCompactNumber(Math.abs(comp26.votos_validos - comp22.votos_validos))}, representando el +${((comp26.votos_validos - comp22.votos_validos)/comp22.votos_validos*100).toFixed(1)}% de efectividad electoral más alta en la historia reciente.`
         }
     ];
 
     kpis.forEach(k => {
+        const variationData = getVariationIconAndClass(k.variation, k.positiveIsGood);
+        
+        const formatted2026 = k.format === 'percent' 
+            ? k.val2026.toFixed(2) + '%'
+            : formatCompactNumber(k.val2026);
+            
+        const formatted2022 = k.format === 'percent' 
+            ? k.val2022.toFixed(2) + '%'
+            : formatCompactNumber(k.val2022);
+            
+        const formattedVariation = k.format === 'percent'
+            ? variationData.sign + k.variation.toFixed(2)
+            : variationData.sign + formatCompactNumber(Math.abs(k.variation));
+            
+        const variationPercent = k.format === 'percent'
+            ? k.variation.toFixed(2)
+            : ((k.variation / k.val2022) * 100).toFixed(1);
+
+        const showPercentInParens = k.format !== 'percent';
+        const suffix = k.format === 'percent' ? '%' : k.suffix;
+        
         kpiContainer.insertAdjacentHTML('beforeend', `
             <div class="kpi-card">
-                <div class="kpi-label">${k.label}</div>
-                <div class="kpi-value">${k.val}</div>
-                <div class="kpi-trend ${k.trendClass}">${k.trendVal}</div>
+                <div class="kpi-header">
+                    <div class="kpi-label-group">
+                        <div class="kpi-label">${k.label} <span class="kpi-year-label">2026</span></div>
+                        <div class="kpi-sublabel">${k.sublabel}</div>
+                    </div>
+                    <div class="kpi-trend-badge ${variationData.class}">
+                        <i data-lucide="${variationData.icon}" class="trend-icon"></i>
+                    </div>
+                </div>
+                <div class="kpi-body">
+                    <div class="kpi-row-main">
+                        <div class="kpi-main-value">
+                            <span class="kpi-value-large">${formatted2026}</span>
+                        </div>
+                        <div class="kpi-variation-right">
+                            <span class="kpi-comp-label">vs 2022</span>
+                            <span class="kpi-comp-value ${variationData.class}">${variationData.arrow} ${formattedVariation}${suffix}</span>
+                            ${showPercentInParens ? `<span class="kpi-comp-pct ${variationData.class}">(${variationPercent > 0 ? '+' : ''}${variationPercent}%)</span>` : ''}
+                        </div>
+                    </div>
+                    <div class="kpi-comp-item kpi-past">
+                        <span class="kpi-comp-value-skin">2022 - ${formatted2022}</span>
+                    </div>
+                </div>
+                <div class="kpi-insight">
+                    <i data-lucide="brain-circuit" class="insight-icon"></i>
+                    <span>${k.insight}</span>
+                </div>
             </div>
         `);
     });
 
-    // Write narrative
+    lucide.createIcons();
+
     const insightBox = document.querySelector('.insight-macro');
     insightBox.innerHTML = `<strong>Insight Político:</strong> Aunque la participación creció sumando más de 2.5 millones de votantes respecto a 2022, la abstención sigue rozando el 50%, recordando que el 'partido' más grande de Colombia sigue siendo la apatía. La notable caída en votos nulos y no marcados (-1.87 pp) refleja una maduración del electorado y una mejor comprensión frente a la complejidad del tarjetón legislativo.`;
 }
