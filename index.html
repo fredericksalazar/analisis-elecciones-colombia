@@ -482,50 +482,44 @@
             <!-- Section 5: Notas Metodológicas -->
             <section id="methodology" class="glass-panel slide-up delay-3">
                 <div class="section-header">
-                    <h2><i data-lucide="info"></i> Notas Metodológicas</h2>
+                    <h2><i data-lucide="info"></i> Fuentes de Datos y Metodología</h2>
                 </div>
                 
                 <div class="methodology-content">
                     <h3>Fuentes de Datos</h3>
-                    <p>Este análisis se construyó a partir de múltiples fuentes de información electoral:</p>
+                    <p>Este análisis se construyó integrando múltiples fuentes de información electoral de alta fidelidad:</p>
                     <ul>
-                        <li><strong>Wikipedia - Elecciones Legislativas de Colombia:</strong> Los datos oficiales de votación por partido fueron extraídos de los artículos de Wikipedia dedicados a las elecciones legislativas colombianas. Las fuentes primarias incluyen los preconteos oficiales de la Registraduría Nacional del Estado Civil disponibles en el momento del análisis.
-                            <br><a href="https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Colombia_de_2026" target="_blank" rel="noopener noreferrer">https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Colombia_de_2026</a>
-                        </li>
-                        <li><strong>Registraduría Nacional del Estado Civil:</strong> Los archivos CSV con datos de votación por partido y territorio fueron obtenidos de los reportes oficiales de preconteo publicados por la Registraduría durante las jornadas electorales.</li>
-                        <li><strong>Datos Geo-espaciales (GeoJSON):</strong> La cartografía de Colombia por departamentos fue obtenida de fuentes cartográficas abiertas, adaptada y simplificada para su uso en visualizaciones web.</li>
+                        <li><strong>Registraduría Nacional del Estado Civil:</strong> La fuente primaria son los reportes oficiales en formato PDF de las elecciones de Congreso 2022 y 2026. Estos documentos contienen los datos consolidados de votación por partido y territorio.</li>
+                        <li><strong>Wikipedia - Elecciones Legislativas:</strong> Se utilizaron los artículos especializados como fuente secundaria para contrastar cifras de coaliciones y personería jurídica. <a href="https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Colombia_de_2026" target="_blank" rel="noopener noreferrer">Consultar fuente ↗</a></li>
+                        <li><strong>Cartografía GeoJSON:</strong> Datos geoespaciales de fuentes abiertas, procesados para representar fielmente la división por departamentos de Colombia.</li>
                     </ul>
 
-                    <h3>Proceso de Transformación de Datos</h3>
-                    <p>El flujo de procesamiento de datos sigue una arquitectura de código abierto:</p>
+                    <h3>Proceso de Transformación (Data Pipeline)</h3>
+                    <p>Como proyecto de ingeniería de datos, el flujo de procesamiento es transparente y auditable:</p>
                     <ol>
-                        <li><strong>Extracción:</strong> Los datos crudos de votación son extraídos desde Wikipedia y los archivos CSV de la Registraduría.</li>
-                        <li><strong>Normalización:</strong> Se aplica el archivo <code>partidos_maestro.csv</code> que actúa como diccionario de datos, normalizando los nombres de partidos y coaliciones a una nomenclatura estándar. Este archivo define colores, ideologías y aliases para cada partido político.</li>
-                        <li><strong>Consolidación:</strong> Mediante el script <code>consolidate_coalitions.py</code>, las coaliciones multipartidistas son distribuidas proporcionalmente entre sus partidos miembros según el mapa de equivalencias definido.</li>
-                        <li><strong>Análisis:</strong> El script <code>analisis.py</code> calcula todos los indicadores avanzados: variaciones porcentuales, eficiencia electoral (costo por curul), distribución ideológica, y análisis territorial.</li>
-                        <li><strong>Serialización:</strong> Los datos procesados son exportados a <code>resultados_analisis.json</code>, el formato consumido por la aplicación web.</li>
+                        <li><strong>Extracción:</strong> Los datos se capturan de los PDFs oficiales y tablas de Wikipedia.</li>
+                        <li><strong>Normalización:</strong> Mediante un diccionario maestro (<code>partidos_maestro.csv</code>), estandarizamos nombres, colores e ideologías para evitar duplicidad por alias.</li>
+                        <li><strong>Consolidación:</strong> El script <code>consolidate_coalitions.py</code> distribuye proporcionalmente los votos de coaliciones entre sus partidos miembros.</li>
+                        <li><strong>Cálculo:</strong> El motor <code>analisis.py</code> genera los indicadores de eficiencia electoral, variación porcentual y costo por curul.</li>
+                        <li><strong>Entrega:</strong> Todo se serializa en un archivo JSON optimizado para la visualización web.</li>
                     </ol>
 
-                    <h3>Pipeline Técnico</h3>
-                    <p>Todos los scripts de procesamiento están disponibles en el repositorio del proyecto bajo licencia de código abierto. El pipeline puede ser ejecutado nuevamente cuando se publiquen datos oficiales definitivos del escrutinio.</p>
-
-                    <h3>Aviso Legal y Descargo de Responsabilidad</h3>
                     <div class="legal-disclaimer">
-                        <p><strong>⚠️ Estado de los datos:</strong> Los resultados presentados en este análisis están basados en datos de preconteo y conteo preliminar reportados por medios de comunicación y la Registraduría Nacional del Estado Civil. Estos datos son <strong>NO definitivos</strong> y pueden variar significativamente una vez завершен el escrutinio oficial. El proyecto no se hace responsable por discrepancias entre los datos presentados y los resultados oficiales finalmente certificados.</p>
+                        <h3>⚠️ Aviso Legal y Responsabilidad</h3>
                         
-                        <p><strong>🚫 Restricciones de Uso:</strong> Este análisis y todos los datos, visualizaciones, y contenido generado por este proyecto <strong>NO pueden ser utilizados para:</strong></p>
+                        <h4>Sobre los datos:</h4>
+                        <p>Este análisis utiliza datos de preconteo y resultados preliminares. Aunque son oficiales, no son definitivos. Las cifras finales pueden variar tras el escrutinio oficial certificado por la autoridad electoral. Este proyecto es una herramienta informativa y no sustituye los boletines finales de la Registraduría.</p>
+                        
+                        <h4>Uso Ético y Restricciones:</h4>
+                        <p>Este es un proyecto técnico, educativo e independiente. No tiene afiliación política ni recibe financiación de partidos. Queda estrictamente prohibido el uso de este contenido, sus gráficas o sus datos para:</p>
                         <ul>
-                            <li>Campañas electorales de ningún tipo</li>
-                            <li>Propaganda política o publicidad partidista</li>
-                            <li>Apoyo o beneficio de partidos políticos, candidatos o movimientos</li>
-                            <li>Propagación de desinformación electoral</li>
-                            <li>Comercialización o reventa del contenido</li>
-                            <li>Cualquier propósito que involucre la manipulación de la opinión pública electoral</li>
+                            <li>Campañas de desinformación o manipulación de opinión.</li>
+                            <li>Propaganda política o publicidad partidista de cualquier movimiento.</li>
+                            <li>Uso comercial o reventa sin autorización.</li>
                         </ul>
                         
-                        <p><strong>📋 Requerimiento de Autorización:</strong> El uso, reproducción, distribución o adaptación de cualquier contenido de este proyecto requiere <strong>autorización previa y escrita</strong> de Frederick Adolfo Salazar, titular del proyecto. Para solicitar permisos, contacte a través de los canales oficiales indicados.</p>
-                        
-                        <p><strong>📊 Sobre el Análisis:</strong> Este es un proyecto de análisis técnico y educativo, diseñado para promover la transparencia electoral y la comprensión ciudadana del proceso democrático colombiano. El proyecto no respalda ni apoya a ningún partido político, candidato o posición ideológica particular.</p>
+                        <h4>Propiedad Intelectual:</h4>
+                        <p>La metodología, el diseño de visualizaciones y el análisis son propiedad de <strong>Frederick Adolfo Salazar</strong>. Para cualquier uso, reproducción o distribución del contenido, se requiere autorización previa por escrito.</p>
                     </div>
                 </div>
             </section>
