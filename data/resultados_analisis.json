@@ -909,18 +909,18 @@
                 "2022": {
                     "votos": 5577464,
                     "curules": 38,
-                    "poder_votos_pct": 32.83,
+                    "poder_votos_pct": 37.52,
                     "poder_curules_pct": 35.19
                 },
                 "2026": {
                     "votos": 5745122,
                     "curules": 33,
-                    "poder_votos_pct": 29.58,
+                    "poder_votos_pct": 32.07,
                     "poder_curules_pct": 32.04
                 },
                 "comparativo": {
                     "curules_adicionales": -5,
-                    "variacion_poder_votos_pp": -3.25,
+                    "variacion_poder_votos_pp": -5.45,
                     "variacion_poder_curules_pp": -3.15
                 }
             },
@@ -928,18 +928,18 @@
                 "2022": {
                     "votos": 6382562,
                     "curules": 43,
-                    "poder_votos_pct": 37.57,
+                    "poder_votos_pct": 42.93,
                     "poder_curules_pct": 39.81
                 },
                 "2026": {
                     "votos": 7753929,
                     "curules": 43,
-                    "poder_votos_pct": 39.92,
+                    "poder_votos_pct": 43.29,
                     "poder_curules_pct": 41.75
                 },
                 "comparativo": {
                     "curules_adicionales": 0,
-                    "variacion_poder_votos_pp": 2.35,
+                    "variacion_poder_votos_pp": 0.36,
                     "variacion_poder_curules_pp": 1.94
                 }
             },
@@ -947,18 +947,18 @@
                 "2022": {
                     "votos": 2905962,
                     "curules": 27,
-                    "poder_votos_pct": 17.1,
+                    "poder_votos_pct": 19.55,
                     "poder_curules_pct": 25.0
                 },
                 "2026": {
                     "votos": 4413636,
                     "curules": 27,
-                    "poder_votos_pct": 22.72,
+                    "poder_votos_pct": 24.64,
                     "poder_curules_pct": 26.21
                 },
                 "comparativo": {
                     "curules_adicionales": 0,
-                    "variacion_poder_votos_pp": 5.62,
+                    "variacion_poder_votos_pp": 5.09,
                     "variacion_poder_curules_pp": 1.21
                 }
             }
@@ -968,18 +968,18 @@
                 "2022": {
                     "votos": 3287242,
                     "curules": 40,
-                    "poder_votos_pct": 19.62,
+                    "poder_votos_pct": 22.02,
                     "poder_curules_pct": 21.28
                 },
                 "2026": {
                     "votos": 4521950,
                     "curules": 47,
-                    "poder_votos_pct": 24.05,
+                    "poder_votos_pct": 27.74,
                     "poder_curules_pct": 25.97
                 },
                 "comparativo": {
                     "curules_adicionales": 7,
-                    "variacion_poder_votos_pp": 4.43,
+                    "variacion_poder_votos_pp": 5.72,
                     "variacion_poder_curules_pp": 4.69
                 }
             },
@@ -987,18 +987,18 @@
                 "2022": {
                     "votos": 5665129,
                     "curules": 84,
-                    "poder_votos_pct": 33.81,
+                    "poder_votos_pct": 37.96,
                     "poder_curules_pct": 44.68
                 },
                 "2026": {
                     "votos": 4205361,
                     "curules": 65,
-                    "poder_votos_pct": 22.36,
+                    "poder_votos_pct": 25.79,
                     "poder_curules_pct": 35.91
                 },
                 "comparativo": {
                     "curules_adicionales": -19,
-                    "variacion_poder_votos_pp": -11.45,
+                    "variacion_poder_votos_pp": -12.17,
                     "variacion_poder_curules_pp": -8.77
                 }
             },
@@ -1006,18 +1006,18 @@
                 "2022": {
                     "votos": 5972924,
                     "curules": 64,
-                    "poder_votos_pct": 35.65,
+                    "poder_votos_pct": 40.02,
                     "poder_curules_pct": 34.04
                 },
                 "2026": {
                     "votos": 7575812,
                     "curules": 69,
-                    "poder_votos_pct": 40.28,
+                    "poder_votos_pct": 46.47,
                     "poder_curules_pct": 38.12
                 },
                 "comparativo": {
                     "curules_adicionales": 5,
-                    "variacion_poder_votos_pp": 4.63,
+                    "variacion_poder_votos_pp": 6.45,
                     "variacion_poder_curules_pp": 4.08
                 }
             }

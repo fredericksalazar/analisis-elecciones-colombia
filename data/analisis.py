@@ -154,9 +154,17 @@ def main():
     # Calcular variaciones ideologia
     for c, ideologias in ideologia_dict.items():
         for i, data in ideologias.items():
+            # Denominador: suma de ideology votes para ese año (solo partidos con curules)
+            tv_total_ideo = sum(ideologias[k][y]["votos"] for k in ideologias for y in ["2022", "2026"] if ideologias[k].get(y))
+            tc_total_ideo = sum(ideologias[k][y]["curules"] for k in ideologias for y in ["2022", "2026"] if ideologias[k].get(y))
+            # Per-year denominator: votes from ALL ideologies that year (same parties tracked)
+            tv_22 = sum(ideologias[k]["2022"]["votos"] for k in ideologias if ideologias[k].get("2022"))
+            tv_26 = sum(ideologias[k]["2026"]["votos"] for k in ideologias if ideologias[k].get("2026"))
+            tc_22 = sum(ideologias[k]["2022"]["curules"] for k in ideologias if ideologias[k].get("2022"))
+            tc_26 = sum(ideologias[k]["2026"]["curules"] for k in ideologias if ideologias[k].get("2026"))
             for y in ["2022", "2026"]:
-                tv = totales_corp[y][c]["votos"]
-                tc = totales_corp[y][c]["curules"]
+                tv = tv_22 if y == "2022" else tv_26
+                tc = tc_22 if y == "2022" else tc_26
                 data[y]["poder_votos_pct"] = round((data[y]["votos"] / tv) * 100, 2) if tv > 0 else 0
                 data[y]["poder_curules_pct"] = round((data[y]["curules"] / tc) * 100, 2) if tc > 0 else 0
                 

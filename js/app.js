@@ -1,8 +1,8 @@
 // Main Application Logic
-import { renderMacroKPIs, renderPartyCards, renderAdvancedAnalysis } from './components.js?v=20260318s';
-import { drawHemiciclo, drawIdeologyCharts, drawVotesBarCharts, drawVotesVariationCharts, renderCongressTable, renderIdeologyTable } from './charts.js?v=20260318s';
+import { renderMacroKPIs, renderPartyCards, renderAdvancedAnalysis } from './components.js?v=20260318t';
+import { drawHemiciclo, drawIdeologyCharts, drawVotesBarCharts, drawVotesVariationCharts, renderCongressTable, renderIdeologyTable } from './charts.js?v=20260318t';
 import { calculateAdvancedMetrics } from './analysis.js';
-import { drawParticipationMap, drawPartyMap, drawIdeologyMap, drawVariationMap } from './maps.js?v=20260318s';
+import { drawParticipationMap, drawPartyMap, drawIdeologyMap, drawVariationMap } from './maps.js?v=20260318t';
 
 let electionData = null;
 
