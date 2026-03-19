@@ -1,3 +1,6 @@
+// Global Chart.js Font Configuration
+Chart.defaults.font.family = '"Google Sans", sans-serif';
+
 // Register Global Bar Labels Plugin
 Chart.register({
     id: 'customBarLabels',
@@ -10,7 +13,7 @@ Chart.register({
         const textSecondary = getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim() || '#64748b';
         
         ctx.save();
-        ctx.font = '600 12px Inter';
+        ctx.font = '600 12px "Google Sans"';
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
         ctx.fillStyle = textSecondary;
@@ -542,7 +545,7 @@ export function drawIdeologyCharts(ideoData) {
                 position: 'bottom', 
                 labels: { 
                     color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim(),
-                    font: { family: 'Inter', size: 12 }
+                    font: { family: 'Google Sans', size: 14 }
                 } 
             },
         },
@@ -565,7 +568,7 @@ export function drawIdeologyCharts(ideoData) {
                         display: true, 
                         text: 'Distribución 2022', 
                         color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim(), 
-                        font: {family: 'Inter', size: 18, weight: '700'}
+                        font: {family: 'Google Sans', size: 22, weight: '700'}
                     } 
                 } 
             }
@@ -587,7 +590,7 @@ export function drawIdeologyCharts(ideoData) {
                         display: true, 
                         text: 'Distribución 2026', 
                         color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim(), 
-                        font: {family: 'Inter', size: 18, weight: '700'}
+                        font: {family: 'Google Sans', size: 22, weight: '700'}
                     } 
                 } 
             }
@@ -684,7 +687,7 @@ export function drawVotesBarCharts(electionData) {
                     y: {
                         ticks: {
                             color: textSecondary,
-                            font: { family: 'Inter', size: 11 },
+                            font: { family: 'Google Sans', size: 13 },
                             crossAlign: 'far'
                         },
                         grid: { display: false }
@@ -760,7 +763,7 @@ export function drawVotesVariationCharts(electionData) {
                         grid: { color: 'rgba(128, 128, 128, 0.1)' }
                     },
                     y: {
-                        ticks: { color: textSecondary, font: { family: 'Inter', size: 11 } },
+                        ticks: { color: textSecondary, font: { family: 'Google Sans', size: 13 } },
                         grid: { display: false }
                     }
                 }

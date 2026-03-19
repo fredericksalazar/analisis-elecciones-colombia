@@ -175,9 +175,6 @@ export function renderMacroKPIs(data) {
     });
 
     lucide.createIcons();
-
-    const insightBox = document.querySelector('.insight-macro');
-    insightBox.innerHTML = `<strong>Insight Político:</strong> Aunque la participación creció sumando más de 2.5 millones de votantes respecto a 2022, la abstención sigue rozando el 50%, recordando que el 'partido' más grande de Colombia sigue siendo la apatía. La notable caída en votos nulos y no marcados (-1.87 pp) refleja una maduración del electorado y una mejor comprensión frente a la complejidad del tarjetón legislativo.`;
 }
 
 export function renderPartyCards(partyData, containerId) {
