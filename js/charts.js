@@ -567,7 +567,6 @@ export function drawIdeologyCharts(ideoData) {
     const data22 = labels.map(l => ideoData[l]?.['2022']?.curules || 0);
     const data26 = labels.map(l => ideoData[l]?.['2026']?.curules || 0);
 
-    // Chart configs
     const commonOptions = {
         responsive: true,
         maintainAspectRatio: true,
@@ -577,12 +576,16 @@ export function drawIdeologyCharts(ideoData) {
                 position: 'bottom', 
                 labels: { 
                     color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim(),
-                    font: { family: 'Google Sans', size: 14 }
+                    font: { family: 'Google Sans', size: 11 },
+                    padding: 6,
+                    usePointStyle: true,
+                    pointStyle: 'circle',
+                    boxWidth: 8
                 } 
             },
             percentLabels: {}
         },
-        cutout: '65%',
+        cutout: '60%',
         borderWidth: 0
     };
 
@@ -601,7 +604,7 @@ export function drawIdeologyCharts(ideoData) {
                         display: true, 
                         text: 'Distribución 2022', 
                         color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim(), 
-                        font: {family: 'Google Sans', size: 22, weight: '700'}
+                        font: {family: 'Google Sans', size: 14, weight: '700'}
                     } 
                 } 
             }
@@ -623,17 +626,15 @@ export function drawIdeologyCharts(ideoData) {
                         display: true, 
                         text: 'Distribución 2026', 
                         color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim(), 
-                        font: {family: 'Google Sans', size: 22, weight: '700'}
+                        font: {family: 'Google Sans', size: 14, weight: '700'}
                     } 
                 } 
             }
         });
     }
 
-    // Write narrative
     const targetEl = document.querySelector('.insight-ideology');
     
-    // Determine winner/loser
     const izqVar = ideoData['Izquierda'].comparativo.variacion_poder_curules_pp;
     const derVar = ideoData['Derecha'].comparativo.variacion_poder_curules_pp;
     const cenVar = ideoData['Centro'].comparativo.variacion_poder_curules_pp;
@@ -713,7 +714,7 @@ export function drawVotesBarCharts(electionData) {
                         grace: '20%',
                         ticks: {
                             color: textSecondary,
-                            font: { family: 'Google Sans', size: 14, weight: 600 },
+                            font: { family: 'Google Sans', size: 12, weight: 600 },
                             callback: (value) => formatCompact(value)
                         },
                         grid: { color: 'rgba(128, 128, 128, 0.1)' }
@@ -721,7 +722,7 @@ export function drawVotesBarCharts(electionData) {
                     y: {
                         ticks: {
                             color: textSecondary,
-                            font: { family: 'Google Sans', size: 14, weight: 600 },
+                            font: { family: 'Google Sans', size: 11, weight: 600 },
                             crossAlign: 'far'
                         },
                         grid: { display: false }
@@ -729,6 +730,9 @@ export function drawVotesBarCharts(electionData) {
                 }
             }
         });
+        
+        const maxHeight = Math.min(labels.length * 35 + 80, 500);
+        ctx.canvas.parentNode.style.maxHeight = maxHeight + 'px';
 
         return chart;
     };
@@ -795,16 +799,18 @@ function createPieChart(corpName, corpData, canvasId) {
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false,
+            maintainAspectRatio: true,
+            aspectRatio: 1,
             plugins: {
                 legend: {
                     position: 'bottom',
                     labels: {
                         color: textSecondary,
-                        font: { family: 'Google Sans', size: 12 },
-                        padding: 12,
+                        font: { family: 'Google Sans', size: 11 },
+                        padding: 8,
                         usePointStyle: true,
-                        pointStyle: 'circle'
+                        pointStyle: 'circle',
+                        boxWidth: 8
                     }
                 },
                 tooltip: {
@@ -816,7 +822,7 @@ function createPieChart(corpName, corpData, canvasId) {
                     }
                 }
             },
-            cutout: '70%',
+            cutout: '65%',
             borderWidth: 0
         }
     });
@@ -876,17 +882,22 @@ export function drawVotesVariationCharts(electionData) {
                     x: {
                         ticks: {
                             color: textSecondary,
+                            font: { family: 'Google Sans', size: 11 },
                             callback: (value) => value + '%'
                         },
                         grid: { color: 'rgba(128, 128, 128, 0.1)' }
                     },
                     y: {
-                        ticks: { color: textSecondary, font: { family: 'Google Sans', size: 13 } },
+                        ticks: { color: textSecondary, font: { family: 'Google Sans', size: 11 } },
                         grid: { display: false }
                     }
                 }
             }
         });
+        
+        const maxHeight = Math.min(labels.length * 35 + 80, 600);
+        ctx.canvas.parentNode.style.maxHeight = maxHeight + 'px';
+        
         return chart;
     };
 

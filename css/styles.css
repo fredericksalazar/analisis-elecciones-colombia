@@ -1499,17 +1499,35 @@ p {
     gap: 2rem;
     margin-bottom: 2rem;
 }
+
+@media (max-width: 768px) {
+    .ideology-charts {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
 .chart-box {
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: 1rem;
     padding: 1rem;
-    height: 300px;
+    height: 360px;
+    max-height: 360px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: hidden;
+}
+
+.chart-box canvas {
+    flex: 1;
+    min-height: 0;
+    width: 100% !important;
+    max-width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
 }
 
 /* Party Cards Detail */
@@ -1897,13 +1915,14 @@ p {
     flex-direction: column;
     height: auto;
     min-height: 320px;
+    max-height: 550px;
     width: 100%;
     min-width: 0;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: 1rem;
     padding: 1rem;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .votes-chart-wrapper h3 {
@@ -1923,6 +1942,7 @@ p {
 .votes-chart-wrapper.variation-chart {
     height: auto;
     min-height: 350px;
+    max-height: 600px;
 }
 
 .pie-charts-container {
@@ -1940,8 +1960,9 @@ p {
     border: 1px solid var(--border-color);
     border-radius: 1rem;
     padding: 1rem;
-    height: auto;
-    min-height: 300px;
+    height: 450px;
+    max-height: 450px;
+    overflow: hidden;
 }
 
 .pie-charts-container .pie-chart-wrapper h3 {
@@ -1955,8 +1976,11 @@ p {
 
 .pie-charts-container .pie-chart-wrapper canvas {
     flex: 1;
+    min-height: 0;
     width: 100% !important;
-    max-height: calc(100% - 40px);
+    max-width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
 }
 
 @media (max-width: 1024px) {
@@ -1970,24 +1994,22 @@ p {
 }
 
 @media (max-width: 768px) {
-    .votes-chart-wrapper {
-        min-height: 280px;
-        height: auto;
-    }
     .votes-chart-wrapper canvas {
-        max-height: 220px;
+        max-height: 350px;
     }
     .pie-chart-wrapper {
-        min-height: 280px;
+        height: 340px;
+        max-height: 340px;
     }
     .pie-chart-wrapper canvas {
-        max-height: 220px;
+        max-height: 240px;
     }
     .chart-box {
-        height: 260px;
+        height: 300px;
+        max-height: 300px;
     }
     .chart-box canvas {
-        max-height: 200px;
+        max-height: 220px;
     }
     .votes-chart-wrapper h3 {
         font-size: 0.95rem;
@@ -1995,26 +2017,35 @@ p {
     .pie-chart-wrapper h3 {
         font-size: 0.9rem;
     }
+    .votes-chart-wrapper.variation-chart {
+        max-height: 500px;
+    }
 }
 
 @media (max-width: 480px) {
     .votes-chart-wrapper {
-        min-height: 240px;
+        min-height: 200px;
+        max-height: 350px;
     }
     .votes-chart-wrapper canvas {
-        max-height: 180px;
+        max-height: 280px;
     }
     .pie-chart-wrapper {
-        min-height: 240px;
+        height: 320px;
+        max-height: 320px;
     }
     .pie-chart-wrapper canvas {
-        max-height: 180px;
+        max-height: 200px;
     }
     .chart-box {
-        height: 220px;
+        height: 280px;
+        max-height: 280px;
     }
     .chart-box canvas {
-        max-height: 170px;
+        max-height: 220px;
+    }
+    .votes-chart-wrapper.variation-chart {
+        max-height: 400px;
     }
 }
 
