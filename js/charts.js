@@ -806,11 +806,12 @@ function createPieChart(corpName, corpData, canvasId) {
                     position: 'bottom',
                     labels: {
                         color: textSecondary,
-                        font: { family: 'Google Sans', size: 11 },
-                        padding: 8,
+                        font: { family: 'Google Sans', size: 10 },
+                        padding: 6,
                         usePointStyle: true,
                         pointStyle: 'circle',
-                        boxWidth: 8
+                        boxWidth: 6,
+                        boxHeight: 6
                     }
                 },
                 tooltip: {
@@ -822,7 +823,7 @@ function createPieChart(corpName, corpData, canvasId) {
                     }
                 }
             },
-            cutout: '65%',
+            cutout: '55%',
             borderWidth: 0
         }
     });
