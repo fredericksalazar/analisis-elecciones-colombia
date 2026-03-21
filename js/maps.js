@@ -1,6 +1,19 @@
 // Map Visualization using D3.js
 // Renders the maps for Participation, Winning Party, and Ideology
 
+// Debounce utility for resize handling
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
 // Normalization maps between Topojson/Geojson department strings and our CSV's names
 const normalizeName = (name) => {
     if(!name) return "";
@@ -29,7 +42,8 @@ function renderMap(containerId, geoData, colorFn, tooltipFn, deptoData) {
     container.selectAll("*").remove(); 
 
     const width = container.node().clientWidth || 800;
-    const height = 650; // Use a fixed height for stability
+    const aspectRatio = width < 600 ? 0.7 : 0.85; // Taller on mobile, wider on desktop
+    const height = Math.max(250, Math.min(650, width * aspectRatio));
 
     const svg = container.append("svg")
         .attr("width", "100%")
