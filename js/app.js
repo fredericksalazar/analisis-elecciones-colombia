@@ -52,6 +52,7 @@ function initializeVisualizations(data) {
             drawIdeologyMap(data, geoData, "Senado");
             setupMapTabs(data, geoData);
             renderTablaVariacion(data);
+            renderTablaIdeologia(data);
         }).catch(e => {
             console.warn("Could not load geometry for maps, skipping maps.", e);
             document.getElementById('territorial-maps').style.display = 'none';
@@ -297,6 +298,108 @@ function updateSortIcons() {
         th.classList.remove('sorted-asc', 'sorted-desc');
         if (th.dataset.sort === currentSort.field) {
             th.classList.add(currentSort.direction === 'asc' ? 'sorted-asc' : 'sorted-desc');
+        }
+    });
+}
+
+// Render Tabla de Distribución Ideológica por Departamento
+let ideologiaDataGlobal = [];
+let currentIdeologiaSort = { field: 'depto', direction: 'asc' };
+
+function renderTablaIdeologia(data) {
+    const tbody = document.getElementById('tabla-ideologia-body');
+    const table = document.getElementById('tabla-ideologia-departamentos');
+    if (!tbody || !data.territorio) return;
+
+    const territorio2026 = data.territorio['2026'];
+    const senado2026 = territorio2026?.senado?.detalles_departamentos || {};
+
+    ideologiaDataGlobal = Object.entries(senado2026)
+        .filter(([depto]) => depto !== 'CONSULADOS')
+        .map(([depto, info]) => ({
+            depto: depto,
+            ideologia: info.ideologia || 'Centro',
+            partido: info.ganador || '',
+            votos: info.votos || 0
+        }))
+        .sort((a, b) => a.depto.localeCompare(b.depto));
+
+    // Add click handlers to headers
+    const headers = table.querySelectorAll('th.sortable');
+    headers.forEach(th => {
+        th.addEventListener('click', () => {
+            const field = th.dataset.sort;
+            const direction = currentIdeologiaSort.field === field && currentIdeologiaSort.direction === 'asc' ? 'desc' : 'asc';
+            sortIdeologiaTable(field, direction);
+        });
+    });
+
+    sortIdeologiaTable('depto', 'asc');
+}
+
+function sortIdeologiaTable(field, direction) {
+    currentIdeologiaSort = { field, direction };
+    
+    ideologiaDataGlobal.sort((a, b) => {
+        let valA = a[field];
+        let valB = b[field];
+        
+        if (field === 'depto' || field === 'ideologia' || field === 'partido') {
+            valA = valA.toLowerCase();
+            valB = valB.toLowerCase();
+            if (direction === 'asc') {
+                return valA.localeCompare(valB);
+            } else {
+                return valB.localeCompare(valA);
+            }
+        } else {
+            if (direction === 'asc') {
+                return valA - valB;
+            } else {
+                return valB - valA;
+            }
+        }
+    });
+
+    renderIdeologiaTableBody();
+    updateIdeologiaSortIcons();
+}
+
+function renderIdeologiaTableBody() {
+    const tbody = document.getElementById('tabla-ideologia-body');
+    let html = '';
+    
+    ideologiaDataGlobal.forEach(item => {
+        const { depto, ideologia, partido, votos } = item;
+        
+        let ideoClass = '';
+        if (ideologia === 'Izquierda') {
+            ideoClass = 'ideologia-izquierda';
+        } else if (ideologia === 'Derecha') {
+            ideoClass = 'ideologia-derecha';
+        } else {
+            ideoClass = 'ideologia-centro';
+        }
+        
+        html += `
+            <tr>
+                <td>${depto}</td>
+                <td class="${ideoClass}">${ideologia}</td>
+                <td>${partido}</td>
+                <td class="numero">${votos.toLocaleString('es-CO')}</td>
+            </tr>
+        `;
+    });
+
+    tbody.innerHTML = html;
+}
+
+function updateIdeologiaSortIcons() {
+    const headers = document.querySelectorAll('#tabla-ideologia-departamentos th.sortable');
+    headers.forEach(th => {
+        th.classList.remove('sorted-asc', 'sorted-desc');
+        if (th.dataset.sort === currentIdeologiaSort.field) {
+            th.classList.add(currentIdeologiaSort.direction === 'asc' ? 'sorted-asc' : 'sorted-desc');
         }
     });
 }

@@ -2788,3 +2788,119 @@ html {
         font-size: 0.75rem;
     }
 }
+
+/* Tabla de Distribución Ideológica */
+.tabla-ideologia-container {
+    background: var(--bg-glass);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.tabla-ideologia-container h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tabla-ideologia-container .subtitulo-tabla {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.tabla-ideologia-wrapper {
+    overflow-x: auto;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.tabla-ideologia {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.tabla-ideologia th,
+.tabla-ideologia td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tabla-ideologia th {
+    font-weight: 600;
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.tabla-ideologia th.sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: background var(--transition);
+}
+
+.tabla-ideologia th.sortable:hover {
+    background: var(--accent);
+    color: #0f172a;
+}
+
+.tabla-ideologia th.sorted-asc,
+.tabla-ideologia th.sorted-desc {
+    background: var(--accent);
+    color: #0f172a;
+}
+
+.tabla-ideologia td {
+    color: var(--text-body);
+}
+
+.tabla-ideologia tbody tr:hover {
+    background: rgba(56, 189, 248, 0.15);
+}
+
+.tabla-ideologia .ideologia-izquierda {
+    color: #ef4444;
+    font-weight: 600;
+}
+
+.tabla-ideologia .ideologia-derecha {
+    color: #3b82f6;
+    font-weight: 600;
+}
+
+.tabla-ideologia .ideologia-centro {
+    color: #10b981;
+    font-weight: 600;
+}
+
+.tabla-ideologia .numero {
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    .tabla-ideologia-container {
+        padding: 1rem;
+        margin: 1.5rem auto;
+    }
+
+    .tabla-ideologia th,
+    .tabla-ideologia td {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+    }
+}
