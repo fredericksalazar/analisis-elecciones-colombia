@@ -80,9 +80,14 @@
         <div class="ambient-glow bg-left"></div>
         <div class="ambient-glow bg-right"></div>
 
-        <header class="hero">
-            <div class="hero-content">
-                <nav class="menu-navegacion" id="menu-nav" aria-label="Menú de navegación principal">
+        <main class="dashboard">
+            <article class="analisis-principal">
+                <header class="articulo-header">
+                    <h1 class="glitch-text" data-text="Resultados Elecciones Congreso Colombia 2026: Análisis por Departamento, Mapas Ideológicos y Variación de Votación">
+                        Resultados Elecciones Congreso Colombia 2026: Análisis por Departamento, Mapas Ideológicos y Variación de Votación
+                    </h1>
+                    
+                    <nav class="menu-navegacion" id="menu-nav" aria-label="Menú de navegación principal">
                   <ul>
                     <li><a href="#" class="menu-inicio"><i data-lucide="home"></i> Inicio</a></li>
                     <li><a href="#participacion-apatia"><i data-lucide="users"></i> Participación</a></li>
@@ -96,24 +101,20 @@
                   </ul>
                   <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar modo oscuro/claro"></button>
                 </nav>
+                </header>
                 
-                <h1 class="glitch-text" data-text="Resultados Elecciones Congreso Colombia 2026: Análisis por Departamento, Mapas Ideológicos y Variación de Votación">
-                    Resultados Elecciones Congreso Colombia 2026: Análisis por Departamento, Mapas Ideológicos y Variación de Votación
-                </h1>
-                
-                <section class="hero-details">
-
-                    <article class="detail-section compact-text">
+                <div class="hero-details">
+                    <article class="detail-section">
                         <h3><i data-lucide="info"></i> Naturaleza del Proyecto</h3>
                         <p>Este es un proyecto de investigación técnico-académica de carácter independiente. Su propósito fundamental es la democratización de la información mediante la visualización avanzada de datos, permitiendo a ciudadanos, académicos y analistas comprender la transición del poder legislativo en Colombia con precisión quirúrgica.</p>
                     </article>
 
-                    <article class="detail-section compact-text">
+                    <article class="detail-section">
                         <h3><i data-lucide="git-branch"></i> Motivación y Filosofía Open Source</h3>
                         <p>Desarrollado bajo la filosofía de Software Libre, este proyecto nace de la necesidad de ofrecer herramientas de análisis político que sean transparentes y auditables. Todo el procesamiento de datos y la lógica de visualización están disponibles de forma abierta para fomentar la colaboración y la integridad de la información.</p>
                     </article>
 
-                    <article class="detail-section compact-text">
+                    <article class="detail-section">
                         <h3><i data-lucide="user-check"></i> Autoría Técnica</h3>
                         <p>El proyecto es diseñado y mantenido por <strong>Frederick Adolfo Salazar Sánchez</strong>, Ingeniero de Datos Senior y desarrollador de software, combinando arquitectura de datos robusta con una interfaz intuitiva para transformar los datos electorales masivos en conocimiento accionable.</p>
                         
@@ -135,25 +136,22 @@
                             Nota: Este sitio no tiene afiliación política; su único interés es el análisis técnico de datos públicos oficiales.
                         </p>
                     </article>
+                </div>
 
-                    <article class="detail-section support-section">
-                        <h3><i data-lucide="heart"></i> Apoya esta iniciativa</h3>
-                        <p>Si encuentras valor en este análisis y deseas apoyar la continuidad de este proyecto de código abierto, puedes contribuir al mantenimiento de los servidores y la actualización de datos:</p>
-                        
-                        <div class="support-actions">
-                            <a href="https://www.buymeacoffee.com/fredericksalazar" target="_blank" class="btn-donation bmc">
-                                <i data-lucide="coffee"></i> Invítame a un café
-                            </a>
-                            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=fredefass01@gmail.com&amount=10.00&item_name=Apoyo+Proyecto+Elecciones+Colombia&currency_code=USD" target="_blank" class="btn-donation paypal">
-                                <i data-lucide="credit-card"></i> Aporte de 10 USD vía PayPal
-                            </a>
-                        </div>
-                    </article>
+                <section class="support-section">
+                    <h3><i data-lucide="heart"></i> Apoya esta iniciativa</h3>
+                    <p>Si encuentras valor en este análisis y deseas apoyar la continuidad de este proyecto de código abierto, puedes contribuir al mantenimiento de los servidores y la actualización de datos:</p>
+                    
+                    <div class="support-actions">
+                        <a href="https://www.buymeacoffee.com/fredericksalazar" target="_blank" class="btn-donation bmc">
+                            <i data-lucide="coffee"></i> Invítame a un café
+                        </a>
+                        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=fredefass01@gmail.com&amount=10.00&item_name=Apoyo+Proyecto+Elecciones+Colombia&currency_code=USD" target="_blank" class="btn-donation paypal">
+                            <i data-lucide="credit-card"></i> Aporte de 10 USD vía PayPal
+                        </a>
+                    </div>
                 </section>
-            </div>
-        </header>
 
-        <main class="dashboard">
             <!-- Section 1: Macro Behavior -->
             <section id="participacion-apatia" class="glass-panel slide-up">
                 <div class="section-header">
@@ -598,16 +596,17 @@
                     </a>
                 </div>
             </section>
+            
+            <footer class="sitio-footer">
+                <p>
+                    <a href="https://github.com/fredericksalazar" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none; font-weight: 600; transition: var(--transition);">
+                        Desarrollado por Frederick Salazar | Data Engineering & Political Analysis
+                    </a>
+                </p>
+                <p style="margin-top: 0.5rem; opacity: 0.7; font-size: 0.85rem;">Dividendo digital y análisis electoral 2022-2026.</p>
+            </footer>
+            </article>
         </main>
-        
-        <footer>
-            <p>
-                <a href="https://github.com/fredericksalazar" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none; font-weight: 600; transition: var(--transition);">
-                    Desarrollado por Frederick Salazar | Data Engineering & Political Analysis
-                </a>
-            </p>
-            <p style="margin-top: 0.5rem; opacity: 0.7; font-size: 0.85rem;">Dividendo digital y análisis electoral 2022-2026.</p>
-        </footer>
     </div>
 
     <!-- App Logic -->
