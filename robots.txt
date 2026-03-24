@@ -1,0 +1,8 @@
+# robots.txt para analisis-elecciones-colombia
+# Permite el rastreo completo del sitio por todos los buscadores
+# Última actualización: 2026-03-24
+
+User-agent: *
+
+# Mapa del sitio XML (se implementará en el siguiente paso)
+Sitemap: https://fredericksalazar.github.io/analisis-elecciones-colombia/sitemap.xml

@@ -12,9 +12,11 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Explora el análisis interactivo de las elecciones legislativas en Colombia. Compara resultados por departamento, partidos políticos y tendencias de votación entre 2022 y 2026 con datos abiertos.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="keywords" content="Elecciones Colombia 2026, Senado, Cámara, Análisis Político, Datos Electorales, Mapas Políticos, Democracia Colombiana">
-    <title>Análisis Elecciones Colombia 2022-2026 | Datos y Tendencias Legislativas</title>
+    <title>Resultados Elecciones Congreso Colombia 2026: Análisis por Departamento, Mapas Ideológicos y Variación de Votación</title>
+    <meta name="description" content="Análisis detallado de las elecciones legislativas 2026 en Colombia. Explora el mapa de distribución ideológica, la variación de votación por departamento, el costo por curul y el nuevo tablero de poder en Senado y Cámara. Datos oficiales de la Registraduría.">
     <link rel="canonical" href="https://fredericksalazar.github.io/analisis-elecciones-colombia/">
     
     <!-- Open Graph / Facebook / WhatsApp -->
@@ -50,19 +52,27 @@
     
     <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "AnalysisNewsArticle",
-      "headline": "Análisis Estadístico Elecciones Colombia 2022-2026",
-      "description": "Plataforma de visualización de datos sobre el comportamiento electoral legislativo en Colombia.",
-      "author": {
-        "@type": "Person",
-        "name": "Frederick Salazar"
-      },
-      "datePublished": "2026-03-16",
-      "keywords": "Elecciones Colombia, Datos Electorales, Registraduría, Análisis Político"
-    }
-    </script>
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Resultados Elecciones Congreso Colombia 2026: Análisis por Departamento, Mapas Ideológicos y Variación de Votación",
+  "description": "Análisis detallado de las elecciones legislativas 2026 en Colombia. Explora el mapa de distribución ideológica, la variación de votación por departamento, el costo por curul y el nuevo tablero de poder en Senado y Cámara. Datos oficiales de la Registraduría.",
+  "author": {
+    "@type": "Person",
+    "name": "Frederick Adolfo Salazar Sánchez"
+  },
+  "datePublished": "2026-03-16",
+  "dateModified": "2026-03-24",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://fredericksalazar.github.io/analisis-elecciones-colombia/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Análisis Elecciones Colombia"
+  }
+}
+</script>
 </head>
 <body>
     <div class="app-container">
@@ -70,22 +80,24 @@
         <div class="ambient-glow bg-left"></div>
         <div class="ambient-glow bg-right"></div>
 
-        <nav class="navbar">
-            <div class="nav-brand">
-                <!-- Eliminado por solicitud del usuario -->
-            </div>
-            <div class="nav-actions">
-                <button id="theme-toggle" class="btn-icon" aria-label="Toggle Dark/Light Mode">
-                    <i data-lucide="sun" class="icon-light"></i>
-                    <i data-lucide="moon" class="icon-dark"></i>
-                </button>
-            </div>
-        </nav>
-
         <header class="hero">
             <div class="hero-content">
-                <h1 class="glitch-text" data-text="Análisis de las Elecciones Legislativas en Colombia 2022-2026: Una Perspectiva desde la Ingeniería de Datos">
-                    Análisis de las Elecciones Legislativas en Colombia 2022-2026: Una Perspectiva desde la Ingeniería de Datos
+                <nav class="menu-navegacion" id="menu-nav" aria-label="Menú de navegación principal">
+                  <ul>
+                    <li><a href="#" class="menu-inicio"><i data-lucide="home"></i> Inicio</a></li>
+                    <li><a href="#participacion-apatia"><i data-lucide="users"></i> Participación</a></li>
+                    <li><a href="#reparto-poder"><i data-lucide="landmark"></i> Reparto del Poder</a></li>
+                    <li><a href="#variacion-partidos"><i data-lucide="trending-up"></i> Ganadores y Perdedores</a></li>
+                    <li><a href="#tablero-gobernabilidad"><i data-lucide="scale"></i> Tablero de Gobernabilidad</a></li>
+                    <li><a href="#mapa-poder"><i data-lucide="map"></i> Mapa del Poder</a></li>
+                    <li><a href="#inteligencia-electoral"><i data-lucide="brain"></i> Inteligencia Electoral</a></li>
+                    <li><a href="#metodologia"><i data-lucide="file-text"></i> Metodología</a></li>
+                  </ul>
+                  <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar modo oscuro/claro"></button>
+                </nav>
+                
+                <h1 class="glitch-text" data-text="Resultados Elecciones Congreso Colombia 2026: Análisis por Departamento, Mapas Ideológicos y Variación de Votación">
+                    Resultados Elecciones Congreso Colombia 2026: Análisis por Departamento, Mapas Ideológicos y Variación de Votación
                 </h1>
                 
                 <section class="hero-details">
@@ -142,7 +154,7 @@
 
         <main class="dashboard">
             <!-- Section 1: Macro Behavior -->
-            <section id="macro-behavior" class="glass-panel slide-up">
+            <section id="participacion-apatia" class="glass-panel slide-up">
                 <div class="section-header">
                     <h2><i data-lucide="users"></i> El Veredicto en las Urnas: Participación y Apatía Electoral</h2>
                     <p class="section-desc">Más allá de las curules, el primer mensaje del electorado: ¿quiénes salieron a votar y quiénes se quedaron en casa?</p>
@@ -161,7 +173,7 @@
             </section>
 
             <!-- Section 0: Distribución de Votos por Partidos -->
-            <section id="votes-distribution" class="glass-panel slide-up delay-1">
+            <section id="reparto-poder" class="glass-panel slide-up delay-1">
                 <div class="section-header" style="margin-bottom: 1rem;">
                     <h2><i data-lucide="bar-chart-2"></i> El Reparto del Poder: El Peso de las Marcas Políticas</h2>
                 </div>
@@ -207,7 +219,7 @@
             </section>
 
             <!-- Section 0.5: Variación de Votos (2026 vs 2022) -->
-            <section id="votes-variation" class="glass-panel slide-up delay-1">
+            <section id="variacion-partidos" class="glass-panel slide-up delay-1">
                 <div class="section-header">
                     <h2><i data-lucide="trending-up"></i> El Flujo del Poder: Ganadores y Perdedores frente a 2022</h2>
                     <p class="section-desc">El verdadero termómetro político: el porcentaje de crecimiento o caída revela el estado de salud y supervivencia de cada fuerza.</p>
@@ -237,7 +249,7 @@
             </section>
 
             <!-- Section 2: Hemiciclo & Ideology -->
-            <section id="ideology-hemiciclo" class="glass-panel slide-up delay-2">
+            <section id="tablero-gobernabilidad" class="glass-panel slide-up delay-2">
                 <div class="section-header">
                     <h2><i data-lucide="landmark"></i> El Nuevo Hemiciclo: El Tablero de la Gobernabilidad</h2>
                     <p class="section-desc">La distribución de los 103 escaños del Senado y 141 de la Cámara que definirán el margen de maniobra del próximo Ejecutivo.</p>
@@ -306,7 +318,7 @@
             </section>
 
             <!-- Section 2.5: Advanced Analysis -->
-            <section id="advanced-analysis" class="glass-panel slide-up delay-3">
+            <section id="inteligencia-electoral" class="glass-panel slide-up delay-3">
                 <div class="section-header">
                     <h2><i data-lucide="cpu"></i> Inteligencia Electoral: El Verdadero Costo del Poder</h2>
                     <p class="section-desc">Más allá de la victoria, medimos el "Costo por Curul". ¿Qué estructuras optimizaron su caudal electoral y cuáles desperdiciaron su capital en las urnas?</p>
@@ -337,7 +349,7 @@
             </section>
 
             <!-- Section 3: Territorio y Geografía (Mapas) -->
-            <section id="territorial-maps" class="glass-panel slide-up delay-3">
+            <section id="mapa-poder" class="glass-panel slide-up delay-3">
                 <div class="section-header">
                     <h2><i data-lucide="map"></i> El Mapa del Poder: Bastiones, Cacicazgos y Voto de Opinión</h2>
                     <p class="section-desc">La política colombiana es profundamente regional. Así se distribuye el control territorial entre las maquinarias locales y el fervor urbano.</p>
@@ -483,7 +495,7 @@
                 </div>
             </section>
             <!-- Section 5: Notas Metodológicas -->
-            <section id="methodology" class="glass-panel slide-up delay-3">
+            <section id="metodologia" class="glass-panel slide-up delay-3">
                 <div class="section-header">
                     <h2><i data-lucide="info"></i> Fuentes de Datos y Metodología</h2>
                 </div>
