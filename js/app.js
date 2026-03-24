@@ -51,6 +51,7 @@ function initializeVisualizations(data) {
             drawPartyMap(data, geoData, "Senado");
             drawIdeologyMap(data, geoData, "Senado");
             setupMapTabs(data, geoData);
+            renderTablaVariacion(data);
         }).catch(e => {
             console.warn("Could not load geometry for maps, skipping maps.", e);
             document.getElementById('territorial-maps').style.display = 'none';
@@ -188,6 +189,115 @@ function setupMapTabs(data, geoData) {
                 }
             });
         });
+    });
+}
+
+// Render Tabla de Variación de Votos por Departamento
+let deptosDataGlobal = [];
+let currentSort = { field: 'variacion', direction: 'desc' };
+
+function renderTablaVariacion(data) {
+    const tbody = document.getElementById('tabla-variacion-body');
+    const table = document.getElementById('tabla-variacion-departamentos');
+    if (!tbody || !data.territorio) return;
+
+    const territorio2022 = data.territorio['2022'];
+    const territorio2026 = data.territorio['2026'];
+    
+    // Usar datos de Senado para la tabla
+    const deptos2022 = territorio2022?.senado?.detalles_departamentos || {};
+    const deptos2026 = territorio2026?.senado?.detalles_departamentos || {};
+
+    // Obtener todos los departamentos únicos
+    const deptos = new Set([...Object.keys(deptos2022), ...Object.keys(deptos2026)]);
+    
+    // Filtrar solo departamentos válidos (excluir CONSULADOS) y crear array con datos
+    deptosDataGlobal = Array.from(deptos)
+        .filter(d => d !== 'CONSULADOS')
+        .map(depto => {
+            const votos2022 = deptos2022[depto]?.votos || 0;
+            const votos2026 = deptos2026[depto]?.votos || 0;
+            const diferencia = votos2026 - votos2022;
+            const variacion = votos2022 > 0 ? ((diferencia / votos2022) * 100) : 0;
+            return { depto, votos2022, votos2026, diferencia, variacion };
+        });
+
+    // Initial sort
+    sortData('variacion', 'desc');
+
+    // Add click handlers to headers
+    const headers = table.querySelectorAll('th.sortable');
+    headers.forEach(th => {
+        th.addEventListener('click', () => {
+            const field = th.dataset.sort;
+            const direction = currentSort.field === field && currentSort.direction === 'desc' ? 'asc' : 'desc';
+            sortData(field, direction);
+        });
+    });
+}
+
+function sortData(field, direction) {
+    currentSort = { field, direction };
+    
+    deptosDataGlobal.sort((a, b) => {
+        let valA = a[field];
+        let valB = b[field];
+        
+        if (field === 'depto') {
+            valA = valA.toLowerCase();
+            valB = valB.toLowerCase();
+            if (direction === 'asc') {
+                return valA.localeCompare(valB);
+            } else {
+                return valB.localeCompare(valA);
+            }
+        } else {
+            if (direction === 'asc') {
+                return valA - valB;
+            } else {
+                return valB - valA;
+            }
+        }
+    });
+
+    renderTableBody();
+    updateSortIcons();
+}
+
+function renderTableBody() {
+    const tbody = document.getElementById('tabla-variacion-body');
+    let html = '';
+    
+    deptosDataGlobal.forEach(item => {
+        const { depto, votos2022, votos2026, diferencia, variacion } = item;
+        const esPositivo = diferencia >= 0;
+        const claseVariacion = esPositivo ? 'variacion-positiva' : 'variacion-negativa';
+        const icono = esPositivo ? '↑' : '↓';
+        
+        html += `
+            <tr>
+                <td>${depto}</td>
+                <td class="numero">${votos2022.toLocaleString('es-CO')}</td>
+                <td class="numero">${votos2026.toLocaleString('es-CO')}</td>
+                <td class="numero ${claseVariacion}">${diferencia >= 0 ? '+' : ''}${diferencia.toLocaleString('es-CO')}</td>
+                <td class="numero ${claseVariacion}">
+                    <span class="variacion-icon">${icono}</span>
+                    ${Math.abs(variacion).toFixed(2)}%
+                </td>
+            </tr>
+        `;
+    });
+
+    tbody.innerHTML = html;
+}
+
+function updateSortIcons() {
+    const headers = document.querySelectorAll('#tabla-variacion-departamentos th.sortable');
+    headers.forEach(th => {
+        th.classList.remove('sorted-asc', 'sorted-desc');
+        if (th.dataset.sort === currentSort.field) {
+            th.classList.add(currentSort.direction === 'asc' ? 'sorted-asc' : 'sorted-desc');
+        }
     });
 }
 
