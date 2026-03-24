@@ -2441,6 +2441,12 @@ svg {
     font-weight: 600;
 }
 
+.menu-navegacion a.active {
+    background: var(--accent);
+    color: #0f172a;
+    font-weight: 600;
+}
+
 .menu-navegacion .theme-toggle-btn {
     background: transparent;
     border: 1px solid var(--border-color);

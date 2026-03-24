@@ -10,6 +10,7 @@ let electionData = null;
 async function initApp() {
     lucide.createIcons();
     setupThemeToggle();
+    initScrollSpy();
 
     try {
         // Fetch JSON Data with cache-busting
@@ -201,6 +202,60 @@ function initIntersectionObserver() {
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.slide-up').forEach(el => observer.observe(el));
+}
+
+// Active Menu on Scroll
+function initScrollSpy() {
+    const menuLinks = document.querySelectorAll('.menu-navegacion ul li a');
+    const sections = document.querySelectorAll('section[id]');
+    const menuList = document.querySelector('.menu-navegacion ul');
+    
+    if (menuLinks.length === 0 || sections.length === 0) return;
+
+    function updateActiveMenu() {
+        const scrollPos = window.scrollY + 150;
+        
+        let currentSection = 'inicio';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                currentSection = sectionId;
+            }
+        });
+        
+        let activeLink = null;
+        
+        menuLinks.forEach(link => {
+            link.classList.remove('active');
+            const href = link.getAttribute('href');
+            
+            if (href === '#') {
+                if (currentSection === 'inicio' || scrollPos < 200) {
+                    link.classList.add('active');
+                    activeLink = link;
+                }
+            } else if (href === `#${currentSection}`) {
+                link.classList.add('active');
+                activeLink = link;
+            }
+        });
+        
+        // Scroll active link into view on mobile
+        if (activeLink && window.innerWidth <= 768 && menuList) {
+            activeLink.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+        }
+    }
+
+    window.addEventListener('scroll', updateActiveMenu, { passive: true });
+    updateActiveMenu();
 }
 
 // Start App
